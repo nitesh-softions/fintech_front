@@ -33,6 +33,7 @@ const App = (props) => {
     const {
       layoutType
   } = useSelector(LayoutProperties);
+  
 
   function getLayout(layoutType) {
     let layoutCls = VerticalLayout;
