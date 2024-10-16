@@ -9,7 +9,7 @@ import SidebarContent from "./SidebarContent";
 
 import { Link } from "react-router-dom";
 
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/collapsed-logo.png";
 import logoLightPng from "../../assets/images/logo-light.png";
 import logoLightSvg from "../../assets/images/logo-light.svg";
 import logoDark from "../../assets/images/logo.png";
@@ -17,8 +17,8 @@ import logoDark from "../../assets/images/logo.png";
 const Sidebar = (props) => {
   return (
     <React.Fragment>
-      <div className="vertical-menu">
-        <div className="navbar-brand-box">
+      <div className="vertical-menu border-end border-dark border-opacity-10">
+        <div className="navbar-brand-box bg-white">
           <Link to="/" className="logo logo-dark">
             <span className="logo-sm">
               <img src={logo} alt="" height="22" />

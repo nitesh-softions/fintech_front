@@ -6,13 +6,13 @@ const CustomButton = ({ btn_icon, btn_bottom_icon, btn_heading, onClick }) => {
     let Icon2 = btn_bottom_icon
   return (
     <>
-        <button onClick={onClick} className="btn btn-soft-primary waves-effect waves-light card rounded-4 w-100 p-2 position-relative">
+        <button onClick={onClick} className="btn btn-soft-primary waves-effect waves-light card rounded-4 w-100 h-100 p-2 position-relative overflow-visible border border-dark border-opacity-10">
             <div className="card-body">
-                <h5 className="d-flex justify-content-start align-items-center mb-0">
-                    <span className='heading_icon'>
+                <h5 className="d-flex justify-content-center align-items-center mb-0">
+                    <span className='heading_icon position-absolute'>
                         <Icon1/>
                     </span>
-                    {btn_heading}
+                    <span className='mt-3'>{btn_heading}</span>
                 </h5>
                 {(Icon2 !== undefined && Icon2 !== null)?
                     <span className='bottom_icon'>

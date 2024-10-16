@@ -50,6 +50,42 @@
     font-size: 24px !important;
 }
 
+.quick-transfer-card{
+    .swiper{
+        .swiper-button-prev{
+            left: 0px;
+        }
+        .swiper-button-next{
+            right: 0px;
+        }
+        .swiper-button-prev, .swiper-button-next {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: $white;
+            box-shadow: 4px 4px 18px -2px #E7E4E8CC;
+            &:after,
+            &:after {
+                font-size: 12px;
+                font-weight: 700;
+                color: black;
+            }
+        }
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    .amount-input::-webkit-outer-spin-button,
+    .amount-input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    .amount-input {
+        -moz-appearance: textfield;
+    }
+}
+
 
 
 // Social
@@ -104,4 +140,4 @@
 
 .chartjs-chart {
     max-height: 300px;
-}    
+}

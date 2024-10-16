@@ -2,13 +2,14 @@ import React from 'react';
 import { UncontrolledCarousel } from "reactstrap";
 
 //import Images
-import img01 from "../../assets/images/carousel1.jfif";
-import img02 from "../../assets/images/carousel1.jfif";
-import img03 from "../../assets/images/carousel1.jfif";
+import img01 from "../../assets/images/carousel_images/carousel1.jpg";
+import img02 from "../../assets/images/carousel_images/carousel2.jpg";
+import img03 from "../../assets/images/carousel_images/carousel3.jpg";
 
 const AutoScrollCarousel = () => {
     return (
         <React.Fragment>
+          <div style={{ maxHeight: '180px', overflow: 'hidden' }}>
             <UncontrolledCarousel
               interval={4000}
               indicators={false}
@@ -33,6 +34,16 @@ const AutoScrollCarousel = () => {
                 },
               ]}
             />
+          </div>
+
+          <style>
+            {`
+              .carousel-control-prev,
+              .carousel-control-next {
+                display: none;
+              }
+            `}
+          </style>
         </React.Fragment>
     );
 }

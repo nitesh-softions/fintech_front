@@ -10,6 +10,7 @@ import avatar4 from "../../../assets/images/users/avatar-4.jpg"
 
 //i18n
 import { withTranslation } from "react-i18next"
+import { GoBell } from "react-icons/go"
 
 const NotificationDropdown = props => {
   // Declare a new state variable, which we'll call "menu"
@@ -18,10 +19,16 @@ const NotificationDropdown = props => {
   return (
     <React.Fragment>
       <Dropdown isOpen={menu} toggle={() => setMenu(!menu)} className="dropdown d-inline-block" tag="li" >
-        <DropdownToggle className="btn btn-light h-fit w-fit  header-item noti-icon position-relative mx-2 py-1 px-2" tag="button" id="page-header-notifications-dropdown" >
-          <i className="bx bxs-bell bx-tada text-primary" />
-          <span className="badge bg-danger rounded-pill">3</span>
-        </DropdownToggle>
+      <DropdownToggle 
+        className="btn btn-light header-item noti-icon position-relative mx-2 py-1 px-2 rounded-circle d-flex align-items-center justify-content-center" 
+        tag="button" 
+        id="page-header-notifications-dropdown"
+        style={{ width: '40px', height: '40px' }} // Set equal width and height
+      >
+        <GoBell className="bx-tada text-primary font-size-20"/>
+        <span className="badge bg-danger rounded-pill position-absolute" style={{ top: '-5px', right: '-5px' }}>3</span>
+      </DropdownToggle>
+
 
         <DropdownMenu className="dropdown-menu dropdown-menu-lg p-0 dropdown-menu-end">
           <div className="p-3">

@@ -2,28 +2,14 @@ import PropTypes from 'prop-types';
 import React, { useState } from "react";
 
 import { connect } from "react-redux";
-import { Row, Col } from "reactstrap";
-import { Link } from "react-router-dom";
-
-// Reactstrap
-import { Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
+import { Link, useLocation } from "react-router-dom";
 
 // Import menuDropdown
-import LanguageDropdown from "../CommonForBoth/TopbarDropdown/LanguageDropdown";
 import NotificationDropdown from "../CommonForBoth/TopbarDropdown/NotificationDropdown";
 import ProfileMenu from "../CommonForBoth/TopbarDropdown/ProfileMenu";
-import megamenuImg from "../../assets/images/megamenu-img.png";
 
-// import images
-import github from "../../assets/images/brands/github.png";
-import bitbucket from "../../assets/images/brands/bitbucket.png";
-import dribbble from "../../assets/images/brands/dribbble.png";
-import dropbox from "../../assets/images/brands/dropbox.png";
-import mail_chimp from "../../assets/images/brands/mail_chimp.png";
-import slack from "../../assets/images/brands/slack.png";
-
-import logo from "../../assets/images/logo.svg";
-import logoLightSvg from "../../assets/images/logo-light.svg";
+import logo from "../../assets/images/collapsed-logo.png";
+import logoLightSvg from "../../assets/images/collapsed-logo.png";
 
 //i18n
 import { withTranslation } from "react-i18next";
@@ -44,8 +30,9 @@ import { IoWallet } from 'react-icons/io5';
 
 const Header = props => {
   const [search, setsearch] = useState(false);
-  const [megaMenu, setmegaMenu] = useState(false);
-  const [socialDrp, setsocialDrp] = useState(false);
+  const location = useLocation();
+  const path = location.pathname; // This will give you '/dashboard'
+  const pathname = path.slice(1);
 
   function toggleFullscreen() {
     if (
@@ -87,7 +74,7 @@ const Header = props => {
   return (
     <React.Fragment>
       <header id="page-topbar">
-        <div className="navbar-header">
+        <div className="navbar-header border-bottom border-dark border-opacity-10">
           <div className="d-flex align-items-center">
 
             <div className="navbar-brand-box d-lg-none d-md-block pe-2">
@@ -105,9 +92,10 @@ const Header = props => {
             </div>
 
             <button type="button" onClick={() => { tToggle(); }} className="btn btn-sm px-2 font-size-16 header-item " id="vertical-menu-btn" > <i className="fa fa-fw fa-bars" /> </button>
-            <Link to="https://www.youtube.com/watch?v=WqcjI4rpiTE" target='_blank' className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><TbPlayerPlayFilled className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/><span className='d-none d-md-block ms-1'>Watch video</span></Link>
+            <h1 class="font-size-24 mb-0 text-capitalize">{pathname}</h1>
+            {/* <Link to="https://www.youtube.com/watch?v=WqcjI4rpiTE" target='_blank' className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><TbPlayerPlayFilled className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/><span className='d-none d-md-block ms-1'>Watch video</span></Link>
             <Link to="/aboutus" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><BiSolidInfoCircle className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/><span className='d-none d-md-block ms-1'>About Us</span></Link>
-            <Link to="/contactus" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><BiSolidPhoneCall className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/> <span className='d-none d-md-block ms-1'>Contact Us</span></Link>
+            <Link to="/contactus" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><BiSolidPhoneCall className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/> <span className='d-none d-md-block ms-1'>Contact Us</span></Link> */}
 
             {/* <form className="app-search d-none d-lg-block ms-5">
               <div className="position-relative">
@@ -134,7 +122,56 @@ const Header = props => {
               </div>
             </div> */}
 
-            <button type="button" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-flex align-items-center text-primary"><IoWallet className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/> <span className='d-none d-md-block ms-1'>₹ 12000</span></button>
+            <form className="app-search d-none d-lg-block">
+              <div className="position-relative">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder={props.t("Search") + "..."}
+                />
+                <span className="bx bx-search-alt" />
+              </div>
+            </form>
+
+            <button type="button" className="btn btn-dark h-fit w-fit mx-1 mx-md-2 px-2 d-flex align-items-center"><IoWallet className='text-white fs-4 '/> <span className='ms-1'>₹ 12000</span></button>
+            <div className="dropdown d-inline-block d-lg-none ms-2">
+              <button
+                onClick={() => {
+                  setsearch(!search);
+                }}
+                type="button"
+                className="btn header-item noti-icon "
+                id="page-header-search-dropdown"
+              >
+                <i className="mdi mdi-magnify" />
+              </button>
+              <div
+                className={
+                  search
+                    ? "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 show"
+                    : "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                }
+                aria-labelledby="page-header-search-dropdown"
+              >
+                <form className="p-3">
+                  <div className="form-group m-0">
+                    <div className="input-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Search ..."
+                        aria-label="Recipient's username"
+                      />
+                      <div className="input-group-append">
+                        <button className="btn btn-primary" type="submit">
+                          <i className="mdi mdi-magnify" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
 
             {/* <LanguageDropdown /> */}
 

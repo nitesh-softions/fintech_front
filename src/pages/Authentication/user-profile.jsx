@@ -82,15 +82,15 @@ const UserProfile = (props) => {
                 <CardBody>
                   <div className="position-relative z-0">
                     <img src={cover} alt="" className="w-100 rounded-4 shadow object-fit-cover" style={{height:'200px'}}/>
-                    <button type="button" class="btn btn-dark shadow-lg w-fit position-absolute end-0 top-0 m-3">Upload Cover</button>
+                    <button type="button" className="btn btn-dark shadow-lg w-fit position-absolute end-0 top-0 m-3">Upload Cover</button>
                   </div>
                   <div className="ms-4 ms-md-5 me-4">
                     <div className="d-flex">
                       <div>
                         <img src={avatar} alt="" className="avatar-2xl rounded-4 shadow-lg position-relative z-1" />
                         <div className="d-flex justify-content-between">
-                          <button type="button" class="btn btn-link fw-medium p-0 p-md-2"><span className="small d-md-none">Change</span><span className="d-none d-md-block">Change</span></button>
-                          <button type="button" class="btn btn-link fw-medium p-0 p-md-2"><span className="small d-md-none">Delete</span><span className="d-none d-md-block">Delete</span></button>
+                          <button type="button" className="btn btn-link fw-medium p-0 p-md-2"><span className="small d-md-none">Change</span><span className="d-none d-md-block">Change</span></button>
+                          <button type="button" className="btn btn-link fw-medium p-0 p-md-2"><span className="small d-md-none">Delete</span><span className="d-none d-md-block">Delete</span></button>
                         </div>
                       </div>
                       <div className="flex-grow-1 align-self-center">
