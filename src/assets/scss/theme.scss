@@ -765,8 +765,9 @@ input:-webkit-autofill:active {
 .select__control,
 .select2-selection .css-13cymwt-control,
 .css-t3ipsp-control {
-  background-color: $input-bg !important;
-  border-color: $input-border-color !important;
+  background-color: #eff2f7 !important;
+  box-shadow: none;
+  border-color: #eff2f7 !important;
 }
 
 .select2-selection__menu,
