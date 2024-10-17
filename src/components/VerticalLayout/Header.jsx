@@ -14,11 +14,6 @@ import logoLightSvg from "../../assets/images/collapsed-logo.png";
 //i18n
 import { withTranslation } from "react-i18next";
 
-// Icons
-import { BiSolidInfoCircle, BiSolidPhoneCall } from "react-icons/bi";
-import { TbPlayerPlayFilled } from "react-icons/tb";
-
-
 
 // Redux Store
 import {
@@ -31,8 +26,8 @@ import { IoWallet } from 'react-icons/io5';
 const Header = props => {
   const [search, setsearch] = useState(false);
   const location = useLocation();
-  const path = location.pathname; // This will give you '/dashboard'
-  const pathname = path.slice(1);
+  const path = location.pathname;
+  const segments = path.split('/');
 
   function toggleFullscreen() {
     if (
@@ -92,7 +87,7 @@ const Header = props => {
             </div>
 
             <button type="button" onClick={() => { tToggle(); }} className="btn btn-sm px-2 font-size-16 header-item " id="vertical-menu-btn" > <i className="fa fa-fw fa-bars" /> </button>
-            <h1 class="font-size-24 mb-0 text-capitalize">{pathname}</h1>
+            <h1 className="font-size-24 mb-0 text-capitalize">{segments[1]}</h1>
             {/* <Link to="https://www.youtube.com/watch?v=WqcjI4rpiTE" target='_blank' className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><TbPlayerPlayFilled className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/><span className='d-none d-md-block ms-1'>Watch video</span></Link>
             <Link to="/aboutus" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><BiSolidInfoCircle className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/><span className='d-none d-md-block ms-1'>About Us</span></Link>
             <Link to="/contactus" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><BiSolidPhoneCall className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/> <span className='d-none d-md-block ms-1'>Contact Us</span></Link> */}

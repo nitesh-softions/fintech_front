@@ -1,23 +1,40 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
-
+import Select from "react-select";
 //Import Breadcrumb
-import Breadcrumbs from "../../components/Common/Breadcrumb";
+// import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 //i18n
 import { withTranslation } from "react-i18next";
 
 // Icons
 import { IoWallet } from "react-icons/io5";
-import { RxDotFilled } from "react-icons/rx";
 
 import securePayment from "../../assets/images/secure_payment.gif";
 
+const optionGroup = [
+  {
+      label: "Picnic",
+      options: [
+          { label: "Mustard", value: "Mustard" },
+          { label: "Ketchup", value: "Ketchup" },
+          { label: "Relish", value: "Relish" },
+      ],
+  },
+];
+
 const EziPayWallet = props => {
+  const [selectedGroup, setSelectedGroup] = useState(null);
 
   //meta title
-  document.title = "Ezipay | Dashboard";
+  useEffect(() => {
+    document.title = "Softieons | Dashboard";
+  }, []);
+
+  const handleSelectGroup = (selectedGroup) => {
+    setSelectedGroup(selectedGroup);
+  }
 
   return (
     <React.Fragment>
@@ -27,7 +44,7 @@ const EziPayWallet = props => {
         <Container fluid>
           <Row className="h-100">
             <Col className="d-flex flex-column">
-              <h2 className="mb-3">Ezipay Wallet</h2>
+              <h2 className="mb-3">Softieons Wallet</h2>
               <div className="card rounded-4 h-100">
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-center mb-4">
@@ -44,17 +61,12 @@ const EziPayWallet = props => {
                   </div>
                   
                   <form className="mb-4">
-                    <select name="state" id="" className="form-control form-control-lg bg-light mb-3 border-light p-3">
-                      <option>Select Country</option>
-                      <option>India</option>
-                      <option>Australia</option>
-                      <option>USA</option>
-                      <option>UK</option>
-                    </select>
-                    <input name="" id="" placeholder="Mobile Number" type="text" className="form-control form-control-lg bg-light mb-3 border-light p-3" />
-                    <input name="" id="" placeholder="Enter you Amount USD" type="text" className="form-control form-control-lg bg-light mb-3 border-light p-3" />
-                    <input name="" id="" placeholder="Beneficiary Name" type="text" className="form-control form-control-lg bg-light mb-3 border-light p-3" />
-                    <input name="" id="" placeholder="Account Descriptions" type="text" className="form-control form-control-lg bg-light mb-3 border-light p-3" />
+                    <Select value={selectedGroup} onChange={() => { handleSelectGroup(); }} options={optionGroup} className="bg-light mb-3 rounded-3" />
+                      
+                    <input name="" id="" placeholder="Mobile Number" type="text" className="form-control  bg-light mb-3 border-light" />
+                    <input name="" id="" placeholder="Enter you Amount USD" type="text" className="form-control  bg-light mb-3 border-light" />
+                    <input name="" id="" placeholder="Beneficiary Name" type="text" className="form-control  bg-light mb-3 border-light" />
+                    <input name="" id="" placeholder="Account Descriptions" type="text" className="form-control  bg-light mb-3 border-light" />
                     <div className="d-flex justify-content-center">
                       <button type="submit" className="btn btn-primary w-md text-center"> Add Money </button>
                     </div>
