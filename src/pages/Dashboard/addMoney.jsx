@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import Select from "react-select";
 import { Col, 
   Container, 
   Row, 
@@ -28,9 +29,23 @@ import securePayment from "../../assets/images/secure_payment.gif";
 
 import classnames from "classnames";
 
+const optionGroup = [
+  {
+      // label: "Picnic",
+      options: [
+          { label: "India", value: "India" },
+          { label: "USA", value: "USA" },
+          { label: "Canada", value: "Canada" },
+      ],
+  },
+];
 
 
 const AddMoney = props => {
+  const [selectedGroup, setSelectedGroup] = useState(null);
+  const handleSelectGroup = (selectedGroup) => {
+    setSelectedGroup(selectedGroup);
+  }
 
   //meta title
   document.title = "Ezipay | Add Money";
@@ -52,7 +67,7 @@ const AddMoney = props => {
           <Row className="h-100">
             <Col className="d-flex flex-column">
               <h2 className="mb-3">Add Money</h2>
-              <Card className="rounded-4 h-100 border-2">
+              <Card className="rounded-4 h-100 border-1">
                 <CardBody>
                   <Nav pills className="nav-justified">
                     <NavItem>
@@ -76,8 +91,8 @@ const AddMoney = props => {
                     <TabPane tabId="5">
                       <form>
                         <input placeholder="Enter Amount in USD (eg : 100 or eg : 0.0)" type="text" className="form-control bg-light mb-3 border-light" />
-                        <div className="d-flex align-content-center gap-1">
-                          <p className="font-size-11">
+                        <div className="d-xl-flex align-content-center justify-content-between gap-1">
+                          <p className="font-size-11 pe-xl-5">
                             Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated.
                           </p>
                           <button type="submit" className="btn btn-primary w-md text-center h-25"> Add Money </button>
@@ -86,13 +101,7 @@ const AddMoney = props => {
                     </TabPane>
                     <TabPane tabId="6">
                       <form>
-                        <select className="form-control bg-light mb-3 border-light">
-                          <option>Select Country</option>
-                          <option>India</option>
-                          <option>Australia</option>
-                          <option>USA</option>
-                          <option>UK</option>
-                        </select>
+                        <Select value={selectedGroup} onChange={() => { handleSelectGroup(); }} options={optionGroup} className="bg-light mb-3 rounded-3" placeholder="Select Country" />
                         <div className="col d-flex">
                           <div className="col-2">
                             <select className="form-control bg-light mb-3 border-light px-1">
@@ -106,8 +115,8 @@ const AddMoney = props => {
                         <input placeholder="Enter Amount in USD" type="text" className="form-control bg-light mb-3 border-light" />
                         <input placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
                         <textarea placeholder="Account Descriptions" className="form-control bg-light mb-3 border-light" />
-                        <div className="d-flex align-content-center gap-1">
-                          <p className="font-size-11">
+                        <div className="d-xl-flex align-content-center justify-content-between gap-1">
+                          <p className="font-size-11 pe-xl-5">
                             Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated.
                           </p>
                           <button type="submit" className="btn btn-primary w-md text-center h-25"> Add Money </button>
@@ -117,8 +126,8 @@ const AddMoney = props => {
                     <TabPane tabId="7">
                       <form>
                         <input placeholder="Enter Amount in USD (eg : 100 or eg : 0.0)" type="text" className="form-control bg-light mb-3 border-light" />
-                        <div className="d-flex align-content-center gap-1">
-                          <p className="font-size-11">
+                        <div className="d-xl-flex align-content-center justify-content-between gap-1">
+                          <p className="font-size-11 pe-xl-5">
                             Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated.
                           </p>
                           <button type="submit" className="btn btn-primary w-md text-center h-25"> Add Money </button>
@@ -131,7 +140,7 @@ const AddMoney = props => {
             </Col>
             <Col className="d-flex flex-column">
               <h2 className="mb-3">Recent Transactions</h2>
-              <div className="card rounded-4 h-100 border-2">
+              <div className="card rounded-4 h-100 border-1">
                 <div className="card-body">
                   <div className="table-responsive">
                     <table className="table table-borderless mb-0">
