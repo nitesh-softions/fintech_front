@@ -73,19 +73,33 @@
         }
     }
 
-    /* Chrome, Safari, Edge, Opera */
-    .amount-input::-webkit-outer-spin-button,
-    .amount-input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    /* Firefox */
-    .amount-input {
-        -moz-appearance: textfield;
-    }
 }
 
+/* Chrome, Safari, Edge, Opera */
+.number-input::-webkit-outer-spin-button,
+.number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+
+/* Firefox */
+.number-input {
+    -moz-appearance: textfield !important;
+}
+
+.table-responsive {
+    overflow: auto;
+    max-height: calc(100vh - 250px);
+    scrollbar-width: thin;
+
+    table{
+        thead {
+            position: sticky;
+            top: 0;
+            background-color: white;
+        }
+    }
+}
 
 
 // Social
@@ -153,5 +167,63 @@
 }
 .css-t3ipsp-control{
     background-color: #eff2f7 !important;
-    box-shadow: 0 0 0 1px #eff2f7 !important;
+    box-shadow: none !important;
+    border: none !important;
 }
+
+.form-control {
+    padding: 0.52rem 0.75rem;
+}
+
+.search-2 {
+    .form-control {
+      padding-right: 40px;
+      background-color: var(--bs-topbar-search-bg);
+      box-shadow: none;
+      border: none;
+    }
+  
+    .bx-search-alt {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      pointer-events: none; // Ensure the input can still be interacted with
+    }
+  }
+
+  .input2.border-bottom-only {
+    border-bottom: 1px solid #c1c1c1 !important; /* Add bottom border */
+    border-radius: 0; /* Remove border radius to keep it straight */
+    color: #81A8C7;
+    padding: 0.10rem 0rem;
+
+    .css-13cymwt-control, .css-t3ipsp-control{
+        background-color: #fff !important;
+        font-size: 12px;
+        color: #81A8C7;
+        .css-hlgwow{
+            padding: 0px;
+
+            .css-19bb58m, .css-1dimb5e-singleValue{
+                color: #81A8C7 !important;
+            }
+        }
+    }
+    .css-t3ipsp-control{
+        background-color: #fff !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    .css-1nmdiq5-menu{
+        background-color: #fff !important;
+        box-shadow: 0 0 0 1px var(--#{$prefix}border-color),
+        0 4px 11px var(--#{$prefix}border-color) !important;
+    }
+  }
+  
+  .modal-content{
+    border-radius: 1.2rem;
+  }
+  

@@ -66,7 +66,7 @@ const QuickTransferCard = () => {
         <div className='d-xxl-flex align-items-center mt-2 mt-lg-4'>
           <label className='text-nowrap mb-xxl-0'>Write Amount</label>
           <div className="input-group rounded-pill bg-light pe-0 ms-xxl-2">
-            <input placeholder="Amount" type="number" className="amount-input form-control form-control-lg bg-transparent border-0" />
+            <input placeholder="Amount" type="number" className="number-input form-control form-control-lg bg-transparent border-0" />
             <button type="button" className="btn btn-primary rounded-pill px-3 font-size-16"> 
               Send <BiLogoTelegram className='ms-1 font-size-22'/> 
             </button>

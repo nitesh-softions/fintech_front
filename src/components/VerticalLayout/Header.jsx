@@ -87,36 +87,11 @@ const Header = props => {
             </div>
 
             <button type="button" onClick={() => { tToggle(); }} className="btn btn-sm px-2 font-size-16 header-item " id="vertical-menu-btn" > <i className="fa fa-fw fa-bars" /> </button>
-            <h1 className="font-size-24 mb-0 text-capitalize">{segments[1]}</h1>
-            {/* <Link to="https://www.youtube.com/watch?v=WqcjI4rpiTE" target='_blank' className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><TbPlayerPlayFilled className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/><span className='d-none d-md-block ms-1'>Watch video</span></Link>
-            <Link to="/aboutus" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><BiSolidInfoCircle className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/><span className='d-none d-md-block ms-1'>About Us</span></Link>
-            <Link to="/contactus" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-none d-md-flex align-items-center"><BiSolidPhoneCall className='text-white border fs-4 border-3 rounded-circle bg-primary border-primary'/> <span className='d-none d-md-block ms-1'>Contact Us</span></Link> */}
+            <h1 className="font-size-22 mb-0 text-capitalize">{segments[segments.length - 1].split('-').join(' ')}</h1>
 
-            {/* <form className="app-search d-none d-lg-block ms-5">
-              <div className="position-relative">
-                <input type="text" className="form-control rounded-3" placeholder={props.t("Search for transaction, statistics or more") + "..."} />
-                <span className="bx bx-search-alt" />
-              </div>
-            </form> */}
           </div>
           
           <div className="d-flex align-items-center">
-            {/* <div className="dropdown d-inline-block d-lg-none ms-2">
-              <button onClick={() => { setsearch(!search); }} type="button" className="btn header-item noti-icon " id="page-header-search-dropdown" > <i className="mdi mdi-magnify" /> </button>
-              <div className={ search ? "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 show" : "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" } aria-labelledby="page-header-search-dropdown" >
-                <form className="p-3">
-                  <div className="form-group m-0">
-                    <div className="input-group">
-                      <input type="text" className="form-control" placeholder="Search ..." aria-label="Recipient's username" />
-                      <div className="input-group-append">
-                        <button className="btn btn-primary" type="submit"> <i className="mdi mdi-magnify" /> </button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div> */}
-
             <form className="app-search d-none d-lg-block">
               <div className="position-relative">
                 <input
@@ -172,10 +147,6 @@ const Header = props => {
 
             <NotificationDropdown />
             <ProfileMenu />
-{/*             
-            <div onClick={() => { props.showRightSidebarAction(!props.showRightSidebar); }} className="dropdown d-inline-block" >
-              <button type="button" className="btn header-item noti-icon right-bar-toggle " > <i className="bx bx-cog bx-spin" /> </button>
-            </div> */}
           </div>
         </div>
       </header>

@@ -1,90 +1,94 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
+import Select from "react-select";
 
-//Import Breadcrumb
-import Breadcrumbs from "../../components/Common/Breadcrumb";
+const countryCode = [
+  {
+    label: "Countries",
+    options: [
+      { label: "+91 India", value: "India" },
+      { label: "+1 Canada", value: "Canada" },
+      { label: "+27 South Africa", value: "South-Africa" },
+    ],
+  },
+];
 
-//i18n
-import { withTranslation } from "react-i18next";
-
-// Icons
-import { IoWallet } from "react-icons/io5";
-import { RxDotFilled } from "react-icons/rx";
-
-import securePayment from "../../assets/images/secure_payment.gif";
-
-const InternationalAirtime = props => {
+const InternationalAirtime = (props) => {
+  const [selectedGroup, setSelectedGroup] = useState(null);
 
   //meta title
-  document.title = "Ezipay | International Airtime";
+  useEffect(() => {
+    document.title = "Softieons | Dashboard";
+  }, []);
+
+  const handleSelectGroup = (selectedGroup) => {
+    setSelectedGroup(selectedGroup);
+  };
 
   return (
     <React.Fragment>
       <div className="page-content">
-        <div className="bg_overlay_1"></div>
-        <div className="bg_overlay_2"></div>
         <Container fluid>
-          <h2 className="mb-3">International Airtime</h2>
-          <div className="card rounded-4 h-100">
-            <div className="card-body">
-              <div className="d-flex justify-content-between align-items-center mb-4">
-                <h5 className="d-md-flex justify-content-start align-items-center">
-                    <div className="d-flex align-items-center mb-2 mb-md-0">
-                      <span className='heading_icon bg-light'>
-                        <IoWallet />
-                      </span>
-                      <span className="m-0 ms-2">
-                        <p className="m-0 fw-semibold">BALANCE</p>
-                        <p className="m-0 text-primary mt-1">11 USD</p>
-                      </span>
+          <Row className="h-100">
+            <Col className="d-flex flex-column">
+              <div className="card rounded-4 h-100 border-1">
+                <div className="card-body">
+                  <form className="mb-4">
+                    <input name="" id="" placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
+                    <div className="d-flex align-items-center gap-2">
+                      <Select value={selectedGroup} onChange={handleSelectGroup} options={countryCode} className="bg-light mb-3 rounded-3" />
+                      <input id="" placeholder="Mobile Number" type="number" className="form-control number-input bg-light mb-3 border-light" onInput={(e) => { if (e.target.value.length > 10) { e.target.value = e.target.value.slice(0, 10); } }} />
                     </div>
-                    <h5 className="d-flex justify-content-start align-items-center mb-0 ms-md-5">
-                        <RxDotFilled className="border border-5 me-3 fs-4 rounded-circle bg-primary text-primary"/>
-                        <p className="m-0 fw-semibold">Global Wallets</p>
-                    </h5>
-                </h5>
-                <button className="btn btn-primary waves-effect waves-light btn btn-primary">Back</button>
+                    <textarea name="" id="" placeholder="Account Descriptions" className="form-control bg-light mb-3 border-light" />
+                    <div className="d-xl-flex align-content-center justify-content-between gap-1">
+                      <p className="font-size-11 pe-xl-5"> Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated. </p>
+                      <button type="submit" className="btn btn-primary w-md text-center h-25" > Add Money </button>
+                    </div>
+                  </form>
+                </div>
               </div>
-              
-              <form className="mb-4">
-                <Row>
-                  <Col xs={12} md={4} className="mb-3">
-                    <select name="state" id="" className="form-control form-control-lg bg-light border-light p-3" >
-                      <option>Select Country</option>
-                      <option>India</option>
-                      <option>Australia</option>
-                      <option>USA</option>
-                      <option>UK</option>
-                    </select>
-                  </Col>
-
-                  <Col xs={12} md={4} className="mb-3">
-                    <input name="" id="" placeholder="Enter Amount USD" type="text" className="form-control form-control-lg bg-light border-light p-3" />
-                  </Col>
-
-                  <Col xs={12} md={4} className="mb-3">
-                    <input name="" id="" placeholder="Account Descriptions" type="text" className="form-control form-control-lg bg-light border-light p-3" />
-                  </Col>
-
-                  <Col xs={12} className="d-flex justify-content-between align-items-center">
-                    <p className="card-text m-0 w-50">
-                      Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated.
-                    </p>
-                    <button type="submit" className="btn btn-primary h-fit w-fit">
-                      Submit
-                    </button>
-                  </Col>
-                </Row>
-              </form>
-
-              
-              <div className="bg-light p-5 d-flex flex-column justify-content-center align-items-center rounded-4">
-                <img src={securePayment} height={150} alt="" />
-                <p className="m-0 fs-5 fw-medium text-dark text-center">Your Payment Details are Secured</p>
+            </Col>
+            <Col className="d-flex flex-column">
+              <div className="card rounded-4 h-100 border-1">
+                <div className="card-body">
+                  <h4 className="font-size-18">Recent Transactions</h4>
+                  <div className="table-responsive">
+                    <table className="table table-borderless mb-0">
+                      <thead>
+                        <tr>
+                          <th className="border-bottom text-muted opacity-75"> Servicer Name </th>
+                          <th className="border-bottom text-muted opacity-75"> Mobile No </th>
+                          <th className="border-bottom text-muted opacity-75"> Amount </th>
+                          <th className="border-bottom text-muted opacity-75"> Transaction Status </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-bottom">
+                          <td>Google Play</td>
+                          <td>9874563210</td>
+                          <td>50,000</td>
+                          <td className="fw-bold text-success">Done</td>
+                        </tr>
+                        <tr className="border-bottom">
+                          <td>Google Play</td>
+                          <td>9874563210</td>
+                          <td>50,000</td>
+                          <td className="fw-bold text-warning">Pending</td>
+                        </tr>
+                        <tr className="border-bottom">
+                          <td>Google Play</td>
+                          <td>9874563210</td>
+                          <td>50,000</td>
+                          <td className="fw-bold text-success">Done</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </Container>
       </div>
     </React.Fragment>
@@ -97,4 +101,4 @@ InternationalAirtime.propTypes = {
   onGetChartsData: PropTypes.func,
 };
 
-export default withTranslation()(InternationalAirtime);
+export default InternationalAirtime;

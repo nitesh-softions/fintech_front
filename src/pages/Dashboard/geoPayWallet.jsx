@@ -14,7 +14,18 @@ const optionGroup = [
   },
 ];
 
-const DirectPayCompanies = (props) => {
+const countryCode = [
+  {
+    label: "Countries",
+    options: [
+      { label: "+91 India", value: "India" },
+      { label: "+1 Canada", value: "Canada" },
+      { label: "+27 South Africa", value: "South-Africa" },
+    ],
+  },
+];
+
+const GeoPayWallet = (props) => {
   const [selectedGroup, setSelectedGroup] = useState(null);
 
   //meta title
@@ -35,8 +46,12 @@ const DirectPayCompanies = (props) => {
               <div className="card rounded-4 h-100 border-1">
                 <div className="card-body">
                   <form className="mb-4">
-                    <Select value={selectedGroup} onChange={handleSelectGroup} options={optionGroup} className="bg-light mb-3 rounded-3" placeholder="Select Direct Company Pay" />
-                    <input name="" id="" placeholder="Enter Amount  in USD (eg : 100  or eg : 0.0 )" type="text" className="form-control bg-light mb-3 border-light" />
+                    <Select value={selectedGroup} onChange={handleSelectGroup} options={optionGroup} className="bg-light mb-3 rounded-3" />
+                    <div className="d-flex align-items-center gap-2">
+                      <Select value={selectedGroup} onChange={handleSelectGroup} options={countryCode} className="bg-light mb-3 rounded-3" />
+                      <input id="" placeholder="Mobile Number" type="number" className="form-control number-input bg-light mb-3 border-light" onInput={(e) => { if (e.target.value.length > 10) { e.target.value = e.target.value.slice(0, 10); } }} />
+                    </div>
+                    <input name="" id="" placeholder="Enter you Amount USD" type="text" className="form-control bg-light mb-3 border-light" />
                     <input name="" id="" placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
                     <textarea name="" id="" placeholder="Account Descriptions" className="form-control bg-light mb-3 border-light" />
                     <div className="d-xl-flex align-content-center justify-content-between gap-1">
@@ -93,11 +108,10 @@ const DirectPayCompanies = (props) => {
   );
 };
 
-DirectPayCompanies.propTypes = {
+GeoPayWallet.propTypes = {
   t: PropTypes.any,
   chartsData: PropTypes.any,
   onGetChartsData: PropTypes.func,
 };
 
-export default DirectPayCompanies;
-
+export default GeoPayWallet;

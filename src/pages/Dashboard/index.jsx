@@ -28,35 +28,35 @@ const Dashboard = props => {
   document.title = "Ezipay | Dashboard";
 
   const handleAddMoney = () => {
-    navigate("/dashboard/addmoney");
+    navigate("/dashboard/add-money");
   };
   
   const handleEzipayWallet = () => {
-    navigate("/dashboard/ezipaywallet");
+    navigate("/dashboard/geopay-wallet");
   };
 
   const handleViewPayment = () => {
-    navigate("/dashboard/viewpayment");
+    navigate("/dashboard/view-payment");
   };
 
   const handleShowCode = () => {
-    navigate("/dashboard/showcode");
+    navigate("/dashboard/show-code");
   };
 
   const handleDirectPayCompanies = () => {
-    navigate("/dashboard/directpaycompanies");
+    navigate("/dashboard/direct-pay-companies");
   };
 
   const handleTransferToMobileMoney = () => {
-    navigate("/dashboard/transfertomobilemoney");
+    navigate("/dashboard/transfer-to-mobile-money");
   };
 
   const handleInternationalAirtime = () => {
-    navigate("/dashboard/internationalairtime");
+    navigate("/dashboard/international-airtime");
   };
 
   const handleTransferMoneyToBank = () => {
-    navigate("/dashboard/transfermoneytobank");
+    navigate("/dashboard/transfer-money-to-bank");
   };
 
   return (

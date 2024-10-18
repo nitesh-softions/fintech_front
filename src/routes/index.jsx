@@ -12,8 +12,8 @@ import ForgetPwd from "../pages/Authentication/ForgetPassword";
 
 // // Dashboard
 import DashboardPage from "../pages/Dashboard/index";
-import AddMoney from "../pages/Dashboard/addMoney";
-import EziPayWallet from "../pages/Dashboard/eziPayWallet";
+import AddMoney from "../pages/dashboard/addmoney";
+import GeoPayWallet from "../pages/Dashboard/geoPayWallet";
 import ViewPayment from "../pages/Dashboard/viewPayment";
 import ShowCode from "../pages/Dashboard/showCode";
 
@@ -31,14 +31,14 @@ import ContactUs from "../pages/contactUs";
 const authProtectedRoutes = [
   // Dashboard
   { path: "/dashboard", component: <DashboardPage /> },
-  { path: "/dashboard/addmoney", component: <AddMoney /> },
-  { path: "/dashboard/ezipaywallet", component: <EziPayWallet /> },
-  { path: "/dashboard/viewpayment", component: <ViewPayment /> },
-  { path: "/dashboard/showcode", component: <ShowCode /> },
-  { path: "/dashboard/directpaycompanies", component: <DirectPayCompanies /> },
-  { path: "/dashboard/transfertomobilemoney", component: <TransferToMobileMoney /> },
-  { path: "/dashboard/internationalairtime", component: <InternationalAirtime /> },
-  { path: "/dashboard/transfermoneytobank", component: <TransferMoneyToBank /> },
+  { path: "/dashboard/add-money", component: <AddMoney /> },
+  { path: "/dashboard/geopay-wallet", component: <GeoPayWallet /> },
+  { path: "/dashboard/view-payment", component: <ViewPayment /> },
+  { path: "/dashboard/show-code", component: <ShowCode /> },
+  { path: "/dashboard/direct-pay-companies", component: <DirectPayCompanies /> },
+  { path: "/dashboard/transfer-to-mobile-money", component: <TransferToMobileMoney /> },
+  { path: "/dashboard/international-airtime", component: <InternationalAirtime /> },
+  { path: "/dashboard/transfer-money-to-bank", component: <TransferMoneyToBank /> },
 
 
 

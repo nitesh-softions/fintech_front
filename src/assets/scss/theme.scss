@@ -1059,3 +1059,7 @@ aside.EmojiPickerReact.epr-main {
 [data-bs-theme=dark] .btn-close-white {
   filter: invert(1) grayscale(100%) brightness(0);
 }
+
+.form-control::placeholder {
+  color: #bbbbbb;
+}
