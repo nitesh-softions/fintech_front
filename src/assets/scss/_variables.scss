@@ -9,8 +9,8 @@ $sidebar-bg:                                          #ffffff;
 $sidebar-menu-item-color:                             #545a6d;
 $sidebar-menu-sub-item-color:                         #545a6d;
 $sidebar-menu-item-icon-color:                        #7f8387;
-$sidebar-menu-item-hover-color:                       #6345d578;
-$sidebar-menu-item-active-color:                      #6345D5;
+$sidebar-menu-item-hover-color:                       #10203071;
+$sidebar-menu-item-active-color:                      $primary;
 $sidebar-width:                                       250px;
 $sidebar-collapsed-width:                             70px;
 $sidebar-width-sm:                                    160px;
@@ -24,7 +24,7 @@ $sidebar-dark-menu-item-hover-color:                  #ffffff;
 $sidebar-dark-menu-item-active-color:                 #ffffff;
 
 // Topbar - Default Light
-$header-height:                                       70px;
+$header-height:                                       75px;
 $header-bg:                                           $white;
 $header-item-color:                                   #555b6d;
 
@@ -116,6 +116,10 @@ $yellow:  #f1b44c;
 $green:   #34c38f;
 $teal:    #050505;
 $cyan:    #50a5f1;
+
+
+$primary-color: #102030;
+$secondary-color: #81A8C7;
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
@@ -138,8 +142,8 @@ $colors: (
 // scss-docs-end colors-map
 
 // scss-docs-start theme-color-variables
-$primary:       $blue;
-$secondary:     $gray-600;
+$primary:       $primary-color;
+$secondary:     $secondary-color;
 $success:       $green;
 $info:          $cyan;
 $warning:       $yellow;

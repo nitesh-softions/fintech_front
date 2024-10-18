@@ -9,7 +9,7 @@ import img03 from "../../assets/images/carousel_images/carousel3.jpg";
 const AutoScrollCarousel = () => {
     return (
         <React.Fragment>
-          <div style={{ maxHeight: '180px', overflow: 'hidden' }}>
+          <div style={{ maxHeight: '250px', overflow: 'hidden' }}>
             <UncontrolledCarousel
               interval={4000}
               indicators={false}

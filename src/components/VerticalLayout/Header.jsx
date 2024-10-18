@@ -25,9 +25,9 @@ import { IoWallet } from 'react-icons/io5';
 
 const Header = props => {
   const [search, setsearch] = useState(false);
-  const location = useLocation();
-  const path = location.pathname;
-  const segments = path.split('/');
+  // const location = useLocation();
+  // const path = location.pathname;
+  // const segments = path.split('/');
 
   function toggleFullscreen() {
     if (
@@ -86,63 +86,14 @@ const Header = props => {
               </Link>
             </div>
 
-            <button type="button" onClick={() => { tToggle(); }} className="btn btn-sm px-2 font-size-16 header-item " id="vertical-menu-btn" > <i className="fa fa-fw fa-bars" /> </button>
-            <h1 className="font-size-22 mb-0 text-capitalize">{segments[segments.length - 1].split('-').join(' ')}</h1>
+            <button type="button" onClick={() => { tToggle(); }} className="btn btn-sm px-2 d-lg-none font-size-16 header-item " id="vertical-menu-btn" > <i className="fa fa-fw fa-bars" /> </button>
+            {/* <h1 className="font-size-22 mb-0 text-capitalize">{segments[segments.length - 1].split('-').join(' ')}</h1> */}
 
           </div>
           
           <div className="d-flex align-items-center">
-            <form className="app-search d-none d-lg-block">
-              <div className="position-relative">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder={props.t("Search") + "..."}
-                />
-                <span className="bx bx-search-alt" />
-              </div>
-            </form>
 
-            <button type="button" className="btn btn-dark h-fit w-fit mx-1 mx-md-2 px-2 d-flex align-items-center"><IoWallet className='text-white fs-4 '/> <span className='ms-1'>₹ 12000</span></button>
-            <div className="dropdown d-inline-block d-lg-none ms-2">
-              <button
-                onClick={() => {
-                  setsearch(!search);
-                }}
-                type="button"
-                className="btn header-item noti-icon "
-                id="page-header-search-dropdown"
-              >
-                <i className="mdi mdi-magnify" />
-              </button>
-              <div
-                className={
-                  search
-                    ? "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 show"
-                    : "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                }
-                aria-labelledby="page-header-search-dropdown"
-              >
-                <form className="p-3">
-                  <div className="form-group m-0">
-                    <div className="input-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Search ..."
-                        aria-label="Recipient's username"
-                      />
-                      <div className="input-group-append">
-                        <button className="btn btn-primary" type="submit">
-                          <i className="mdi mdi-magnify" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-
+            <button type="button" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-flex align-items-center fw-semibold"><IoWallet className='fs-4 '/> <span className='ms-1'>₹ 12000</span></button>
             {/* <LanguageDropdown /> */}
 
             <NotificationDropdown />

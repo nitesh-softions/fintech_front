@@ -5,7 +5,7 @@ import { Table } from 'reactstrap';
 
 const RecentTransactionCard = () => {
   return (
-    <div className="card recent-transaction-card rounded-5 w-100 h-100 border border-dark border-opacity-10 mb-0">
+    <div className="recent-transaction-card w-100 h-100 mb-0">
       <div className="card-body w-100">
         <Table className="table align-middle table-nowrap">
           <tbody>

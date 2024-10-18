@@ -52,6 +52,8 @@ const App = (props) => {
 
   return (
     <React.Fragment>
+      <div className="bg_overlay_1"></div>
+      <div className="bg_overlay_2"></div>
       <Routes>
         {publicRoutes.map((route, idx) => (
           <Route

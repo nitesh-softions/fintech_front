@@ -8,7 +8,7 @@ import { BiLogoTelegram } from 'react-icons/bi';
 
 const QuickTransferCard = () => {
   return (
-    <div className="card quick-transfer-card rounded-5 w-100 h-100 position-relative border border-dark border-opacity-10 mb-0">
+    <div className="card bg-primary rounded-5 quick-transfer-card w-100 h-100 position-relative mb-0 text-white mb-3">
       <div className="card-body w-100">
         <Swiper
           spaceBetween={10}
@@ -16,7 +16,7 @@ const QuickTransferCard = () => {
           modules={[Navigation]}
           className="mySwiper"
           breakpoints={{
-            1400: {
+            1650: {
               slidesPerView: 3,
             },
             1200: {
@@ -63,15 +63,12 @@ const QuickTransferCard = () => {
           </SwiperSlide>
         </Swiper>
 
-        <div className='d-xxl-flex align-items-center mt-2 mt-lg-4'>
-          <label className='text-nowrap mb-xxl-0'>Write Amount</label>
-          <div className="input-group rounded-pill bg-light pe-0 ms-xxl-2">
-            <input placeholder="Amount" type="number" className="number-input form-control form-control-lg bg-transparent border-0" />
-            <button type="button" className="btn btn-primary rounded-pill px-3 font-size-16"> 
-              Send <BiLogoTelegram className='ms-1 font-size-22'/> 
+          <div className="input-group rounded-pill bg-light pe-0">
+            <input placeholder="Amount" type="number" className="number-input font-size-14 form-control form-control-lg bg-transparent border-0" />
+            <button type="button" className="btn btn-secondary rounded-pill px-3 font-size-14"> 
+              Send <BiLogoTelegram className='font-size-20'/> 
             </button>
           </div>
-        </div>
       </div>
     </div>
   );

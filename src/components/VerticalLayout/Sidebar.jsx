@@ -17,8 +17,8 @@ import logoDark from "../../assets/images/logo.png";
 const Sidebar = (props) => {
   return (
     <React.Fragment>
-      <div className="vertical-menu border-end border-dark border-opacity-10">
-        <div className="navbar-brand-box bg-white">
+      <div className="vertical-menu border-end border-dark border-opacity-10 rounded-start-5">
+        {/* <div className="navbar-brand-box bg-white">
           <Link to="/" className="logo logo-dark">
             <span className="logo-sm">
               <img src={logo} alt="" height="22" />
@@ -36,7 +36,7 @@ const Sidebar = (props) => {
               <img src={logoLightPng} alt="" height="19" />
             </span>
           </Link>
-        </div>
+        </div> */}
         <div data-simplebar className="h-100">
           {props.type !== "condensed" ? <SidebarContent /> : <SidebarContent />}
         </div>
