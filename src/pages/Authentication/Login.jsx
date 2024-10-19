@@ -18,8 +18,22 @@ import { loginUser, socialLogin } from "../../store/actions";
 
 // import images
 import profile from "../../assets/images/profile-img.png";
-import logo from "../../assets/images/logo.svg";
+import brandlogo from "../../assets/images/brand-logo.svg";
 import lightlogo from "../../assets/images/logo-light.svg";
+// import authbgimg from "../../assets/images/auth-bg-img.jpg";
+import { FaFacebookF } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaEnvelope, FaLock } from 'react-icons/fa';
+import AuthLeftBanner from "../../components/Common/AuthLeftBanner.jsx";
+// import avatar1 from '../../assets/images/users/avatar-1.jpg';
+// import avatar2 from '../../assets/images/users/avatar-2.jpg';
+// import avatar3 from '../../assets/images/users/avatar-3.jpg';
+// import avatar4 from '../../assets/images/users/avatar-4.jpg';
+// import authbannerstar from '../../assets/images/auth-banner-star.svg';
+// import ratings from "../../assets/images/ratings.svg";
+import bgchain from '../../assets/images/bgchain.svg';
+
 
 const Login = (props) => {
   //meta title
@@ -65,194 +79,84 @@ const Login = (props) => {
 
   console.log(error);
 
+   // Array of static image paths for user avatars
+   // const userAvatars = [avatar1, avatar2, avatar3, avatar4];
+
   return (
-    <React.Fragment>
-      <div className="home-btn d-none d-sm-block">
-        <Link to="/" className="text-dark">
-          <i className="bx bx-home h2" />
-        </Link>
-      </div>
-      <div className="account-pages my-5 pt-sm-5">
-        <Container>
-          <Row className="justify-content-center">
-            <Col md={8} lg={6} xl={5}>
-              <Card className="overflow-hidden">
-                <div className="bg-primary-subtle">
-                  <Row>
-                    <Col xs={7}>
-                      <div className="text-primary p-4">
-                        <h5 className="text-primary">Welcome Back !</h5>
-                        <p>Sign in to continue to Geopay.</p>
-                      </div>
-                    </Col>
-                    <Col className="col-5 align-self-end">
-                      <img src={profile} alt="" className="img-fluid" />
-                    </Col>
-                  </Row>
+    <React.Fragment className="bg-white">
+        <div className="container-fluid vh-100 overflow-hidden">
+            <div className="row h-100">
+                {/* Left Section */}
+                <AuthLeftBanner/>
+
+                {/* <!-- Right Section --> */}
+                <div className="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative bg-white">
+                    {/* <!-- Top right corner watermark --> */}
+                    <div className="position-absolute top-0 end-0 text-align">
+                        <img src={bgchain} alt="Logo" className="img-fluid w-50 h-50"/>
+                    </div>
+
+                    {/* <!-- Login Form Container --> */}
+                    <div className="w-100 px-5 login-container">
+                        <h3 className="text-center text-black mb-3">Sign in To Fintech</h3>
+                        
+                        {/* <!-- Social Media Icons --> */}
+                        <div className="d-flex justify-content-center mb-3 gap-3">
+                            <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
+                                <FaFacebookF />
+                            </div>
+                            <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
+                                <FaGoogle />
+                            </div>
+                            <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
+                                <FaLinkedinIn />
+                            </div>
+                        </div>
+                        <p className="text-center mb-4">Or use your email account</p>
+                        {/* <!-- Email Input --> */}
+                        <div className="mb-3">
+                            <div className="mb-3">
+                                <div className="input-group">
+                                    <span className="input-group-text bg-light border-0">
+                                        <FaEnvelope />
+                                    </span>
+                                    <input type="email" className="form-control border-0 bg-light" placeholder="Email" />
+                                </div>
+                            </div>
+                        </div>
+                        {/* <!-- Password Input --> */}
+                        <div className="mb-3">
+                        <div className="mb-3">
+                            <div className="input-group">
+                                <span className="input-group-text bg-light border-0">
+                                <FaLock />
+                                </span>
+                                <input type="password" className="form-control border-0 bg-light" placeholder="Password" />
+                            </div>
+                        </div>
+                        </div>
+
+                        {/* <!-- Forgot Password --> */}
+                        <div className="mb-3 text-end">
+                            <a href="#" className="fw-medium text-secondary">Forgot your password?</a>
+                        </div>
+
+                        {/* <!-- Login and Signup Buttons --> */}
+                        <div className="text-center">
+                            <button className="btn btn-primary w-100 btn-login" type="button">Login</button>
+                            {/* Divider with text */}
+                            <div className="d-flex align-items-center justify-content-center my-3">
+                                <hr className="flex-grow-1 hr-line"/>
+                                <span className="mx-2 text-muted">Or with sign up</span>
+                                <hr className="flex-grow-1 hr-line"/>
+                            </div>
+                            <button className="btn btn-secondary w-100 btn-signup" type="button">Sign up</button>
+                        </div>
+                    </div>
                 </div>
-                <CardBody className="pt-0">
-                  <div className="auth-logo">
-                    <Link to="/" className="auth-logo-light">
-                      <div className="avatar-md profile-user-wid mb-4">
-                        <span className="avatar-title rounded-circle bg-light">
-                          <img src={lightlogo} alt="" className="rounded-circle" height="34" />
-                        </span>
-                      </div>
-                    </Link>
-                    <Link to="/" className="auth-logo-dark">
-                      <div className="avatar-md profile-user-wid mb-4">
-                        <span className="avatar-title rounded-circle bg-light">
-                          <img src={logo} alt="" className="rounded-circle" height="34" />
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="p-2">
-                    <Form
-                      className="form-horizontal"
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        validation.handleSubmit();
-                        return false;
-                      }}
-                    >
-                      {error ? <Alert color="danger">{error.message}</Alert> : null}
+            </div>
+        </div>
 
-                      <div className="mb-3">
-                        <Label className="form-label">Email</Label>
-                        <Input name="email" className="form-control" placeholder="Enter email" type="email" onChange={validation.handleChange} onBlur={validation.handleBlur} value={validation.values.email || ""} invalid={ validation.touched.email && validation.errors.email ? true : false } />
-                        {validation.touched.email && validation.errors.email ? (
-                          <FormFeedback type="invalid"> {validation.errors.email} </FormFeedback>
-                        ) : null}
-                      </div>
-
-                      <div className="mb-3">
-                        <Label className="form-label">Password</Label>
-                        <Input
-                          name="password"
-                          autoComplete="off"
-                          value={validation.values.password || ""}
-                          type="password"
-                          placeholder="Enter Password"
-                          onChange={validation.handleChange}
-                          onBlur={validation.handleBlur}
-                          invalid={
-                            validation.touched.password &&
-                              validation.errors.password
-                              ? true
-                              : false
-                          }
-                        />
-                        {validation.touched.password &&
-                          validation.errors.password ? (
-                          <FormFeedback type="invalid">
-                            {validation.errors.password}
-                          </FormFeedback>
-                        ) : null}
-                      </div>
-
-                      <div className="form-check">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          id="customControlInline"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="customControlInline"
-                        >
-                          Remember me
-                        </label>
-                      </div>
-
-                      <div className="mt-3 d-grid">
-                        <button
-                          className="btn btn-primary btn-block"
-                          type="submit"
-                        >
-                          Log In
-                        </button>
-                      </div>
-
-                      <div className="mt-4 text-center">
-                        <h5 className="font-size-14 mb-3">Sign in with</h5>
-
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <Link
-                              to="#"
-                              className="social-list-item bg-primary text-white border-primary"
-                              onClick={e => {
-                                e.preventDefault();
-                                socialResponse("facebook");
-                              }}
-                            >
-                              <i className="mdi mdi-facebook" />
-                            </Link>
-                          </li>
-                          {/*<li className="list-inline-item">*/}
-                          {/*  <TwitterLogin*/}
-                          {/*    loginUrl={*/}
-                          {/*      "http://localhost:4000/api/v1/auth/twitter"*/}
-                          {/*    }*/}
-                          {/*    onSuccess={this.twitterResponse}*/}
-                          {/*    onFailure={this.onFailure}*/}
-                          {/*    requestTokenUrl={*/}
-                          {/*      "http://localhost:4000/api/v1/auth/twitter/revers"*/}
-                          {/*    }*/}
-                          {/*    showIcon={false}*/}
-                          {/*    tag={"div"}*/}
-                          {/*  >*/}
-                          {/*    <a*/}
-                          {/*      href=""*/}
-                          {/*      className="social-list-item bg-info text-white border-info"*/}
-                          {/*    >*/}
-                          {/*      <i className="mdi mdi-twitter"/>*/}
-                          {/*    </a>*/}
-                          {/*  </TwitterLogin>*/}
-                          {/*</li>*/}
-                          <li className="list-inline-item">
-                            <Link
-                              to="#"
-                              className="social-list-item bg-danger text-white border-danger"
-                              onClick={e => {
-                                e.preventDefault();
-                                socialResponse("google");
-                              }}
-                            >
-                              <i className="mdi mdi-google" />
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <div className="mt-4 text-center">
-                        <Link to="/forgot-password" className="text-muted">
-                          <i className="mdi mdi-lock me-1" />
-                          Forgot your password?
-                        </Link>
-                      </div>
-                    </Form>
-                  </div>
-                </CardBody>
-              </Card>
-              <div className="mt-5 text-center">
-                <p>
-                  Don&#39;t have an account ?{" "}
-                  <Link to="/register" className="fw-medium text-primary">
-                    {" "}
-                    Signup now{" "}
-                  </Link>{" "}
-                </p>
-                <p>
-                  © {new Date().getFullYear()} Geopay. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger" /> by Themesbrand
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
     </React.Fragment>
   );
 };
