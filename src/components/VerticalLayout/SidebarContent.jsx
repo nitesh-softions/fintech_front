@@ -15,13 +15,11 @@ import { CgFileDocument } from "react-icons/cg";
 import { PiBell } from "react-icons/pi";
 import { BsBarChart } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
-import { BiLogOut, BiSolidInfoCircle, BiSolidPhoneCall } from "react-icons/bi";
+import { BiLogOut } from "react-icons/bi";
 
 //i18n
 import { withTranslation } from "react-i18next";
 import { useCallback } from "react";
-import { Icons } from "react-toastify";
-import { TbPlayerPlayFilled } from "react-icons/tb";
 
 const SidebarContent = (props) => {
   const ref = useRef();
@@ -152,7 +150,7 @@ const SidebarContent = (props) => {
 
   return (
     <React.Fragment>
-      <SimpleBar className="h-100" ref={ref}>
+      <SimpleBar className="sidebar-container pb-4" ref={ref}>
         <div id="sidebar-menu">
           <ul className="metismenu list-unstyled" id="side-menu">
             {/* <li>
@@ -213,7 +211,7 @@ const SidebarContent = (props) => {
               </Link>
             </li>
 
-            <li className="d-md-none">
+            {/* <li className="d-md-none">
               <Link to="/watchvideo">
                 <TbPlayerPlayFilled/>
                 <span>{props.t("Watch Video")}</span>
@@ -230,7 +228,7 @@ const SidebarContent = (props) => {
                 <BiSolidPhoneCall/>
                 <span>{props.t("Contact Us")}</span>
               </Link>
-            </li>
+            </li> */}
 
             <li>
               <Link to="/logout">
@@ -238,107 +236,6 @@ const SidebarContent = (props) => {
                 <span>{props.t("Logout")}</span>
               </Link>
             </li>
-
-
-            {/* <li className="menu-title">Pages</li>
-            <li>
-              <Link to="/#" className="has-arrow ">
-                <i className="bx bx-user-circle"></i>
-                <span>{props.t("Authentication")}</span>
-              </Link>
-              <ul className="sub-menu">
-                <li>
-                  <Link to="#">{props.t("Login")}</Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Login 2")}</Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Register")}</Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Register 2")}</Link>
-                </li>
-                <li>
-                  <Link to="#">
-                    {props.t("Recover Password")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#">
-                    {props.t("Recover Password 2")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Lock Screen")}</Link>
-                </li>
-                <li>
-                  <Link to="#">
-                    {props.t("Lock Screen 2")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Confirm Mail")}</Link>
-                </li>
-                <li>
-                  <Link to="#">
-                    {props.t("Confirm Mail 2")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#">
-                    {props.t("Email Verification")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#">
-                    {props.t("Email Verification 2")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#">
-                    {props.t("Two Step Verification")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#">
-                    {props.t("Two Step Verification 2")}
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <Link to="/#" className="has-arrow ">
-                <i className="bx bx-file"></i>
-                <span>{props.t("Utility")}</span>
-              </Link>
-              <ul className="sub-menu" aria-expanded="false">
-                <li>
-                  <Link to="#">{props.t("Starter Page")}</Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Maintenance")}</Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Coming Soon")}</Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Timeline")}</Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("FAQs")}</Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Pricing")}</Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Error 404")}</Link>
-                </li>
-                <li>
-                  <Link to="#">{props.t("Error 500")}</Link>
-                </li>
-              </ul>
-            </li> */}
           </ul>
         </div>
       </SimpleBar>

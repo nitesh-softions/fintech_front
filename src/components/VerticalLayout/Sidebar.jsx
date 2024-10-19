@@ -1,45 +1,43 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import withRouter from "../Common/withRouter";
 
-//i18n
+// i18n
 import { withTranslation } from "react-i18next";
 import SidebarContent from "./SidebarContent";
 
 import { Link } from "react-router-dom";
-
-import logo from "../../assets/images/collapsed-logo.png";
-import logoLightPng from "../../assets/images/logo-light.png";
-import logoLightSvg from "../../assets/images/logo-light.svg";
-import logoDark from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.png";
+import { IoClose } from "react-icons/io5";
 
 const Sidebar = (props) => {
+
+  const tToggle = () => {
+    const body = document.body;
+
+    if (window.screen.width <= 998) {
+      body.classList.toggle("sidebar-enable");
+    } else {
+      body.classList.toggle("vertical-collpsed");
+      body.classList.toggle("sidebar-enable");
+    }
+  };
+
   return (
     <React.Fragment>
-      <div className="vertical-menu border-end border-dark border-opacity-10 rounded-start-5">
-        {/* <div className="navbar-brand-box bg-white">
+      {/* <div className="bg-overlay z-2 d-lg-none" onClick={tToggle}></div> */}
+      <div className="vertical-menu border-end border-dark border-opacity-10 shadow-lg">
+        <IoClose className="d-lg-none text-primary position-absolute top-0 end-0 m-2 font-size-20 opacity-75" onClick={tToggle}/>
+        <div className="logo mb-3">
           <Link to="/" className="logo logo-dark">
-            <span className="logo-sm">
-              <img src={logo} alt="" height="22" />
-            </span>
-            <span className="logo-lg">
-              <img className="w-75 h-auto" src={logoDark} alt="" height="17" />
+            <span className="logo-lg d-flex justify-content-center">
+              <img className="w-50 h-auto" src={logo} alt="logo" height="17" />
             </span>
           </Link>
-
-          <Link to="/" className="logo logo-light">
-            <span className="logo-sm">
-              <img src={logoLightSvg} alt="" height="22" />
-            </span>
-            <span className="logo-lg">
-              <img src={logoLightPng} alt="" height="19" />
-            </span>
-          </Link>
-        </div> */}
-        <div data-simplebar className="h-100">
-          {props.type !== "condensed" ? <SidebarContent /> : <SidebarContent />}
         </div>
+
+        <SidebarContent />
 
         <div className="sidebar-background"></div>
       </div>
@@ -56,6 +54,7 @@ const mapStatetoProps = (state) => {
     layout: state.Layout,
   };
 };
+
 export default connect(
   mapStatetoProps,
   {}

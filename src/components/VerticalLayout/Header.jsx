@@ -9,7 +9,6 @@ import NotificationDropdown from "../CommonForBoth/TopbarDropdown/NotificationDr
 import ProfileMenu from "../CommonForBoth/TopbarDropdown/ProfileMenu";
 
 import logo from "../../assets/images/collapsed-logo.png";
-import logoLightSvg from "../../assets/images/collapsed-logo.png";
 
 //i18n
 import { withTranslation } from "react-i18next";
@@ -22,39 +21,12 @@ import {
   changeSidebarType,
 } from "../../store/actions";
 import { IoWallet } from 'react-icons/io5';
+import { CgMenuLeft } from 'react-icons/cg';
 
 const Header = props => {
-  const [search, setsearch] = useState(false);
   // const location = useLocation();
   // const path = location.pathname;
   // const segments = path.split('/');
-
-  function toggleFullscreen() {
-    if (
-      !document.fullscreenElement &&
-      /* alternative standard method */ !document.mozFullScreenElement &&
-      !document.webkitFullscreenElement
-    ) {
-      // current working methods
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      } else if (document.documentElement.mozRequestFullScreen) {
-        document.documentElement.mozRequestFullScreen();
-      } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen(
-          Element.ALLOW_KEYBOARD_INPUT
-        );
-      }
-    } else {
-      if (document.cancelFullScreen) {
-        document.cancelFullScreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitCancelFullScreen) {
-        document.webkitCancelFullScreen();
-      }
-    }
-  }
 
   function tToggle() {
     var body = document.body;
@@ -70,30 +42,13 @@ const Header = props => {
     <React.Fragment>
       <header id="page-topbar">
         <div className="navbar-header border-bottom border-dark border-opacity-10">
-          <div className="d-flex align-items-center">
-
-            <div className="navbar-brand-box d-lg-none d-md-block pe-2">
-              <Link to="/" className="logo logo-dark">
-                <span className="logo-sm">
-                  <img src={logo} alt="" height="22" />
-                </span>
-              </Link>
-
-              <Link to="/" className="logo logo-light">
-                <span className="logo-sm">
-                  <img src={logoLightSvg} alt="" height="22" />
-                </span>
-              </Link>
-            </div>
-
-            <button type="button" onClick={() => { tToggle(); }} className="btn btn-sm px-2 d-lg-none font-size-16 header-item " id="vertical-menu-btn" > <i className="fa fa-fw fa-bars" /> </button>
-            {/* <h1 className="font-size-22 mb-0 text-capitalize">{segments[segments.length - 1].split('-').join(' ')}</h1> */}
-
+          <div>
+            <button type="button" onClick={() => { tToggle(); }} className="btn btn-sm px-1 d-lg-none header-item bg-light h-fit rounded-0 rounded-end" id="vertical-menu-btn" > <CgMenuLeft className="font-size-24" /> </button>
           </div>
           
           <div className="d-flex align-items-center">
 
-            <button type="button" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-2 d-flex align-items-center fw-semibold"><IoWallet className='fs-4 '/> <span className='ms-1'>₹ 12000</span></button>
+            <button type="button" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-3 d-flex align-items-center rounded-3 font-size-14 fw-semibold"><IoWallet className='fs-4 '/> <span className='ms-1'>₹ 12000</span></button>
             {/* <LanguageDropdown /> */}
 
             <NotificationDropdown />
