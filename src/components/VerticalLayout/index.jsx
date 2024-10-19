@@ -143,7 +143,7 @@ const Layout = (props) => {
         </div>
       </div>
 
-      <div id="layout-wrapper">
+      <div id="layout-wrapper" className="p-lg-4 pt-lg-0">
         <Header toggleMenuCallback={toggleMenuCallback} />
         <div className="main-content bg-white rounded-4">
           <Sidebar theme={leftSideBarTheme} type={leftSideBarType} isMobile={isMobile} />

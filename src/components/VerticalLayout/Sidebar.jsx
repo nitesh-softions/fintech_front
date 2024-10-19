@@ -27,7 +27,7 @@ const Sidebar = (props) => {
   return (
     <React.Fragment>
       {/* <div className="bg-overlay z-2 d-lg-none" onClick={tToggle}></div> */}
-      <div className="vertical-menu border-end border-dark border-opacity-10 shadow-lg">
+      <div className="vertical-menu border-end border-dark border-opacity-25">
         <IoClose className="d-lg-none text-primary position-absolute top-0 end-0 m-2 font-size-20 opacity-75" onClick={tToggle}/>
         <div className="logo mb-3">
           <Link to="/" className="logo logo-dark">
