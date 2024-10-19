@@ -1,0 +1,33 @@
+// Custom css
+// Left Banner Image Section
+.auth-left-image-banner {
+    background-image: url('../../../images/auth-bg-img.jpg'); /* Adjust this path */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+.left-banner-text{
+    width: 35px;
+    height: 35px;
+    margin-bottom: 10px;
+}
+.login-container{
+    max-width: 400px;
+}
+.social-media-icons{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.btn-login{
+    background-color: #27435B;
+}
+.btn-signup{
+    background-color: #81A8C7;
+}
+.hr-line{
+    border-top: 1px solid #000;
+}
+.ratings{
+    height: 15px;
+    width: 15px;
+}

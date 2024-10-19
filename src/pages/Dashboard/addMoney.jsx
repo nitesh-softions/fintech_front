@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import Select from "react-select";
 import { Col, 
   Container, 
   Row, 
@@ -28,9 +29,23 @@ import securePayment from "../../assets/images/secure_payment.gif";
 
 import classnames from "classnames";
 
+const optionGroup = [
+  {
+      // label: "Picnic",
+      options: [
+          { label: "India", value: "India" },
+          { label: "USA", value: "USA" },
+          { label: "Canada", value: "Canada" },
+      ],
+  },
+];
 
 
 const AddMoney = props => {
+  const [selectedGroup, setSelectedGroup] = useState(null);
+  const handleSelectGroup = (selectedGroup) => {
+    setSelectedGroup(selectedGroup);
+  }
 
   //meta title
   document.title = "Ezipay | Add Money";
