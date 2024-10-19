@@ -3,12 +3,12 @@
 // 
 
 #page-topbar {
-    position: fixed;
+    position: static;
     top: 0;
     right: 0;
     left: $sidebar-width;
     z-index: 1002;
-    background-color: var(--#{$prefix}header-bg);
+    background-color: transparent;
     box-shadow: $box-shadow;
 
     @media (max-width: 992.98px) {
@@ -109,9 +109,11 @@
 }
 
 .page-content {
-    padding: calc(#{$header-height} + #{$grid-gutter-width}) calc(#{$grid-gutter-width} * 0.75) $footer-height calc(#{$grid-gutter-width} * 0.75);
+    padding: 1.5rem !important;
+    
+    // padding: calc(#{$header-height} + #{$grid-gutter-width}) calc(#{$grid-gutter-width} * 0.75) $footer-height calc(#{$grid-gutter-width} * 0.75);
     position: relative;
-    min-height: 100vh;
+    // min-height: 100vh;
 }
 
 .header-item {
@@ -266,11 +268,12 @@ body[data-sidebar="dark"] {
 @media (max-width: 600px) {
     .navbar-header {
         .dropdown {
-            position: static;
+            // position: static;
 
-            .dropdown-menu {
-                left: 10px !important;
-                right: 10px !important;
+            .notifications-dropdown-menu {
+                // left: 10px !important;
+                // right: 10px !important;
+                width: 75vw;
             }
         }
     }

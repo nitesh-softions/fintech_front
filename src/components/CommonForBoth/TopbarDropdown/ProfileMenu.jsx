@@ -11,7 +11,6 @@ import {
 import { withTranslation } from "react-i18next";
 
 // Redux
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import withRouter from "../../Common/withRouter";
 
@@ -50,17 +49,13 @@ const ProfileMenu = (props) => {
         toggle={() => setMenu(!menu)}
         className="d-inline-block"
       >
-        <DropdownToggle
-          className="btn header-item d-flex align-items-center"
-          id="page-header-user-dropdown"
-          tag="button"
-        >
+        <DropdownToggle className="btn header-item d-flex align-items-center" id="page-header-user-dropdown" tag="button" >
           <img
             className="rounded-3 header-profile-user p-0"
             src={user1}
             alt="Header Avatar"
           />
-          <span className="d-none d-xl-inline-block ms-2 me-1 text-start">
+          <span className="d-none d-xl-inline-block ms-2 me-1 text-start text-white">
             <p className="m-0">
               {username}
               <i className="mdi mdi-chevron-down d-none d-xl-inline-block" />
@@ -82,10 +77,6 @@ const ProfileMenu = (props) => {
             <span className="badge bg-success float-end">11</span>
             <i className="bx bx-wrench font-size-16 align-middle me-1" />
             {props.t("Settings")}
-          </DropdownItem>
-          <DropdownItem tag="a" href="auth-lock-screen">
-            <i className="bx bx-lock-open font-size-16 align-middle me-1" />
-            {props.t("Lock screen")}
           </DropdownItem>
           <div className="dropdown-divider" />
           <Link to="/logout" className="dropdown-item">

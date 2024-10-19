@@ -1,21 +1,12 @@
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import withRouter from "../Common/withRouter";
-import {
-  changeLayout,
-  changeLayoutMode,
-  changeSidebarTheme,
-  changeSidebarThemeImage,
-  changeSidebarType,
-  changeTopbarTheme,
-  changeLayoutWidth,
-  showRightSidebarAction,
-} from "../../store/actions";
+import { changeLayout, changeLayoutMode, changeSidebarTheme, changeSidebarThemeImage, changeSidebarType, changeTopbarTheme, changeLayoutWidth, showRightSidebarAction, } from "../../store/actions";
 
 // Layout Related Components
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import RightSidebar from "../CommonForBoth/RightSidebar";
 
 //redux
@@ -154,13 +145,11 @@ const Layout = (props) => {
 
       <div id="layout-wrapper">
         <Header toggleMenuCallback={toggleMenuCallback} />
-        <Sidebar
-          theme={leftSideBarTheme}
-          type={leftSideBarType}
-          isMobile={isMobile}
-        />
-        <div className="main-content bg-white">{props.children}</div>
-        <Footer />
+        <div className="main-content bg-white rounded-5">
+          <Sidebar theme={leftSideBarTheme} type={leftSideBarType} isMobile={isMobile} />
+          {props.children}
+        </div>
+        {/* <Footer /> */}
       </div>
       {showRightSidebar ? <RightSidebar /> : null}
     </React.Fragment>

@@ -15,8 +15,7 @@ const NotificationPage = props => {
 
   return (
     <React.Fragment>
-      <div className="page-content">
-        <Container fluid>
+        <Container fluid className="page-content">
           {/* Render Breadcrumb */}
           <Breadcrumbs
             initialPageRoute={'/dashboard'}
@@ -24,8 +23,6 @@ const NotificationPage = props => {
             breadcrumbItem={props.t("NotificationPage")}
           />
         </Container>
-      </div>
-
     </React.Fragment>
   );
 };

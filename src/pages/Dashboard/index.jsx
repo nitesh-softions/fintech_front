@@ -28,68 +28,47 @@ const Dashboard = props => {
   document.title = "Ezipay | Dashboard";
 
   const handleAddMoney = () => {
-    navigate("/dashboard/addmoney");
+    navigate("/dashboard/add-money");
   };
   
   const handleEzipayWallet = () => {
-    navigate("/dashboard/ezipaywallet");
+    navigate("/dashboard/geopay-wallet");
   };
 
   const handleViewPayment = () => {
-    navigate("/dashboard/viewpayment");
+    navigate("/dashboard/view-payment");
   };
 
   const handleShowCode = () => {
-    navigate("/dashboard/showcode");
+    navigate("/dashboard/show-code");
   };
 
   const handleDirectPayCompanies = () => {
-    navigate("/dashboard/directpaycompanies");
+    navigate("/dashboard/direct-pay-companies");
   };
 
   const handleTransferToMobileMoney = () => {
-    navigate("/dashboard/transfertomobilemoney");
+    navigate("/dashboard/transfer-to-mobile-money");
   };
 
   const handleInternationalAirtime = () => {
-    navigate("/dashboard/internationalairtime");
+    navigate("/dashboard/international-airtime");
   };
 
   const handleTransferMoneyToBank = () => {
-    navigate("/dashboard/transfermoneytobank");
+    navigate("/dashboard/transfer-money-to-bank");
   };
 
   return (
-    <React.Fragment>
-      <Row className="page-content mb-4 px-4">
-        <Col xxl={8}>
-          {/* <div className="bg_overlay_1"></div>
-          <div className="bg_overlay_2"></div> */}
-          <Container fluid className="mb-4 p-0">
-            {/* <AutoScrollCarousel /> */}
-            <Row className="align-items-stretch">
-              <Col md={7} className="d-flex flex-column">
-                <Row className="flex-grow-1">
-                  <Col className="d-flex">
-                    <BalanceCard btn_heading="Balance" btn_content="34,763.00 USD" btn_icon={TbMoneybag} className="w-100" />
-                  </Col>
-                </Row>
-                <Row className="mt-2 flex-grow-1">
-                  <Col className="d-flex">
-                    <div className="rounded-5 overflow-hidden w-100 shadow">
-                      <AutoScrollCarousel />
-                    </div>
-                  </Col>
-                </Row>
-              </Col>
-
-              <Col md={5} className="d-flex flex-column pt-4 pt-md-0">
-                <h4 className="font-size-18">Quick Transfer</h4>
-                <QuickTransferCard className="mt-auto"/>
-              </Col>
-            </Row>
-
+    <Container fluid className="page-content">
+      <Row>
+        <Col xxl={9} className="pe-lg-4">
+          <Container fluid className="p-0">
+            <div className="rounded-4 overflow-hidden mb-4 w-100 shadow">
+              <AutoScrollCarousel />
+            </div>
           </Container>
+
           <Container fluid>
             <h4 className="font-size-18">Wallet Services</h4>
             <Row>
@@ -109,14 +88,16 @@ const Dashboard = props => {
             </Row>
           </Container>
         </Col>
-        <Col xxl={4} className="pt-4 pt-xxl-0">
+        <Col xxl={3} className="pt-4 pt-xxl-0 border-start ps-lg-4">
           <Container fluid className="p-0">
+            <h4 className="font-size-18">Quick Transfer</h4>
+            <QuickTransferCard />
             <h4 className="font-size-18">Recent Transaction</h4>
             <RecentTransactionCard />
           </Container>
         </Col>
       </Row>
-    </React.Fragment>
+    </Container>
   );
 };
 

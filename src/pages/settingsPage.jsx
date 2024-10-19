@@ -15,17 +15,14 @@ const Settings = props => {
 
   return (
     <React.Fragment>
-      <div className="page-content">
-        <Container fluid>
-          {/* Render Breadcrumb */}
-          <Breadcrumbs
-            initialPageRoute={'/dashboard'}
-            title={props.t("Settings")}
-            breadcrumbItem={props.t("Settings")}
-          />
-        </Container>
-      </div>
-
+      <Container fluid className="page-content">
+        {/* Render Breadcrumb */}
+        <Breadcrumbs
+          initialPageRoute={'/dashboard'}
+          title={props.t("Settings")}
+          breadcrumbItem={props.t("Settings")}
+        />
+      </Container>
     </React.Fragment>
   );
 };

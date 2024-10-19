@@ -3,6 +3,17 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 import Select from "react-select";
 
+const optionGroup = [
+  {
+    label: "Picnic",
+    options: [
+      { label: "Mustard", value: "Mustard" },
+      { label: "Ketchup", value: "Ketchup" },
+      { label: "Relish", value: "Relish" },
+    ],
+  },
+];
+
 const countryCode = [
   {
     label: "Countries",
@@ -14,7 +25,7 @@ const countryCode = [
   },
 ];
 
-const InternationalAirtime = (props) => {
+const GeoPayWallet = (props) => {
   const [selectedGroup, setSelectedGroup] = useState(null);
 
   //meta title
@@ -34,11 +45,13 @@ const InternationalAirtime = (props) => {
             <div className="card rounded-4 h-100 border-1">
               <div className="card-body">
                 <form className="mb-4">
-                  <input name="" id="" placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
+                  <Select value={selectedGroup} onChange={handleSelectGroup} options={optionGroup} className="bg-light mb-3 rounded-3" />
                   <div className="d-flex align-items-center gap-2">
                     <Select value={selectedGroup} onChange={handleSelectGroup} options={countryCode} className="bg-light mb-3 rounded-3" />
                     <input id="" placeholder="Mobile Number" type="number" className="form-control number-input bg-light mb-3 border-light" onInput={(e) => { if (e.target.value.length > 10) { e.target.value = e.target.value.slice(0, 10); } }} />
                   </div>
+                  <input name="" id="" placeholder="Enter you Amount USD" type="text" className="form-control bg-light mb-3 border-light" />
+                  <input name="" id="" placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
                   <textarea name="" id="" placeholder="Account Descriptions" className="form-control bg-light mb-3 border-light" />
                   <div className="d-xl-flex align-content-center justify-content-between gap-1">
                     <p className="font-size-11 pe-xl-5"> Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated. </p>
@@ -93,10 +106,10 @@ const InternationalAirtime = (props) => {
   );
 };
 
-InternationalAirtime.propTypes = {
+GeoPayWallet.propTypes = {
   t: PropTypes.any,
   chartsData: PropTypes.any,
   onGetChartsData: PropTypes.func,
 };
 
-export default InternationalAirtime;
+export default GeoPayWallet;

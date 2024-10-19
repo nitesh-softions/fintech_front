@@ -30,7 +30,7 @@ const NotificationDropdown = props => {
       </DropdownToggle>
 
 
-        <DropdownMenu className="dropdown-menu dropdown-menu-lg p-0 dropdown-menu-end">
+        <DropdownMenu className="dropdown-menu dropdown-menu-lg notifications-dropdown-menu p-0 dropdown-menu-end">
           <div className="p-3">
             <Row className="align-items-center">
               <Col>
