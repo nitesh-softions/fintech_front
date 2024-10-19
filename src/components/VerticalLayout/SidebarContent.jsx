@@ -148,6 +148,11 @@ const SidebarContent = (props) => {
     }
   }
 
+  const tToggle = () => {
+    const body = document.body;
+    body.classList.toggle("sidebar-enable");
+  };
+
   return (
     <React.Fragment>
       <SimpleBar className="sidebar-container pb-4" ref={ref}>
@@ -180,32 +185,32 @@ const SidebarContent = (props) => {
             </li> */}
 
             <li>
-              <Link to="/dashboard" className="">
+              <Link to="/dashboard" onClick={tToggle} className="">
                 <RxDashboard />
                 <span>{props.t("Dashboards")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/transaction" className="">
+              <Link to="/transaction" onClick={tToggle} className="">
                 <CgFileDocument />
                 <span>{props.t("Transaction")}</span>
               </Link>
             </li>
             <li>
-              <Link to="/notification">
+              <Link to="/notification" onClick={tToggle}>
                 <PiBell />
                 <span>{props.t("Notification")}</span>
               </Link>
             </li>
             <li>
-              <Link to="/statistics">
+              <Link to="/statistics" onClick={tToggle}>
                 <BsBarChart />
                 <span>{props.t("Statistics")}</span>
               </Link>
             </li>
             <li>
-              <Link to="/settings">
+              <Link to="/settings" onClick={tToggle}>
                 <IoSettingsOutline/>
                 <span>{props.t("Settings")}</span>
               </Link>

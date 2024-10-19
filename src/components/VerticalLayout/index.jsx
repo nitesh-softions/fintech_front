@@ -145,7 +145,7 @@ const Layout = (props) => {
 
       <div id="layout-wrapper">
         <Header toggleMenuCallback={toggleMenuCallback} />
-        <div className="main-content bg-white rounded-5">
+        <div className="main-content bg-white rounded-4">
           <Sidebar theme={leftSideBarTheme} type={leftSideBarType} isMobile={isMobile} />
           {props.children}
         </div>

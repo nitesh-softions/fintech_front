@@ -111,6 +111,23 @@
 .page-content {
     padding: 1.5rem !important;
     
+    @media (max-width: 767px) {
+        .qr-column{
+            border-left: none !important;
+        }
+    }
+
+    .quick-transfer-column{
+        .recent-transaction-card{
+            max-height: 450px;
+            overflow: auto;
+            scrollbar-width: thin;
+        }
+
+        @media (max-width: 1399px) {
+            border-left: none !important;
+        }
+    }
     // padding: calc(#{$header-height} + #{$grid-gutter-width}) calc(#{$grid-gutter-width} * 0.75) $footer-height calc(#{$grid-gutter-width} * 0.75);
     position: relative;
     // min-height: 100vh;

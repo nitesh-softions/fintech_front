@@ -3,13 +3,13 @@ import { UncontrolledCarousel } from "reactstrap";
 
 //import Images
 import img01 from "../../assets/images/carousel_images/carousel1.jpg";
-import img02 from "../../assets/images/carousel_images/carousel2.jpg";
+import img02 from "../../assets/images/carousel_images/carousel2.png";
 import img03 from "../../assets/images/carousel_images/carousel3.jpg";
 
 const AutoScrollCarousel = () => {
     return (
         <React.Fragment>
-          <div style={{ maxHeight: '250px', overflow: 'hidden' }}>
+          <div className='home-banner-carousel shadow'>
             <UncontrolledCarousel
               interval={4000}
               indicators={false}

@@ -709,10 +709,12 @@ input:-webkit-autofill:active {
 
 // Buttons
 .btn-soft-primary{
-  background-color: $white !important;
-  border: 1px solid whitesmokes;
-
-
+  background-color: #F3F5F6 !important;
+  color: $secondary;
+  // border: 1px solid whitesmokes;
+  svg{
+    font-size: 40px;
+  }
   .bottom_icon, .heading_icon{
     background-color: whitesmoke;
 
@@ -730,7 +732,7 @@ input:-webkit-autofill:active {
   background-size: cover;
   background-position: center;
   svg{
-    color: $primary !important;
+    color: $white !important;
   }
 }
 

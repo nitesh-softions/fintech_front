@@ -2,15 +2,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
 
-//Import Breadcrumb
-import Breadcrumbs from "../../components/Common/Breadcrumb";
-
 //i18n
 import { withTranslation } from "react-i18next";
 
-// Icons
-import { IoWallet } from "react-icons/io5";
-import { RxDotFilled } from "react-icons/rx";
 
 import securePayment from "../../assets/images/secure_payment.gif";
 import qrCode from "../../assets/images/qr_code.png";
