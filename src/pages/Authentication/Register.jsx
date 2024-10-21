@@ -1,5 +1,18 @@
-import React, { useEffect } from "react";
-import { Row, Col, CardBody, Card, Alert, Container, Input, Label, Form, FormFeedback } from "reactstrap";
+import React, { useEffect, useState } from "react";
+// import { Row, Col, CardBody, Card, Alert, Container, Input, Label, Form, FormFeedback } from "reactstrap";
+import { Col, 
+  Container, 
+  Row, 
+  Card,
+  CardBody,
+  // CardText,
+  // CardTitle,
+  Nav,
+  TabContent,
+  NavItem,
+  NavLink,
+  TabPane,
+ } from "reactstrap";
 
 // Formik Validation
 import * as Yup from "yup";
@@ -18,8 +31,20 @@ import { Link } from "react-router-dom";
 import profileImg from "../../assets/images/profile-img.png";
 import logo from "../../assets/images/logo.svg";
 import lightlogo from "../../assets/images/logo-light.svg";
+import AuthLeftBanner from "../../components/Common/AuthLeftBanner";
+import bgchain from '../../assets/images/bgchain.svg';
+
+import classnames from "classnames";
+
+
 
 const Register = props => {
+  
+  const [selectedGroup, setSelectedGroup] = useState(null);
+  const handleSelectGroup = (selectedGroup) => {
+    setSelectedGroup(selectedGroup);
+  }
+
   document.title = "Register | Skote - Vite React Admin & Dashboard Template";
 
   const dispatch = useDispatch();
@@ -63,171 +88,75 @@ const Register = props => {
     dispatch(apiError(""));
   }, []);
 
+
+  
+  const [activeTab1, setActiveTab1] = useState("5");
+  const toggle1 = (tab) => {
+    if (activeTab1 !== tab) {
+      setActiveTab1(tab);
+    }
+  };
+
+
   return (
     <React.Fragment>
+      <div className="container-fluid vh-100 overflow-x-hidden">
+            <div className="row h-100 justify-content-center">
+                {/* Left Section */}
+                <AuthLeftBanner/>
 
-      <div className="home-btn d-none d-sm-block">
-        <Link to="/" className="text-dark">
-          <i className="bx bx-home h2" />
-        </Link>
-      </div>
-      <div className="account-pages my-5 pt-sm-5">
-        <Container>
-          <Row className="justify-content-center">
-            <Col md={8} lg={6} xl={5}>
-              <Card className="overflow-hidden">
-                <div className="bg-primary-subtle">
-                  <Row>
-                    <Col className="col-7">
-                      <div className="text-primary p-4">
-                        <h5 className="text-primary">Free Register</h5>
-                        <p>Get your free Skote account now.</p>
-                      </div>
-                    </Col>
-                    <Col className="col-5 align-self-end">
-                      <img src={profileImg} alt="" className="img-fluid" />
-                    </Col>
-                  </Row>
+                {/* <!-- Right Section --> */}
+                <div className="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative bg-white">
+                    {/* <!-- Top right corner watermark --> */}
+                    <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
+                            <img src={bgchain} alt="Logo" className="img-fluid w-50 h-50"/>
+                    </div>
+
+                    {/* <!-- Register Form Container --> */}
+                    <div className="w-100 px-5 auth-container">
+                        <h3 className="text-center text-black mb-3">Register</h3>
+                        
+                        <Card className="rounded-4 h-100">
+                          <CardBody>
+                            <Nav pills className="nav-justified px-3 gap-3">
+                              <NavItem>
+                                <NavLink className={classnames({ active: activeTab1 === "5" })} onClick={() => { toggle1("5"); }}>
+                                  <span className="d-none d-sm-block">Individual</span>
+                                </NavLink>
+                              </NavItem>
+                              <NavItem>
+                                <NavLink className={classnames({ active: activeTab1 === "6" })} onClick={() => { toggle1("6"); }}>
+                                  <span className="d-none d-sm-block">Company</span>
+                                </NavLink>
+                              </NavItem>
+                            </Nav>
+
+                            <TabContent activeTab={activeTab1} className="pt-3 text-muted">
+                              <TabPane tabId="5">
+                                <form>
+                                  <p>form 1</p>
+                                  {/* <!-- Register Buttons --> */}
+                                  <div className="text-center">
+                                      <button className="btn btn-secondary w-100 btn-signup" type="button">Sign up</button>
+                                  </div>
+                                </form>
+                              </TabPane>
+                              <TabPane tabId="6">
+                                <form>
+                                  form 2
+                                  {/* <!-- Register Buttons --> */}
+                                  <div className="text-center">
+                                      <button className="btn btn-secondary w-100 btn-signup" type="button">Sign up</button>
+                                  </div>
+                                </form>
+                              </TabPane>
+                            </TabContent>
+                          </CardBody>
+                        </Card>
+                    </div>
                 </div>
-                <CardBody className="pt-0">
-                  <div className="auth-logo">
-                    <Link to="/" className="auth-logo-light">
-                      <div className="avatar-md profile-user-wid mb-4">
-                        <span className="avatar-title rounded-circle bg-light">
-                          <img
-                            src={lightlogo}
-                            alt=""
-                            className="rounded-circle"
-                            height="34"
-                          />
-                        </span>
-                      </div>
-                    </Link>
-                    <Link to="/" className="auth-logo-dark">
-                      <div className="avatar-md profile-user-wid mb-4">
-                        <span className="avatar-title rounded-circle bg-light">
-                          <img
-                            src={logo}
-                            alt=""
-                            className="rounded-circle"
-                            height="34"
-                          />
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="p-2">
-                    <Form
-                      className="form-horizontal"
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        validation.handleSubmit();
-                        return false;
-                      }}
-                    >
-                      {user && user ? (
-                        <Alert color="success">
-                          Register User Successfully
-                        </Alert>
-                      ) : null}
-
-                      {registrationError && registrationError ? (
-                        <Alert color="danger">{registrationError}</Alert>
-                      ) : null}
-
-                      <div className="mb-3">
-                        <Label className="form-label">Email</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          className="form-control"
-                          placeholder="Enter email"
-                          type="email"
-                          onChange={validation.handleChange}
-                          onBlur={validation.handleBlur}
-                          value={validation.values.email || ""}
-                          invalid={
-                            validation.touched.email && validation.errors.email ? true : false
-                          }
-                        />
-                        {validation.touched.email && validation.errors.email ? (
-                          <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
-                        ) : null}
-                      </div>
-
-                      <div className="mb-3">
-                        <Label className="form-label">Username</Label>
-                        <Input
-                          name="username"
-                          type="text"
-                          placeholder="Enter username"
-                          onChange={validation.handleChange}
-                          onBlur={validation.handleBlur}
-                          value={validation.values.username || ""}
-                          invalid={
-                            validation.touched.username && validation.errors.username ? true : false
-                          }
-                        />
-                        {validation.touched.username && validation.errors.username ? (
-                          <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
-                        ) : null}
-                      </div>
-                      <div className="mb-3">
-                        <Label className="form-label">Password</Label>
-                        <Input
-                          name="password"
-                          type="password"
-                          placeholder="Enter Password"
-                          onChange={validation.handleChange}
-                          onBlur={validation.handleBlur}
-                          value={validation.values.password || ""}
-                          invalid={
-                            validation.touched.password && validation.errors.password ? true : false
-                          }
-                        />
-                        {validation.touched.password && validation.errors.password ? (
-                          <FormFeedback type="invalid">{validation.errors.password}</FormFeedback>
-                        ) : null}
-                      </div>
-
-                      <div className="mt-4">
-                        <button
-                          className="btn btn-primary btn-block "
-                          type="submit"
-                        >
-                          Register
-                        </button>
-                      </div>
-
-                      <div className="mt-4 text-center">
-                        <p className="mb-0">
-                          By registering you agree to the Skote{" "}
-                          <Link to="#" className="text-primary">
-                            Terms of Use
-                          </Link>
-                        </p>
-                      </div>
-                    </Form>
-                  </div>
-                </CardBody>
-              </Card>
-              <div className="mt-5 text-center">
-                <p>
-                  Already have an account ?{" "}
-                  <Link to="/login" className="font-weight-medium text-primary">
-                    {" "}
-                    Login
-                  </Link>{" "}
-                </p>
-                <p>
-                  © {new Date().getFullYear()} Geopay. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger" /> by Themesbrand
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+            </div>
+        </div>
     </React.Fragment>
   );
 };

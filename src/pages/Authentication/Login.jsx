@@ -90,70 +90,72 @@ const Login = (props) => {
                 <AuthLeftBanner/>
 
                 {/* <!-- Right Section --> */}
-                <div className="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative bg-white">
-                    {/* <!-- Top right corner watermark --> */}
-                    <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
-                        <img src={bgchain} alt="Logo" className="img-fluid w-50 h-50"/>
-                    </div>
-
-                    {/* <!-- Login Form Container --> */}
-                    <div className="w-100 px-5 login-container">
-                        <h3 className="text-center text-black mb-3">Sign in To Fintech</h3>
-                        
-                        {/* <!-- Social Media Icons --> */}
-                        <div className="d-flex justify-content-center mb-3 gap-3">
-                            <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
-                                <FaFacebookF />
-                            </div>
-                            <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
-                                <FaGoogle />
-                            </div>
-                            <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
-                                <FaLinkedinIn />
-                            </div>
+                <form className="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative bg-white">
+                    
+                        {/* <!-- Top right corner watermark --> */}
+                        <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
+                            <img src={bgchain} alt="Logo" className="img-fluid w-50 h-50"/>
                         </div>
-                        <p className="text-center mb-4">Or use your email account</p>
-                        {/* <!-- Email Input --> */}
-                        <div className="mb-3">
+
+                        {/* <!-- Login Form Container --> */}
+                        <div className="w-100 px-5 auth-container">
+                            <h3 className="text-center text-black mb-3">Sign in To Fintech</h3>
+                            
+                            {/* <!-- Social Media Icons --> */}
+                            <div className="d-flex justify-content-center mb-3 gap-3">
+                                <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
+                                    <FaFacebookF />
+                                </div>
+                                <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
+                                    <FaGoogle />
+                                </div>
+                                <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
+                                    <FaLinkedinIn />
+                                </div>
+                            </div>
+                            <p className="text-center mb-4">Or use your email account</p>
+                            {/* <!-- Email Input --> */}
+                            <div className="mb-3">
+                                <div className="mb-3">
+                                    <div className="input-group">
+                                        <span className="input-group-text bg-light border-0">
+                                            <FaEnvelope />
+                                        </span>
+                                        <input type="email" className="form-control border-0 bg-light" placeholder="Email" />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* <!-- Password Input --> */}
+                            <div className="mb-3">
                             <div className="mb-3">
                                 <div className="input-group">
                                     <span className="input-group-text bg-light border-0">
-                                        <FaEnvelope />
+                                    <FaLock />
                                     </span>
-                                    <input type="email" className="form-control border-0 bg-light" placeholder="Email" />
+                                    <input type="password" className="form-control border-0 bg-light" placeholder="Password" />
                                 </div>
                             </div>
-                        </div>
-                        {/* <!-- Password Input --> */}
-                        <div className="mb-3">
-                        <div className="mb-3">
-                            <div className="input-group">
-                                <span className="input-group-text bg-light border-0">
-                                <FaLock />
-                                </span>
-                                <input type="password" className="form-control border-0 bg-light" placeholder="Password" />
+                            </div>
+
+                            {/* <!-- Forgot Password --> */}
+                            <div className="mb-3 text-end">
+                                <a href="#" className="fw-medium text-secondary">Forgot your password?</a>
+                            </div>
+
+                            {/* <!-- Login and Signup Buttons --> */}
+                            <div className="text-center">
+                                <button className="btn btn-primary w-100 btn-login" type="button">Login</button>
+                                {/* Divider with text */}
+                                <div className="d-flex align-items-center justify-content-center my-3">
+                                    <hr className="flex-grow-1 hr-line"/>
+                                    <span className="mx-2 text-muted">Or with sign up</span>
+                                    <hr className="flex-grow-1 hr-line"/>
+                                </div>
+                                <button className="btn btn-secondary w-100 btn-signup" type="button">Sign up</button>
                             </div>
                         </div>
-                        </div>
-
-                        {/* <!-- Forgot Password --> */}
-                        <div className="mb-3 text-end">
-                            <a href="#" className="fw-medium text-secondary">Forgot your password?</a>
-                        </div>
-
-                        {/* <!-- Login and Signup Buttons --> */}
-                        <div className="text-center">
-                            <button className="btn btn-primary w-100 btn-login" type="button">Login</button>
-                            {/* Divider with text */}
-                            <div className="d-flex align-items-center justify-content-center my-3">
-                                <hr className="flex-grow-1 hr-line"/>
-                                <span className="mx-2 text-muted">Or with sign up</span>
-                                <hr className="flex-grow-1 hr-line"/>
-                            </div>
-                            <button className="btn btn-secondary w-100 btn-signup" type="button">Sign up</button>
-                        </div>
-                    </div>
-                </div>
+                    
+                </form>
             </div>
         </div>
 
