@@ -17,21 +17,11 @@ import { Row, Col, CardBody, Card, Alert, Container, Form, Input, FormFeedback, 
 import { loginUser, socialLogin } from "../../store/actions";
 
 // import images
-import profile from "../../assets/images/profile-img.png";
-import brandlogo from "../../assets/images/brand-logo.svg";
-import lightlogo from "../../assets/images/logo-light.svg";
-// import authbgimg from "../../assets/images/auth-bg-img.jpg";
 import { FaFacebookF } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner.jsx";
-// import avatar1 from '../../assets/images/users/avatar-1.jpg';
-// import avatar2 from '../../assets/images/users/avatar-2.jpg';
-// import avatar3 from '../../assets/images/users/avatar-3.jpg';
-// import avatar4 from '../../assets/images/users/avatar-4.jpg';
-// import authbannerstar from '../../assets/images/auth-banner-star.svg';
-// import ratings from "../../assets/images/ratings.svg";
 import bgchain from '../../assets/images/bgchain.svg';
 
 

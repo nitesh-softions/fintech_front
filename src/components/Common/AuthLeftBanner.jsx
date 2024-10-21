@@ -1,17 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import authbannerstar from '../../assets/images/auth-banner-star.svg';
-import ratings from "../../assets/images/ratings.svg";
 import withRouter from "../../components/Common/withRouter";
 
 // images
 import avatar1 from '../../assets/images/users/avatar-1.jpg';
 import avatar2 from '../../assets/images/users/avatar-2.jpg';
 import avatar3 from '../../assets/images/users/avatar-3.jpg';
-import avatar4 from '../../assets/images/users/avatar-4.jpg';
 
 // scss style
 import '../../assets/scss/custom/components/authentication.scss';
+import { FaStar } from "react-icons/fa";
+import { RiSparkling2Fill } from "react-icons/ri";
 
 const AuthLeftBanner = (props) => {
 
@@ -24,7 +23,7 @@ const AuthLeftBanner = (props) => {
             <div className="col-lg-6 d-none d-lg-flex align-items-center justify-content-center text-white auth-left-image-banner">
                 <div className="position-absolute bottom-0 start-0 p-5">
                     <div className="relative h-full w-full text-white flex flex-col justify-end p-6">
-                    <img src={authbannerstar} className="left-banner-text" alt="Banner star" />
+                    <RiSparkling2Fill style={{ fontSize: '60px' }}/>
                     <div className="mb-4">
                         <h1 className="text-2xl font-semibold mb-2">Very Good Works are waiting for you. Login now.</h1>
                         <p>Access your account to explore exclusive features, personalized content, and stay up-to-date with the latest updates.</p>
@@ -57,12 +56,12 @@ const AuthLeftBanner = (props) => {
                         </div>
 
                         <div className="d-flex flex-column ms-2">
-                        <div className="d-flex gap-2">
-                            <img src={ratings} className="ratings" alt="Ratings" />
-                            <img src={ratings} className="ratings" alt="Ratings" />
-                            <img src={ratings} className="ratings" alt="Ratings" />
-                            <img src={ratings} className="ratings" alt="Ratings" />
-                            <img src={ratings} className="ratings" alt="Ratings" />
+                        <div className="d-flex gap-2 mb-1">
+                            <FaStar className="text-warning font-size-20"/>
+                            <FaStar className="text-warning font-size-20"/>
+                            <FaStar className="text-warning font-size-20"/>
+                            <FaStar className="text-warning font-size-20"/>
+                            <FaStar className="text-warning font-size-20"/>
                         </div>
                         <span className="ml-4 text-sm">From 200+ reviews</span>
                         </div>

@@ -28,9 +28,7 @@ import { createSelector } from "reselect";
 import { Link } from "react-router-dom";
 
 // import images
-import profileImg from "../../assets/images/profile-img.png";
-import logo from "../../assets/images/logo.svg";
-import lightlogo from "../../assets/images/logo-light.svg";
+import logo from "../../assets/images/logo.png";
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner";
 import bgchain from '../../assets/images/bgchain.svg';
 

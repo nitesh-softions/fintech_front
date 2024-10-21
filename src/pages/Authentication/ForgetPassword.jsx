@@ -27,9 +27,7 @@ import { useFormik } from "formik";
 import { userForgetPassword } from "../../store/actions";
 
 // import images
-import profile from "../../assets/images/profile-img.png";
-import logo from "../../assets/images/logo.svg";
-import lightlogo from "../../assets/images/logo-light.svg";
+import logo from "../../assets/images/logo.png";
 
 const ForgetPasswordPage = (props) => {
   //meta title
@@ -87,7 +85,7 @@ const ForgetPasswordPage = (props) => {
                       </div>
                     </Col>
                     <Col className="col-5 align-self-end">
-                      <img src={profile} alt="" className="img-fluid" />
+                      {/* <img src={profile} alt="" className="img-fluid" /> */}
                     </Col>
                   </Row>
                 </div>
@@ -97,7 +95,7 @@ const ForgetPasswordPage = (props) => {
                       <div className="avatar-md profile-user-wid mb-4">
                         <span className="avatar-title rounded-circle bg-light">
                           <img
-                            src={lightlogo}
+                            src={logo}
                             alt=""
                             className="rounded-circle"
                             height="34"
