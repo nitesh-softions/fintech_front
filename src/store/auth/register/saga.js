@@ -11,7 +11,7 @@ function* registerUser({ payload: { user } }) {
   console.log("using the following url for registration: ")
   try {
     console.log("Trying to register user (within try block)")
-    if (import.meta.env.VITE_APP_DEFAULTAUTH === "ezipay") {
+    if (import.meta.env.VITE_APP_DEFAULTAUTH === "geopay") {
      
     }
   } catch (error) {

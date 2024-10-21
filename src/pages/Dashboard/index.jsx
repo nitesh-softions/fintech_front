@@ -23,22 +23,14 @@ const Dashboard = props => {
   const navigate = useNavigate();
 
   //meta title
-  document.title = "Ezipay | Dashboard";
+  document.title = "GeoPay | Dashboard";
 
   const handleAddMoney = () => {
     navigate("/dashboard/add-money");
   };
   
-  const handleEzipayWallet = () => {
+  const handleGeopayWallet = () => {
     navigate("/dashboard/geopay-wallet");
-  };
-
-  const handleViewPayment = () => {
-    navigate("/dashboard/view-payment");
-  };
-
-  const handleShowCode = () => {
-    navigate("/dashboard/show-code");
   };
 
   const handleDirectPayCompanies = () => {
@@ -51,10 +43,6 @@ const Dashboard = props => {
 
   const handleInternationalAirtime = () => {
     navigate("/dashboard/international-airtime");
-  };
-
-  const handleTransferMoneyToBank = () => {
-    navigate("/dashboard/transfer-money-to-bank");
   };
 
   return (
@@ -73,7 +61,7 @@ const Dashboard = props => {
                 <h4 className="font-size-18">Wallet Services</h4>
                 <Row className="gap-3 gap-md-0">
                   <Col md={4}><CustomButton onClick={handleAddMoney} btn_heading="Add Money" btn_icon={LuPlusCircle} /></Col>
-                  <Col md={4}><CustomButton onClick={handleEzipayWallet}  btn_heading="Softieons Wallet" btn_icon={LiaWalletSolid} /></Col>
+                  <Col md={4}><CustomButton onClick={handleGeopayWallet}  btn_heading="Softieons Wallet" btn_icon={LiaWalletSolid} /></Col>
                   {/* <Col className="mt-5"><CustomButton onClick={handleViewPayment}  btn_heading="View Payment " btn_icon={IoWallet} /></Col> */}
                   {/* <Col className="mt-5"><CustomButton onClick={handleShowCode}  btn_heading="Show Code" btn_icon={BsQrCodeScan} /></Col> */}
                 </Row>
@@ -92,7 +80,7 @@ const Dashboard = props => {
               <div className="d-flex flex-column justify-content-start align-items-center rounded-4 h-100">
                 <h4 className="font-size-20 mb-4 text-dark fw-semibold">Scan QR Code</h4>
                 <h4 className="font-size-14 text-uppercase text-dark fw-semibold">To Pay Pritesh Salla</h4>
-                <p className="mb-0 text-secondary font-size-12">Share your EziPay QR Code to receive payments</p>
+                <p className="mb-0 text-secondary font-size-12">Share your GeoPay QR Code to receive payments</p>
                 <img src={qrCode} className="w-100" alt="" />
               </div>
             </Col>

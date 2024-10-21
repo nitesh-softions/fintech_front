@@ -7,7 +7,7 @@ import { userForgetPasswordSuccess, userForgetPasswordError } from "./actions"
 //If user is send successfully send mail link then dispatch redux action's are directly from here.
 function* forgetUser({ payload: { user, history } }) {
   try {
-    if (import.meta.env.VITE_APP_DEFAULTAUTH === "ezipay") {
+    if (import.meta.env.VITE_APP_DEFAULTAUTH === "geopay") {
       // const response = yield call(postJwtForgetPwd, "/jwt-forget-pwd", {
       //   email: user.email,
       // })

@@ -17,7 +17,7 @@ import securePayment from "../../assets/images/secure_payment.gif";
 const transferMoneyToBank = props => {
 
   //meta title
-  document.title = "Ezipay | Transfer To Bank ";
+  document.title = "GeoPay | Transfer To Bank ";
 
   return (
     <React.Fragment>

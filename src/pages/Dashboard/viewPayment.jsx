@@ -16,7 +16,7 @@ import securePayment from "../../assets/images/secure_payment.gif";
 const ViewPayment = props => {
 
   //meta title
-  document.title = "Ezipay | View Payment";
+  document.title = "GeoPay | View Payment";
 
   return (
     <React.Fragment>

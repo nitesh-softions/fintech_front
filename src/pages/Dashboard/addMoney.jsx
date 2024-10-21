@@ -48,7 +48,7 @@ const AddMoney = props => {
   }
 
   //meta title
-  document.title = "Ezipay | Add Money";
+  document.title = "GeoPay | Add Money";
   
   // Add Money
   const [activeTab1, setActiveTab1] = useState("5");

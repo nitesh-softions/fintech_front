@@ -28,7 +28,7 @@ function* logoutUser({ payload: { history } }) {
   try {
     localStorage.removeItem("authUser");
 
-    // if (import.meta.env.VITE_APP_DEFAULTAUTH === "ezipay") {
+    // if (import.meta.env.VITE_APP_DEFAULTAUTH === "geopay") {
     //   // const response = yield call(fireBaseBackend.logout);
     //   yield put(logoutUserSuccess(response));
     // }
@@ -40,7 +40,7 @@ function* logoutUser({ payload: { history } }) {
 
 function* socialLogin({ payload: { type, history } }) {
   try {
-    if (import.meta.env.VITE_APP_DEFAULTAUTH === "ezipay") {
+    if (import.meta.env.VITE_APP_DEFAULTAUTH === "geopay") {
       // const fireBaseBackend = getFirebaseBackend();
       // const response = yield call(fireBaseBackend.socialLoginUser, type);
       // if (response) {

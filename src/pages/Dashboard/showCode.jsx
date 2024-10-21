@@ -12,7 +12,7 @@ import qrCode from "../../assets/images/qr_code.png";
 const ShowCode = props => {
 
   //meta title
-  document.title = "Ezipay | Dashboard";
+  document.title = "GeoPay | Dashboard";
 
   return (
     <React.Fragment>
@@ -20,7 +20,7 @@ const ShowCode = props => {
         <div className="bg_overlay_1"></div>
         <div className="bg_overlay_2"></div>
         <Container fluid>
-          <h2 className="mb-3">Ezipay Wallet</h2>
+          <h2 className="mb-3">GeoPay Wallet</h2>
           <div className="card rounded-4 h-100">
             <div className="card-body">
               <div className="d-flex justify-content-end mb-4">
@@ -30,7 +30,7 @@ const ShowCode = props => {
                 <Col className="d-flex flex-column position-relative">
                   <div className="p-5 d-flex flex-column justify-content-center align-items-center rounded-4 h-100">
                     <h4 className="mb-3 text-uppercase text-dark">To Pay Pritesh Salla</h4>
-                    <p className="mb-0">Share your EziPay QR Code to receive payments</p>
+                    <p className="mb-0">Share your GeoPay QR Code to receive payments</p>
                     <img src={qrCode} className="w-100 p-lg-5" alt="" />
                   </div>
                   <h5 className="position-absolute vertical-seprator d-none d-lg-block end-0 top-50">

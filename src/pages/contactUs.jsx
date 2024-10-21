@@ -15,7 +15,7 @@ import { TbWorldWww } from "react-icons/tb";
 const ContactUs = props => {
 
   //meta title
-  document.title = "Ezipay | Dashboard";
+  document.title = "Geopay | Dashboard";
 
   return (
     <React.Fragment>
@@ -49,7 +49,7 @@ const ContactUs = props => {
                     </div>
                   </Form>
                   <h3 className="text-uppercase text-center mt-3">Adress</h3>
-                  <p className="text-center">EziPay Limited 5th Floor The CORE, <br /> No. 62 ICT Avenue, Cybercity 72201, Ebene,<br /> Republic of Mauritius</p>
+                  <p className="text-center">GeoPay Limited 5th Floor The CORE, <br /> No. 62 ICT Avenue, Cybercity 72201, Ebene,<br /> Republic of Mauritius</p>
                   <Row>
                     <Col xs={12} md={4} lg={6} xxl={4} className="d-flex align-items-center mb-3">
                       <PiPhoneCallLight className="fs-1 me-2"/>
@@ -62,14 +62,14 @@ const ContactUs = props => {
                       <HiOutlineMailOpen className="fs-1 me-2"/>
                       <span>
                         <h6 className="fw-bold mb-1">EMAIL</h6>
-                        <h6 className="m-0 text-muted">support@ezipay.global</h6>
+                        <h6 className="m-0 text-muted">support@geopay.global</h6>
                       </span>
                     </Col>
                     <Col xs={12} md={4} lg={6} xxl={4} className="d-flex align-items-center mb-3">
                       <TbWorldWww className="fs-1 me-2"/>
                       <span>
                         <h6 className="fw-bold mb-1">Website</h6>
-                        <h6 className="m-0 text-muted">www.ezipay.global</h6>
+                        <h6 className="m-0 text-muted">www.geopay.global</h6>
                       </span>
                     </Col>
                   </Row>
