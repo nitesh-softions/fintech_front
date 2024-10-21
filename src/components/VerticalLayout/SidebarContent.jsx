@@ -21,6 +21,9 @@ import { BiLogOut } from "react-icons/bi";
 import { withTranslation } from "react-i18next";
 import { useCallback } from "react";
 
+import supportImage from "../../assets/images/vectors/support-vector.png";
+import { Button } from "reactstrap";
+
 const SidebarContent = (props) => {
   const ref = useRef();
   const path = useLocation();
@@ -156,7 +159,7 @@ const SidebarContent = (props) => {
   return (
     <React.Fragment>
       <SimpleBar className="sidebar-container pb-4" ref={ref}>
-        <div id="sidebar-menu">
+        <div id="sidebar-menu" className="h-100 d-flex flex-column justify-content-between">
           <ul className="metismenu list-unstyled" id="side-menu">
             {/* <li>
               <Link to="/#" className="has-arrow">
@@ -242,6 +245,11 @@ const SidebarContent = (props) => {
               </Link>
             </li>
           </ul>
+          <div className="pb-5 pb-xl-0 d-flex flex-column align-items-center ">
+            <img className="w-100 h-auto" src={supportImage} alt="logo" height="17" />
+            <p className="p-3 border rounded-3 small mb-0">It could be related to customer support, technical support, product guides</p>
+            <Button className="btn btn-secondary btn-sm w-fit mb-lg-5 mb-xxl-0" style={{ marginTop: "-14px" }}>Support</Button>
+          </div>
         </div>
       </SimpleBar>
     </React.Fragment>

@@ -80,7 +80,7 @@ const BeneficiaryModal = ({ isOpen, toggle, selectedUser }) => {
         </ModalFooter>
       </Modal>
 
-      {/* Delete Confirmation Modal */}
+      {/* Modals */}
       <DeleteConfirmationModal isOpen={isDeleteModalOpen} toggle={toggleDeleteModal} onConfirm={handleDelete} selectedUser={selectedUser} />
       <EditBeneficiaryModal isOpen={isEditModalOpen} toggle={toggleEditModal} onConfirm={handleEdit} selectedUser={selectedUser} />
     </>

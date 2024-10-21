@@ -23,10 +23,6 @@ import { Link } from "react-router-dom";
 import "../../components/CommonForBoth/rightbar.scss";
 
 //Import images
-import bgimg1 from "../../assets/images/sidebar/img1.jpg";
-import bgimg2 from "../../assets/images/sidebar/img2.jpg";
-import bgimg3 from "../../assets/images/sidebar/img3.jpg";
-import bgimg4 from "../../assets/images/sidebar/img4.jpg";
 import layout1 from "../../assets/images/layouts/layout-1.jpg";
 import layout2 from "../../assets/images/layouts/layout-2.jpg";
 import layout3 from "../../assets/images/layouts/layout-3.jpg";
@@ -441,12 +437,13 @@ const RightSidebar = props => {
                       />
 
                       <label htmlFor="leftsidebarThemebgimg1">
-                        <img
+                        {/* <img
                           alt="sidebar bg image"
                           width="90"
                           className="themesideimage rounded"
                           src={bgimg1}
-                        />
+                        /> */}
+                        bgimg1
                       </label>
                       {"   "}
 
@@ -464,12 +461,13 @@ const RightSidebar = props => {
                       />
 
                       <label htmlFor="leftsidebarThemebgimg2">
-                        <img
+                        {/* <img
                           alt="sidebar bg image"
                           width="90"
                           className="themesideimage rounded"
                           src={bgimg2}
-                        />
+                        /> */}
+                        bgimg2
                       </label>
                       {"   "}
 
@@ -487,12 +485,13 @@ const RightSidebar = props => {
                       />
 
                       <label htmlFor="leftsidebarThemebgimg3">
-                        <img
+                        {/* <img
                           alt="sidebar bg image"
                           width="90"
                           className="themesideimage rounded"
                           src={bgimg3}
-                        />
+                        /> */}
+                        bgimg3
                       </label>
                       {"   "}
                       <input
@@ -508,12 +507,13 @@ const RightSidebar = props => {
                         }}
                       />
                       <label htmlFor="leftsidebarThemebgimg4">
-                        <img
+                        {/* <img
                           alt="sidebar bg image"
                           width="90"
                           className="themesideimage rounded"
                           src={bgimg4}
-                        />
+                        /> */}
+                        bgimg4
                       </label>
                       {"   "}
 

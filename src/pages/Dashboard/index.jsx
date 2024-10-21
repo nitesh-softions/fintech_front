@@ -11,12 +11,13 @@ import AutoScrollCarousel from "../../components/Common/AutoScrollCarousel";
 import CustomButton from "../../components/Common/CustomButton";
 import { LiaWalletSolid } from "react-icons/lia";
 import { LuPlusCircle } from "react-icons/lu";
-import { TbBriefcaseFilled } from "react-icons/tb";
-import { FaMobile } from "react-icons/fa";
+import { CiBank } from "react-icons/ci";
+import { FaHandHoldingUsd, FaMobile } from "react-icons/fa";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import QuickTransferCard from "../../components/Dashboard/QuickTransferCard";
 import RecentTransactionCard from "../../components/Dashboard/RecentTransactionCard";
+import { TfiWorld } from "react-icons/tfi";
 
 
 const Dashboard = props => {
@@ -33,9 +34,9 @@ const Dashboard = props => {
     navigate("/dashboard/geopay-wallet");
   };
 
-  const handleDirectPayCompanies = () => {
-    navigate("/dashboard/direct-pay-companies");
-  };
+  // const handleDirectPayCompanies = () => {
+  //   navigate("/dashboard/direct-pay-companies");
+  // };
 
   const handleTransferToMobileMoney = () => {
     navigate("/dashboard/transfer-to-mobile-money");
@@ -43,6 +44,10 @@ const Dashboard = props => {
 
   const handleInternationalAirtime = () => {
     navigate("/dashboard/international-airtime");
+  };
+
+  const handleTransferMoneyToBank = () => {
+    navigate("/dashboard/transfer-to-mobile-money");
   };
 
   return (
@@ -69,10 +74,10 @@ const Dashboard = props => {
               <Container fluid>
                 <h4 className="font-size-18 mt-4">Pay Services</h4>
                 <Row className="gap-3 gap-md-0">
-                  <Col md={4}><CustomButton onClick={handleDirectPayCompanies} btn_heading="Direct Pay Company" btn_icon={TbBriefcaseFilled}/></Col>
-                  <Col md={4}><CustomButton onClick={handleTransferToMobileMoney} btn_heading="Transfer to Mobile Money" btn_icon={FaMobile} /></Col>
-                  <Col md={4}><CustomButton onClick={handleInternationalAirtime} btn_heading="International Airtime " btn_icon={BiSolidPhoneCall} /></Col>
-                  {/* <Col xs={6} md={3} className="mt-5"><CustomButton onClick={handleTransferMoneyToBank} btn_heading="Transfer to Bank" btn_icon={PiBankFill} /></Col> */}
+                  {/* <Col md={4}><CustomButton onClick={handleDirectPayCompanies} btn_heading="Direct Pay Company" btn_icon={TbBriefcaseFilled}/></Col> */}
+                  <Col md={4}><CustomButton onClick={handleTransferToMobileMoney} btn_heading="Transfer to Mobile Money" btn_icon={FaHandHoldingUsd} /></Col>
+                  <Col md={4}><CustomButton onClick={handleInternationalAirtime} btn_heading="International Airtime " btn_icon={TfiWorld} /></Col>
+                  <Col xs={4}><CustomButton onClick={handleTransferMoneyToBank} btn_heading="Transfer to Bank" btn_icon={CiBank } /></Col>
                 </Row>
               </Container>
             </Col>
@@ -88,8 +93,10 @@ const Dashboard = props => {
         </Col>
         <Col xxl={3} className="pt-4 pt-xxl-0 border-start border-dark border-opacity-25 ps-lg-4 quick-transfer-column">
           <Container fluid className="p-0">
-            <h4 className="font-size-18">Quick Transfer</h4>
-            <QuickTransferCard />
+            <div className="d-none d-xxl-block">
+              <h4 className="font-size-18">Quick Transfer</h4>
+              <QuickTransferCard />
+            </div>
             <h4 className="font-size-18">Recent Transaction</h4>
             <RecentTransactionCard />
           </Container>

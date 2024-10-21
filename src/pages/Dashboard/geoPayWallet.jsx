@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 import Select from "react-select";
+import CountrySelect from "../../components/Common/CountrySelect";
 
 const optionGroup = [
   {
@@ -18,9 +19,9 @@ const countryCode = [
   {
     label: "Countries",
     options: [
-      { label: "+91 India", value: "India" },
-      { label: "+1 Canada", value: "Canada" },
-      { label: "+27 South Africa", value: "South-Africa" },
+      { label: "+91", value: "India" },
+      { label: "+1", value: "Canada" },
+      { label: "+27", value: "South-Africa" },
     ],
   },
 ];
@@ -37,6 +38,10 @@ const GeoPayWallet = (props) => {
     setSelectedGroup(selectedGroup);
   };
 
+  const selectedCountry = (selectedGroup) => {
+    console.log('selectedGroup', selectedGroup);
+  }
+
   return (
     <React.Fragment>
       <Container fluid className="page-content">
@@ -45,9 +50,9 @@ const GeoPayWallet = (props) => {
             <div className="card rounded-4 h-100 border-1">
               <div className="card-body">
                 <form className="mb-4">
-                  <Select value={selectedGroup} onChange={handleSelectGroup} options={optionGroup} className="bg-light mb-3 rounded-3" />
+                  <CountrySelect selectedCountry={selectedCountry}/>
                   <div className="d-flex align-items-center gap-2">
-                    <Select value={selectedGroup} onChange={handleSelectGroup} options={countryCode} className="bg-light mb-3 rounded-3" />
+                    <Select value={selectedGroup} onChange={handleSelectGroup} options={countryCode} className="bg-light mb-3 rounded-3" styles={{width: "100px"}}/>
                     <input id="" placeholder="Mobile Number" type="number" className="form-control number-input bg-light mb-3 border-light" onInput={(e) => { if (e.target.value.length > 10) { e.target.value = e.target.value.slice(0, 10); } }} />
                   </div>
                   <input name="" id="" placeholder="Enter you Amount USD" type="text" className="form-control bg-light mb-3 border-light" />
