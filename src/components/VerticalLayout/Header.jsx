@@ -48,7 +48,7 @@ const Header = props => {
           
           <div className="d-flex align-items-center">
 
-            <button type="button" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-3 d-flex align-items-center rounded-3 font-size-14 fw-semibold"><IoWallet className='fs-4 '/> <span className='ms-1'>₹ 12000</span></button>
+            <button type="button" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-3 d-flex align-items-center rounded-3 font-size-14 fw-semibold"><IoWallet className='fs-4 '/> <span className='ms-1'>12000 USD</span></button>
             {/* <LanguageDropdown /> */}
 
             <NotificationDropdown />

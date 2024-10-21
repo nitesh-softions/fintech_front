@@ -80,9 +80,16 @@
 }
 
 .sidebar-container {
-  height: 80%;
+  height: 89%;
   overflow-y: auto;
+  .simplebar-wrapper{
+    height: 100%;
+    .simplebar-content {
+      height: 100%;
+    }
+  }
   #sidebar-menu {
+    height: 100%;
     max-height: 100%;
     .mm-active {
       >.has-arrow {

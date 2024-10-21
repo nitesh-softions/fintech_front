@@ -51,7 +51,7 @@ const ProfileMenu = (props) => {
       >
         <DropdownToggle className="btn header-item d-flex align-items-center" id="page-header-user-dropdown" tag="button" >
           <img
-            className="rounded-3 header-profile-user p-0"
+            className="rounded-circle header-profile-user p-0"
             src={user1}
             alt="Header Avatar"
           />

@@ -12,6 +12,7 @@ import RightSidebar from "../CommonForBoth/RightSidebar";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from 'reselect';
+import QuickPayModal from "../Dashboard/modals/QuickPayModal";
 
 const Layout = (props) => {
   const dispatch = useDispatch();
@@ -148,6 +149,8 @@ const Layout = (props) => {
         <div className="main-content bg-white rounded-4">
           <Sidebar theme={leftSideBarTheme} type={leftSideBarType} isMobile={isMobile} />
           {props.children}
+
+          <QuickPayModal />
         </div>
         {/* <Footer /> */}
       </div>
