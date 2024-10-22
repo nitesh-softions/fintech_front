@@ -56,7 +56,7 @@ const Dashboard = props => {
             </div>
           </Container>
     
-          <Row className="mt-4">
+          <Row>
             <Col md={8} className="order-1 order-md-0 pe-lg-5">
               <Container fluid>
                 <h4 className="font-size-18">Wallet Services</h4>

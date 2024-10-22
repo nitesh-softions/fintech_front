@@ -27,7 +27,7 @@ const WalletToWallet = props => {
         <Container fluid className="h-100">
           <Row className="h-100">
             <Col xxl={9} className="pe-lg-4">     
-              <h2 className="mb-3 font-size-22">Wallet to Wallet</h2>
+              <h2 className="mb-4 font-size-22">Wallet to Wallet</h2>
               <Row>
                 <Col md={6} className="d-flex flex-column position-relative">
                   <div className="p-5 d-flex flex-column justify-content-center align-items-center rounded-4 h-100">
