@@ -1,9 +1,30 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
-const CompanyFormStep2 = ({ handleChange, handleSubmit }) => {
+const CompanyFormStep2 = ({ handleSubmit }) => {
+
+  const formik = useFormik({
+    initialValues: {
+      companyName: '',
+      companyAddress: '',
+      tin: '',
+      vat: ''
+    },
+    validationSchema: Yup.object({
+      companyName: Yup.string().required('Comany Name is required'),
+        companyAddress: Yup.string().required('Company Address is required'),
+        tin: Yup.string().required('TIN is required'),
+        vat: Yup.string().required('VAT is required')
+    }),
+    onSubmit: (values) => {
+      handleSubmit(values); // Pass values to parent
+    },
+  });
+
   return (
-    <form onSubmit={(event) => { event.preventDefault(); handleSubmit(2); }}>
+    <form onSubmit={formik.handleSubmit}>
       <Row className="mb-3">
         <Col md={6}>
           <label>Corporate/Company Name</label>
@@ -11,12 +32,12 @@ const CompanyFormStep2 = ({ handleChange, handleSubmit }) => {
             name="companyName" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
-            // onChange={formik.handleChange}
-            // value={formik.values.companyFirstName}
+            onChange={formik.handleChange}
+            value={formik.values.companyName}
           />
-          {/* {formik.errors.companyFirstName && (
-            <div className="text-danger">{formik.errors.companyFirstName}</div>
-          )} */}
+          {formik.errors.companyName && (
+            <div className="text-danger">{formik.errors.companyName}</div>
+          )}
         </Col>
         <Col md={6}>
           <label>Corporate/Company Address</label>
@@ -24,12 +45,12 @@ const CompanyFormStep2 = ({ handleChange, handleSubmit }) => {
             name="companyAddress" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
-            // onChange={formik.handleChange} 
-            // value={formik.values.companyLastName}
+            onChange={formik.handleChange} 
+            value={formik.values.companyAddress}
           />
-          {/* {formik.errors.companyLastName && (
-            <div className="text-danger">{formik.errors.companyLastName}</div>
-          )} */}
+          {formik.errors.companyAddress && (
+            <div className="text-danger">{formik.errors.companyAddress}</div>
+          )}
         </Col>
       </Row>
       <Row className="mb-3">
@@ -39,12 +60,12 @@ const CompanyFormStep2 = ({ handleChange, handleSubmit }) => {
             name="tin" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
-            // onChange={formik.handleChange} 
-            // value={formik.values.companyPassword}
+            onChange={formik.handleChange}
+            value={formik.values.tin}
           />
-          {/* {formik.errors.companyPassword && (
-            <div className="text-danger">{formik.errors.companyPassword}</div>
-          )} */}
+          {formik.errors.tin && (
+            <div className="text-danger">{formik.errors.tin}</div>
+          )}
         </Col>
         <Col md={6}>
           <label>VAT</label>
@@ -52,12 +73,12 @@ const CompanyFormStep2 = ({ handleChange, handleSubmit }) => {
             name="vat" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
-            // onChange={formik.handleChange} 
-            // value={formik.values.companyConfirmPassword}
+            onChange={formik.handleChange}
+            value={formik.values.vat}
           />
-          {/* {formik.errors.companyConfirmPassword && (
-            <div className="text-danger">{formik.errors.companyConfirmPassword}</div>
-          )} */}
+          {formik.errors.vat && (
+            <div className="text-danger">{formik.errors.vat}</div>
+          )}
         </Col>
       </Row>
       <div className="text-center">

@@ -7,7 +7,7 @@ import AuthLeftBanner from "../../components/Common/AuthLeftBanner";
 import bgAuthOverlay from '../../assets/images/bgAuthOverlay.svg';
 
 
-const Verification = (props) => {
+const CreateNewPassword = (props) => {
     return(
         <React.Fragment>
             <div className="container-fluid vh-100 overflow-hidden">
@@ -23,15 +23,23 @@ const Verification = (props) => {
                                 <img src={bgAuthOverlay} alt="Logo" className="img-fluid w-50 h-50"/>
                             </div>
 
-                            {/* <!-- Verification Form Container --> */}
+                            {/* <!-- Create New Password Form Container --> */}
                             <div className="w-100 px-5 auth-container w-50">
-                                <h3 className="text-center text-black mb-3">Verification</h3>
-                                <p className="text-center text-secondary mb-4 ">We have send the OTP on 8882356364 will apply auto to the fields</p>
+                                <h3 className="text-center text-black mb-3">Create New Password</h3>
+                                <p className="text-center text-secondary mb-4 ">Your new password must be different from previous used passwords.</p>
                                 <div className="mb-4">
                                     <div className="mb-3">
-                                        <label>OTP</label>
+                                        <label>Password</label>
                                         <div className="input-group">
-                                            <input type="email" className="form-control border-0 bg-light" placeholder="Enter your OTP" />
+                                            <input type="password" className="form-control border-0 bg-light"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="mb-4">
+                                    <div className="mb-3">
+                                        <label>Confirm Password</label>
+                                        <div className="input-group">
+                                            <input type="password" className="form-control border-0 bg-light"/>
                                         </div>
                                     </div>
                                 </div>
@@ -49,8 +57,8 @@ const Verification = (props) => {
     )
 }
 
-Verification.propTypes = {
+CreateNewPassword.propTypes = {
     history: PropTypes.object,
 };
   
-export default withRouter(Verification);
+export default withRouter(CreateNewPassword);

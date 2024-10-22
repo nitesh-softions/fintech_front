@@ -39,7 +39,6 @@ const Register = props => {
     })
   );
 
-  // const { user, registrationError } = useSelector(AccountProperties);
 
   useEffect(() => {
     dispatch(apiError(""));
@@ -63,26 +62,60 @@ const Register = props => {
   });
 
   // Function to handle form submission and mark the step as completed
-  const handleFormSubmit = (step) => {
-    if(step >=3) {
-      navigate('/login');
-      return
-    };
-    // event.preventDefault();
-    // if (formValues[`step${step}`] !== '') {
+  const handleFormSubmit = (step, values) => {
+    setFormValues({ ...formValues, [`step${step}`]: values });
+
+    // Check if all required fields in the current step are valid
+    if (values) {
       setStepsCompleted({ ...stepsCompleted, [step]: true });
-      setActiveStep(step + 1);  // Move to the next step
-      // console.log("hey jack:", formValues[`step${step}`]);
-    // } else {
-    //   alert('Please fill out the form to proceed.');
-    // }
+      if (step < 3) {
+        setActiveStep(step + 1); // Move to next step
+      } else {
+        // Final step - submit the full form data
+        // console.log('All steps completed:', formValues);
+        navigate('/login');  // Redirect to login after successful completion
+      }
+    } else {
+      alert('Please fill out the form to proceed.');
+    }
   };
 
   // Handle form input changes
   const handleChange = (e) => {
-    validation.handleChange(e); 
+    formik.handleChange(e); 
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
+
+
+    // Formik validation schema for Individual form
+    const individualValidationSchema = Yup.object().shape({
+      firstName: Yup.string().required("First Name is required"),
+      lastName: Yup.string().required("Last Name is required"),
+      email: Yup.string().email("Invalid email address").required("Email is required"),
+      password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], "Passwords must match")
+        .required("Confirm password is required"),
+      terms: Yup.boolean().oneOf([true], "You must accept the terms and conditions")
+    });
+  
+    // Formik setup for Individual form
+    const formik = useFormik({
+      initialValues: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        terms: false
+      },
+      validationSchema: individualValidationSchema,
+      onSubmit: values => {
+        navigate("/login"); // Redirect after form submission
+      }
+    });
+
+
 
 
   return (
@@ -121,51 +154,103 @@ const Register = props => {
                   <TabContent activeTab={activeTab1} className="text-black">
                     {/* Individual Section */}
                     <TabPane tabId="1">
-                      <form>
-                        <Row className="">
+                      <form onSubmit={formik.handleSubmit}>
+                        <Row>
                           {/* First Name */}
                           <Col md={6}>
                             <label>First Name</label>
-                            <input name="firstName" type="text" className="form-control bg-light border-light mb-3" />
+                            <input 
+                              name="firstName" 
+                              type="text" 
+                              className={`form-control bg-light border-light mb-3 ${formik.errors.firstName && formik.touched.firstName ? 'is-invalid' : ''}`} 
+                              onChange={formik.handleChange} 
+                              value={formik.values.firstName}
+                            />
+                            {formik.errors.firstName && formik.touched.firstName ? (
+                              <div className="invalid-feedback">{formik.errors.firstName}</div>
+                            ) : null}
                           </Col>
                           {/* Last Name */}
                           <Col md={6}>
                             <label>Last Name</label>
-                            <input name="lastName" type="text" className="form-control bg-light border-light mb-3" />
+                            <input 
+                              name="lastName" 
+                              type="text" 
+                              className={`form-control bg-light border-light mb-3 ${formik.errors.lastName && formik.touched.lastName ? 'is-invalid' : ''}`} 
+                              onChange={formik.handleChange} 
+                              value={formik.values.lastName}
+                            />
+                            {formik.errors.lastName && formik.touched.lastName ? (
+                              <div className="invalid-feedback">{formik.errors.lastName}</div>
+                            ) : null}
                           </Col>
                         </Row>
 
                         {/* Email */}
                         <div className="mb-3">
                           <label>Email</label>
-                          <input name="email" type="email" className="form-control bg-light border-light" />
+                          <input 
+                            name="email" 
+                            type="email" 
+                            className={`form-control bg-light border-light ${formik.errors.email && formik.touched.email ? 'is-invalid' : ''}`} 
+                            onChange={formik.handleChange} 
+                            value={formik.values.email}
+                          />
+                          {formik.errors.email && formik.touched.email ? (
+                            <div className="invalid-feedback">{formik.errors.email}</div>
+                          ) : null}
                         </div>
 
                         <Row className="mb-3">
                           {/* Password */}
                           <Col md={6}>
                             <label>Password</label>
-                            <input name="password" type="password" className="form-control bg-light border-light mb-2" />
+                            <input 
+                              name="password" 
+                              type="password" 
+                              className={`form-control bg-light border-light mb-2 ${formik.errors.password && formik.touched.password ? 'is-invalid' : ''}`} 
+                              onChange={formik.handleChange} 
+                              value={formik.values.password}
+                            />
+                            {formik.errors.password && formik.touched.password ? (
+                              <div className="invalid-feedback">{formik.errors.password}</div>
+                            ) : null}
                           </Col>
                           {/* Confirm Password */}
                           <Col md={6}>
                             <label>Confirm Password</label>
-                            <input name="confirmPassword" type="password" className="form-control bg-light border-light mb-2" />
+                            <input 
+                              name="confirmPassword" 
+                              type="password" 
+                              className={`form-control bg-light border-light mb-2 ${formik.errors.confirmPassword && formik.touched.confirmPassword ? 'is-invalid' : ''}`} 
+                              onChange={formik.handleChange} 
+                              value={formik.values.confirmPassword}
+                            />
+                            {formik.errors.confirmPassword && formik.touched.confirmPassword ? (
+                              <div className="invalid-feedback">{formik.errors.confirmPassword}</div>
+                            ) : null}
                           </Col>
                         </Row>
 
                         {/* Terms and Conditions */}
                         <div className="mb-2">
-                          <input type="checkbox" id="terms" className="me-2"/>
-                          <label htmlFor="terms">
-                            I have read the User agreement And I accept it
-                          </label>
+                          <input 
+                            type="checkbox" 
+                            id="terms" 
+                            className="me-2" 
+                            name="terms"
+                            onChange={formik.handleChange} 
+                            value={formik.values.terms}
+                          />
+                          <label htmlFor="terms">I have read the User agreement and I accept it</label>
+                          {formik.errors.terms && formik.touched.terms ? (
+                            <div className="text-danger">{formik.errors.terms}</div>
+                          ) : null}
                         </div>
 
                         {/* Register Button */}
                         <div className="text-center">
-                          {/* <button className="btn btn-primary w-100 btn-signup" type="submit">Register</button> */}
-                          <Link to={"/login"} className="btn btn-primary w-100 btn-signup" type="submit">Register</Link>
+                          <button className="btn btn-primary w-100 btn-signup" type="submit">Register</button>
                         </div>
                       </form>
                     </TabPane>
@@ -197,21 +282,21 @@ const Register = props => {
                         {
                           activeStep === 1 && (
                             <div className="form-step">
-                              <CompanyFormStep1 handleChange={handleChange} handleSubmit={handleFormSubmit}/>
+                                <CompanyFormStep1 handleSubmit={(values) => handleFormSubmit(1, values)} />
                             </div>
                           )}
                         {/* Form 2 */}
                         {
                           activeStep === 2 && (
                             <div className="form-step">
-                              <CompanyFormStep2 handleChange={handleChange} handleSubmit={handleFormSubmit}/>
+                                 <CompanyFormStep2 handleSubmit={(values) => handleFormSubmit(2, values)} />
                             </div>
                           )}
                         {/* Form 3 */}
                         {
                           activeStep === 3 && (
                             <div className="form-step">
-                              <CompanyFormStep3 handleChange={handleChange} handleSubmit={handleFormSubmit}/>
+                               <CompanyFormStep3 handleSubmit={(values) => handleFormSubmit(3, values)} />
                             </div>
                           )}
                       {/* </form> */}

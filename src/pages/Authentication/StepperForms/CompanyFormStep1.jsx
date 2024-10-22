@@ -3,55 +3,58 @@ import { Row, Col, Input } from 'reactstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const CompanyFormStep1 = ({ handleChange, handleSubmit }) => {
+const CompanyFormStep1 = ({ handleSubmit }) => {
 
-    // const formik = useFormik({
-    //     initialValues: {
-    //       companyFirstName: '',
-    //       companyLastName: '',
-    //       companyPassword: '',
-    //       companyConfirmPassword: ''
-    //     },
-    //     validationSchema: Yup.object({
-    //         companyFirstName: Yup.string().required('Company name is required'),
-    //         companyLastName: Yup.string().required('Company Last name is required'),
-    //         companyPassword: Yup.string().required('Passowrd is required'),
-    //         companyConfirmPassword: Yup.string().required('Confirm password is required'),
-    //     }),
-    //     onSubmit: (values) => {
-    //       handleSubmit(values); // Pass values to parent
-    //     },
-    // });
+    const formik = useFormik({
+        initialValues: {
+            firstName: '',
+            lastName: '',
+            mobile: '',
+            telephone: '',
+            password: '',
+            confirmPassword: ''
+        },
+        validationSchema: Yup.object({
+            firstName: Yup.string().required('First name is required'),
+            lastName: Yup.string().required('Last name is required'),
+            mobile: Yup.string().required('Mobile number is required'),
+            password: Yup.string().required('Passowrd is required'),
+            confirmPassword: Yup.string().required('Confirm password is required'),
+        }),
+        onSubmit: (values) => {
+          handleSubmit(values); // Pass values to parent
+        },
+    });
 
 
   return (
-    <form onSubmit={(event) => { event.preventDefault(); handleSubmit(1); }}>
+    <form onSubmit={formik.handleSubmit}>
       <Row className="mb-3">
         <Col md={6}>
           <label>First Name</label>
           <input
-            name="companyFirstName" 
+            name="firstName" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
-            // onChange={formik.handleChange}
-            // value={formik.values.companyFirstName}
+            onChange={formik.handleChange}
+            value={formik.values.firstName}
           />
-          {/* {formik.errors.companyFirstName && (
-            <div className="text-danger">{formik.errors.companyFirstName}</div>
-          )} */}
+          {formik.errors.firstName && (
+            <div className="text-danger">{formik.errors.firstName}</div>
+          )}
         </Col>
         <Col md={6}>
           <label>Last Name</label>
           <input 
-            name="companyLastName" 
+            name="lastName" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
-            // onChange={formik.handleChange} 
-            // value={formik.values.companyLastName}
+            onChange={formik.handleChange} 
+            value={formik.values.lastName}
           />
-          {/* {formik.errors.companyLastName && (
-            <div className="text-danger">{formik.errors.companyLastName}</div>
-          )} */}
+          {formik.errors.lastName && (
+            <div className="text-danger">{formik.errors.lastName}</div>
+          )}
         </Col>
       </Row>
       <Row className="mb-3">
@@ -64,9 +67,14 @@ const CompanyFormStep1 = ({ handleChange, handleSubmit }) => {
             </select>
             </div>
             <div className='col-8 d-flex'>
-                <Input type="text" className="form-control bg-light mb-3 border-light ms-2" />
+                <Input type="text" name='mobile' className="form-control bg-light mb-3 border-light ms-2" 
+                onChange={formik.handleChange} 
+                value={formik.values.mobile}/>
             </div>
           </div>
+          {formik.errors.mobile && (
+              <div className="text-danger">{formik.errors.mobile}</div>
+            )}
         </Col>
         <Col md={6}>
           <label>Telephone (Optional)</label>
@@ -77,7 +85,12 @@ const CompanyFormStep1 = ({ handleChange, handleSubmit }) => {
             </select>
             </div>
             <div className='col-8 d-flex'>
-                <Input type="text" className="form-control bg-light mb-3 border-light ms-2" />
+                <Input type="text" name='telephone' className="form-control bg-light mb-3 border-light ms-2" 
+                onChange={formik.handleChange} 
+                value={formik.values.telephone}/>
+                {formik.errors.telephone && (
+                  <div className="text-danger">{formik.errors.telephone}</div>
+                )}
             </div>
           </div>
         </Col>
@@ -86,28 +99,28 @@ const CompanyFormStep1 = ({ handleChange, handleSubmit }) => {
         <Col md={6}>
           <label>Password</label>
           <input 
-            name="companyPassword" 
+            name="password" 
             type="password" 
             className="form-control bg-light border-light mb-2" 
-            // onChange={formik.handleChange} 
-            // value={formik.values.companyPassword}
+            onChange={formik.handleChange} 
+            value={formik.values.password}
           />
-          {/* {formik.errors.companyPassword && (
-            <div className="text-danger">{formik.errors.companyPassword}</div>
-          )} */}
+          {formik.errors.password && (
+            <div className="text-danger">{formik.errors.password}</div>
+          )}
         </Col>
         <Col md={6}>
           <label>Confirm Password</label>
           <input 
-            name="companyConfirmPassword" 
+            name="confirmPassword" 
             type="password" 
             className="form-control bg-light border-light mb-2" 
-            // onChange={formik.handleChange} 
-            // value={formik.values.companyConfirmPassword}
+            onChange={formik.handleChange} 
+            value={formik.values.confirmPassword}
           />
-          {/* {formik.errors.companyConfirmPassword && (
-            <div className="text-danger">{formik.errors.companyConfirmPassword}</div>
-          )} */}
+          {formik.errors.confirmPassword && (
+            <div className="text-danger">{formik.errors.confirmPassword}</div>
+          )}
         </Col>
       </Row>
       <div className="text-center">

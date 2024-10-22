@@ -10,6 +10,7 @@ import Logout from "../pages/Authentication/Logout";
 import Register from "../pages/Authentication/Register";
 import ForgetPwd from "../pages/Authentication/ForgetPassword";
 import Verification from "../pages/Authentication/Verification";
+import CreateNewPassword from "../pages/Authentication/CreateNewPassword";
 
 // // Dashboard
 import DashboardPage from "../pages/Dashboard/index";
@@ -66,6 +67,7 @@ const publicRoutes = [
   { path: "/forgot-password", component: <ForgetPwd /> },
   { path: "/register", component: <Register /> },
   { path: "/verification", component: <Verification /> },
+  { path: "/create-new-password", component: <CreateNewPassword /> },
 ];
 
 export { authProtectedRoutes, publicRoutes };
