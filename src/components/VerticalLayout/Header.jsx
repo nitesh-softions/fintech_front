@@ -20,8 +20,9 @@ import {
   toggleLeftmenu,
   changeSidebarType,
 } from "../../store/actions";
-import { IoWallet } from 'react-icons/io5';
-import { CgMenuLeft } from 'react-icons/cg';
+
+// Icons
+import SVGIcons from '../Common/SVGIcons';
 
 const Header = props => {
   // const location = useLocation();
@@ -43,12 +44,12 @@ const Header = props => {
       <header id="page-topbar">
         <div className="navbar-header border-bottom border-dark border-opacity-10">
           <div>
-            <button type="button" onClick={() => { tToggle(); }} className="btn btn-sm px-1 d-lg-none header-item bg-light h-fit rounded-0 rounded-end" id="vertical-menu-btn" > <CgMenuLeft className="font-size-24" /> </button>
+            <button type="button" onClick={() => { tToggle(); }} className="btn btn-sm px-1 d-lg-none header-item bg-light h-fit rounded-0 rounded-end" id="vertical-menu-btn" > <SVGIcons.CgMenuLeft className="font-size-24" /> </button>
           </div>
           
           <div className="d-flex align-items-center">
 
-            <button type="button" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-3 d-flex align-items-center rounded-3 font-size-14 fw-semibold"><IoWallet className='fs-4 '/> <span className='ms-1'>12000 USD</span></button>
+            <button type="button" className="btn btn-light h-fit w-fit mx-1 mx-md-2 px-3 d-flex align-items-center rounded-3 font-size-14 fw-semibold"><SVGIcons.IoWallet className='fs-4 '/> <span className='ms-1'>12000 USD</span></button>
             {/* <LanguageDropdown /> */}
 
             <NotificationDropdown />

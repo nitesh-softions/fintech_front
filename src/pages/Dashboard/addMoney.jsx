@@ -1,13 +1,8 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import Select from "react-select";
 import { Col, 
   Container, 
   Row, 
-  Card,
-  CardBody,
-  CardText,
-  CardTitle,
   Nav,
   TabContent,
   NavItem,
@@ -21,33 +16,15 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 //i18n
 import { withTranslation } from "react-i18next";
 
-// Icons
-import { IoWallet } from "react-icons/io5";
-import { RxDotFilled } from "react-icons/rx";
+import QuickTransferCard from "../../components/Dashboard/QuickTransferCard";
+import RecentTransactionCard from "../../components/Dashboard/RecentTransactionCard";
 
-import securePayment from "../../assets/images/secure_payment.gif";
-
-import classnames from "classnames";
-import CountrySelect from "../../components/Common/CountrySelect";
-
-const optionGroup = [
-  {
-      // label: "Picnic",
-      options: [
-          { label: "India", value: "India" },
-          { label: "USA", value: "USA" },
-          { label: "Canada", value: "Canada" },
-      ],
-  },
-];
-
+import classnames from "classnames";;
+import AddMcb from "../../components/Common/forms/add_money/AddMcb";
+import AddMobileMoney from "../../components/Common/forms/add_money/AddMobileMoney";
+import AddNigeriaBank from "../../components/Common/forms/add_money/AddNigeriaBank";
 
 const AddMoney = props => {
-  const [selectedGroup, setSelectedGroup] = useState(null);
-  const handleSelectGroup = (selectedGroup) => {
-    setSelectedGroup(selectedGroup);
-  }
-
   //meta title
   document.title = "GeoPay | Add Money";
   
@@ -59,9 +36,7 @@ const AddMoney = props => {
     }
   };
 
-  const selectedCountry = (selectedGroup) => {
-    console.log('selectedGroup', selectedGroup);
-  }
+  
 
 
 
@@ -70,116 +45,48 @@ const AddMoney = props => {
       <Container fluid className="page-content">
         <Row className="h-100">
           <Col className="d-flex flex-column">
-            <h2 className="mb-3">Add Money</h2>
-            <Card className="rounded-4 h-100 border-2">
-              <CardBody>
-                <Nav pills className="nav-justified">
-                  <NavItem>
-                    <NavLink className={classnames({ active: activeTab1 === "5" })} onClick={() => { toggle1("5"); }}>
-                      <span className="d-none d-sm-block">Visa/Master AMEX Card USD(MCB)</span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink className={classnames({ active: activeTab1 === "6" })} onClick={() => { toggle1("6"); }}>
-                      <span className="d-none d-sm-block">Mobile Money</span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink className={classnames({ active: activeTab1 === "7" })} onClick={() => { toggle1("7"); }}>
-                      <span className="d-none d-sm-block">Nigeria-Bank Debit</span>
-                    </NavLink>
-                  </NavItem>
-                </Nav>
+            <h2 className="mb-4 font-size-22">Add Money</h2>
+            <div className="mb-3">
+              <Nav pills className="nav-justified d-grid d-md-flex gap-2 bg-secondary-subtle p-1 rounded">
+                <NavItem>
+                  <NavLink className={classnames({ active: activeTab1 === "5" })} onClick={() => { toggle1("5"); }}>
+                    <span>Visa/Master AMEX Card USD(MCB)</span>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink className={classnames({ active: activeTab1 === "6" })} onClick={() => { toggle1("6"); }}>
+                    <span>Mobile Money</span>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink className={classnames({ active: activeTab1 === "7" })} onClick={() => { toggle1("7"); }}>
+                    <span>Nigeria-Bank Debit</span>
+                  </NavLink>
+                </NavItem>
+              </Nav>
 
-                <TabContent activeTab={activeTab1} className="pt-3 text-muted">
-                  <TabPane tabId="5">
-                    <form>
-                      <input placeholder="Enter Amount in USD (eg : 100 or eg : 0.0)" type="text" className="form-control bg-light mb-3 border-light" />
-                      <div className="d-flex align-content-center gap-1">
-                        <p className="font-size-11 pe-xl-5">
-                          Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated.
-                        </p>
-                        <button type="submit" className="btn btn-primary w-md text-center h-25"> Add Money </button>
-                      </div>
-                    </form>
-                  </TabPane>
-                  <TabPane tabId="6">
-                    <form>
-                      <CountrySelect selectedCountry={selectedCountry}/>
-                      <div className="col d-flex">
-                        <div className="col-2">
-                          <select className="form-control bg-light mb-3 border-light px-1">
-                            <option>+123</option>
-                          </select>
-                        </div>
-                        <div className="col-10 d-flex">
-                          <input placeholder="Enter Mobile Number" type="text" className="form-control bg-light mb-3 border-light ms-2" />
-                        </div>
-                      </div>
-                      <input placeholder="Enter Amount in USD" type="text" className="form-control bg-light mb-3 border-light" />
-                      <input placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
-                      <textarea placeholder="Account Descriptions" className="form-control bg-light mb-3 border-light" />
-                      <div className="d-flex align-content-center gap-1">
-                        <p className="font-size-11 pe-xl-5">
-                          Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated.
-                        </p>
-                        <button type="submit" className="btn btn-primary w-md text-center h-25"> Add Money </button>
-                      </div>
-                    </form>
-                  </TabPane>
-                  <TabPane tabId="7">
-                    <form>
-                      <input placeholder="Enter Amount in USD (eg : 100 or eg : 0.0)" type="text" className="form-control bg-light mb-3 border-light" />
-                      <div className="d-flex align-content-center gap-1">
-                        <p className="font-size-11 pe-xl-5">
-                          Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated.
-                        </p>
-                        <button type="submit" className="btn btn-primary w-md text-center h-25"> Add Money </button>
-                      </div>
-                    </form>
-                  </TabPane>
-                </TabContent>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col className="d-flex flex-column">
-            <h2 className="mb-3">Recent Transactions</h2>
-            <div className="card rounded-4 h-100 border-2">
-              <div className="card-body">
-                <div className="table-responsive">
-                  <table className="table table-borderless mb-0">
-                    <thead>
-                      <tr>
-                        <th className="border-bottom text-muted opacity-75">Servicer Name</th>
-                        <th className="border-bottom text-muted opacity-75">Mobile No</th>
-                        <th className="border-bottom text-muted opacity-75">Amount</th>
-                        <th className="border-bottom text-muted opacity-75">Transaction Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-bottom">
-                        <td>Google Play</td>
-                        <td>9874563210</td>
-                        <td>50,000</td>
-                        <td className="fw-bold text-success">Done</td>
-                      </tr>
-                      <tr className="border-bottom">
-                        <td>Google Play</td>
-                        <td>9874563210</td>
-                        <td>50,000</td>
-                        <td className="fw-bold text-warning">Pending</td>
-                      </tr>
-                      <tr className="border-bottom">
-                      <td>Google Play</td>
-                        <td>9874563210</td>
-                        <td>50,000</td>
-                        <td className="fw-bold text-success">Done</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              <TabContent activeTab={activeTab1} className="pt-3 text-muted">
+                <TabPane tabId="5">
+                  <AddMcb />
+                </TabPane>
+                <TabPane tabId="6">
+                  <AddMobileMoney />
+                </TabPane>
+                <TabPane tabId="7">
+                  <AddNigeriaBank />
+                </TabPane>
+              </TabContent>
             </div>
+          </Col>
+          <Col xxl={3} className="pt-4 pt-xxl-0 border-start border-dark border-opacity-25 ps-lg-4 quick-transfer-column">
+            <Container fluid className="p-0">
+              <div className="d-none d-xxl-block">
+                <h4 className="font-size-18">Quick Transfer</h4>
+                <QuickTransferCard />
+              </div>
+              <h4 className="font-size-18">Recent Transaction</h4>
+              <RecentTransactionCard />
+            </Container>
           </Col>
         </Row>
       </Container>

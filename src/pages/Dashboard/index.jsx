@@ -8,16 +8,12 @@ import { withTranslation } from "react-i18next";
 import AutoScrollCarousel from "../../components/Common/AutoScrollCarousel";
 
 // Icons
+import SVGIcons from "../../components/Common/SVGIcons";
+
 import CustomButton from "../../components/Common/CustomButton";
-import { LiaWalletSolid } from "react-icons/lia";
-import { LuPlusCircle } from "react-icons/lu";
-import { CiBank } from "react-icons/ci";
-import { FaHandHoldingUsd, FaMobile } from "react-icons/fa";
-import { BiSolidPhoneCall } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import QuickTransferCard from "../../components/Dashboard/QuickTransferCard";
 import RecentTransactionCard from "../../components/Dashboard/RecentTransactionCard";
-import { TfiWorld } from "react-icons/tfi";
 
 
 const Dashboard = props => {
@@ -31,7 +27,7 @@ const Dashboard = props => {
   };
   
   const handleGeopayWallet = () => {
-    navigate("/dashboard/geopay-wallet");
+    navigate("/dashboard/wallet-to-wallet");
   };
 
   // const handleDirectPayCompanies = () => {
@@ -60,13 +56,13 @@ const Dashboard = props => {
             </div>
           </Container>
     
-          <Row className="mt-4">
+          <Row>
             <Col md={8} className="order-1 order-md-0 pe-lg-5">
               <Container fluid>
                 <h4 className="font-size-18">Wallet Services</h4>
                 <Row className="gap-3 gap-md-0">
-                  <Col md={4}><CustomButton onClick={handleAddMoney} btn_heading="Add Money" btn_icon={LuPlusCircle} /></Col>
-                  <Col md={4}><CustomButton onClick={handleGeopayWallet}  btn_heading="Softieons Wallet" btn_icon={LiaWalletSolid} /></Col>
+                  <Col md={4}><CustomButton onClick={handleAddMoney} btn_heading="Add Money" btn_icon={SVGIcons.AddCircle} /></Col>
+                  <Col md={4}><CustomButton onClick={handleGeopayWallet}  btn_heading="Wallet to Wallet" btn_icon={SVGIcons.LinedWallet} /></Col>
                   {/* <Col className="mt-5"><CustomButton onClick={handleViewPayment}  btn_heading="View Payment " btn_icon={IoWallet} /></Col> */}
                   {/* <Col className="mt-5"><CustomButton onClick={handleShowCode}  btn_heading="Show Code" btn_icon={BsQrCodeScan} /></Col> */}
                 </Row>
@@ -75,9 +71,9 @@ const Dashboard = props => {
                 <h4 className="font-size-18 mt-4">Pay Services</h4>
                 <Row className="gap-3 gap-md-0">
                   {/* <Col md={4}><CustomButton onClick={handleDirectPayCompanies} btn_heading="Direct Pay Company" btn_icon={TbBriefcaseFilled}/></Col> */}
-                  <Col md={4}><CustomButton onClick={handleTransferToMobileMoney} btn_heading="Transfer to Mobile Money" btn_icon={FaHandHoldingUsd} /></Col>
-                  <Col md={4}><CustomButton onClick={handleInternationalAirtime} btn_heading="International Airtime " btn_icon={TfiWorld} /></Col>
-                  <Col xs={4}><CustomButton onClick={handleTransferMoneyToBank} btn_heading="Transfer to Bank" btn_icon={CiBank } /></Col>
+                  <Col md={4}><CustomButton onClick={handleTransferToMobileMoney} btn_heading="Transfer to Mobile Money" btn_icon={SVGIcons.HandHoldingDollar} /></Col>
+                  <Col md={4}><CustomButton onClick={handleInternationalAirtime} btn_heading="International Airtime " btn_icon={SVGIcons.TfiWorld} /></Col>
+                  <Col xs={4}><CustomButton onClick={handleTransferMoneyToBank} btn_heading="Transfer to Bank" btn_icon={SVGIcons.PiBankLight  } /></Col>
                 </Row>
               </Container>
             </Col>

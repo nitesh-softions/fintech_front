@@ -13,11 +13,10 @@ import Verification from "../pages/Authentication/Verification";
 
 // // Dashboard
 import DashboardPage from "../pages/Dashboard/index";
-import AddMoney from "../pages/dashboard/addmoney";
-import GeoPayWallet from "../pages/Dashboard/geoPayWallet";
+import WalletToWallet from "../pages/Dashboard/WalletToWallet";
+import AddMoney from "../pages/Dashboard/addMoney";
 import ViewPayment from "../pages/Dashboard/viewPayment";
 import ShowCode from "../pages/Dashboard/showCode";
-
 import TransactionPage from "../pages/transactionPage";
 import NotificationPage from "../pages/notificationPage";
 import StatisticsPage from "../pages/statisticsPage";
@@ -33,7 +32,7 @@ const authProtectedRoutes = [
   // Dashboard
   { path: "/dashboard", component: <DashboardPage /> },
   { path: "/dashboard/add-money", component: <AddMoney /> },
-  { path: "/dashboard/geopay-wallet", component: <GeoPayWallet /> },
+  { path: "/dashboard/wallet-to-wallet", component: <WalletToWallet /> },
   { path: "/dashboard/view-payment", component: <ViewPayment /> },
   { path: "/dashboard/show-code", component: <ShowCode /> },
   { path: "/dashboard/direct-pay-companies", component: <DirectPayCompanies /> },

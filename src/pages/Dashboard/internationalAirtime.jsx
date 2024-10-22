@@ -1,91 +1,77 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "reactstrap";
-import Select from "react-select";
+import { Button, Col, Container, Form, Input, Row } from "reactstrap";
+import QuickTransferCard from "../../components/Dashboard/QuickTransferCard";
+import RecentTransactionCard from "../../components/Dashboard/RecentTransactionCard";
+import CountryCodeSelect from "../../components/Common/CountryCodeSelect";
+import SVGIcons from "../../components/Common/SVGIcons";
+import ReactSelect from "../../components/Common/ReactSelect";
 
-const countryCode = [
-  {
-    label: "Countries",
-    options: [
-      { label: "+91 India", value: "India" },
-      { label: "+1 Canada", value: "Canada" },
-      { label: "+27 South Africa", value: "South-Africa" },
-    ],
-  },
+const operators = [
+  { value: 'airtel', label: 'Airtel' },
+  { value: 'jio', label: 'Jio' },
+  { value: 'vodafone-idea', label: 'Vodafone Idea (Vi)' },
+  { value: 'bsnl', label: 'BSNL' },
+  { value: 'mtnl', label: 'MTNL' }
 ];
 
 const InternationalAirtime = (props) => {
-  const [selectedGroup, setSelectedGroup] = useState(null);
-
   //meta title
   useEffect(() => {
-    document.title = "Softieons | Dashboard";
+    document.title = "GeoPay | International Airtime";
   }, []);
 
-  const handleSelectGroup = (selectedGroup) => {
-    setSelectedGroup(selectedGroup);
+  const selectedCountry = (selectedGroup) => {
+    console.log(selectedGroup);
   };
 
   return (
     <React.Fragment>
       <Container fluid className="page-content">
-        <Row className="h-100">
-          <Col className="d-flex flex-column">
-            <div className="card rounded-4 h-100 border-1">
-              <div className="card-body">
-                <form className="mb-4">
-                  <input name="" id="" placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
-                  <div className="d-flex align-items-center gap-2">
-                    <Select value={selectedGroup} onChange={handleSelectGroup} options={countryCode} className="bg-light mb-3 rounded-3" />
-                    <input id="" placeholder="Mobile Number" type="number" className="form-control number-input bg-light mb-3 border-light" onInput={(e) => { if (e.target.value.length > 10) { e.target.value = e.target.value.slice(0, 10); } }} />
-                  </div>
-                  <textarea name="" id="" placeholder="Account Descriptions" className="form-control bg-light mb-3 border-light" />
-                  <div className="d-xl-flex align-content-center justify-content-between gap-1">
-                    <p className="font-size-11 pe-xl-5"> Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated. </p>
-                    <button type="submit" className="btn btn-primary w-md text-center h-25" > Add Money </button>
-                  </div>
-                </form>
+        <Row>
+          <Col xxl={9} className="pe-lg-4">
+            <h2 className="mb-4 font-size-22">International Airtime</h2>
+            <Form className="mb-3">
+              <Input name="" id="" placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
+              <div className="d-flex align-items-center gap-2">
+                <CountryCodeSelect selectedCountry={selectedCountry}/>
+                <Input id="" placeholder="Mobile Number" type="number" className="form-control number-input bg-light mb-3 border-light" onInput={(e) => { if (e.target.value.length > 10) { e.target.value = e.target.value.slice(0, 10); } }} />
               </div>
-            </div>
-          </Col>
-          <Col className="d-flex flex-column">
-            <div className="card rounded-4 h-100 border-1">
-              <div className="card-body">
-                <h4 className="font-size-18">Recent Transactions</h4>
-                <div className="table-responsive">
-                  <table className="table table-borderless mb-0">
-                    <thead>
-                      <tr>
-                        <th className="border-bottom text-muted opacity-75"> Servicer Name </th>
-                        <th className="border-bottom text-muted opacity-75"> Mobile No </th>
-                        <th className="border-bottom text-muted opacity-75"> Amount </th>
-                        <th className="border-bottom text-muted opacity-75"> Transaction Status </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-bottom">
-                        <td>Google Play</td>
-                        <td>9874563210</td>
-                        <td>50,000</td>
-                        <td className="fw-bold text-success">Done</td>
-                      </tr>
-                      <tr className="border-bottom">
-                        <td>Google Play</td>
-                        <td>9874563210</td>
-                        <td>50,000</td>
-                        <td className="fw-bold text-warning">Pending</td>
-                      </tr>
-                      <tr className="border-bottom">
-                        <td>Google Play</td>
-                        <td>9874563210</td>
-                        <td>50,000</td>
-                        <td className="fw-bold text-success">Done</td>
-                      </tr>
-                    </tbody>
-                  </table>
+              <div className="mb-3">
+                <ReactSelect options={operators} isMulti={false} placeholder="Select Operator"/>
+              </div>
+              <div className="d-xl-flex align-content-center justify-content-end gap-1">
+                <Button type="submit" color="primary" className="w-md text-center h-25" > Proceed </Button>
+              </div>
+            </Form>
+
+            <h2 className="mb-4 font-size-14">My Recharge & Bills</h2>
+            <div>
+              <div>
+                <div size="lg" className="w-100 text-start mb-1 p-2 rounded-2 border g-2" >
+                  <label className="font-size-13 text-dark fw-semibold text-nowrap border-bottom w-100 pb-1">Jio</label>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <Row className="w-100">
+                      <Col xs={6} md={3}><span class="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Name: <span className="text-muted fw-normal">Tejash Sharma</span></span></Col>
+                      <Col xs={6} md={3}><span class="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Date: <span className="text-muted fw-normal">25/10/2024</span></span></Col>
+                      <Col xs={6} md={3}><span class="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Mobile: <span className="text-muted fw-normal">+919874563210</span></span></Col>
+                      <Col xs={6} md={3}><span class="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Amount: <span className="text-muted fw-normal">16.31 USD</span></span></Col>
+                    </Row>
+                    <SVGIcons.IoMdRefresh className="bg-secondary p-1 rounded-circle font-size-18 text-white" style={{minWidth: '20px', height: '20px'}}/>
+                  </div>
                 </div>
               </div>
             </div>
+          </Col>
+          <Col xxl={3} className="pt-4 pt-xxl-0 border-start border-dark border-opacity-25 ps-lg-4 quick-transfer-column">
+            <Container fluid className="p-0">
+              <div className="d-none d-xxl-block">
+                <h4 className="font-size-18">Quick Transfer</h4>
+                <QuickTransferCard />
+              </div>
+              <h4 className="font-size-18">Recent Transaction</h4>
+              <RecentTransactionCard />
+            </Container>
           </Col>
         </Row>
       </Container>
