@@ -27,3 +27,79 @@
     height: 15px;
     width: 15px;
 }
+
+
+
+.stepper-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .stepper-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    z-index: 1;
+  }
+  
+  .stepper-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* Align the line vertically */
+    left: 0%;
+    width: 100%;
+    height: 2px;
+    background-color: #d3d3d3; /* Default line color (gray) */
+    z-index: -1;
+    transform: translateX(50%); /* Position it correctly */
+  }
+  
+  .stepper-item.completed:not(:last-child)::after {
+    background-color: black; /* Line becomes black when step is completed */
+  }
+  
+  .circle {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #d3d3d3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .circle.active,
+  .circle.completed {
+    border-color: black; /* Active/completed circle border */
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    background-color: white; /* Initially white dot */
+    border-radius: 50%;
+  }
+  
+  .dot.filled {
+    background-color: black; /* Filled dot when step is completed */
+  }
+  
+  .stepper-item p {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .form-step {
+    margin-top: 30px;
+  }
+  

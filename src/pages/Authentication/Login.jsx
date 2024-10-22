@@ -22,7 +22,7 @@ import { FaGoogle } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner.jsx";
-import bgchain from '../../assets/images/bgchain.svg';
+import bgAuthOverlay from '../../assets/images/bgAuthOverlay.svg';
 
 
 const Login = (props) => {
@@ -84,7 +84,7 @@ const Login = (props) => {
                     
                         {/* <!-- Top right corner watermark --> */}
                         <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
-                            <img src={bgchain} alt="Logo" className="img-fluid w-50 h-50"/>
+                            <img src={bgAuthOverlay} alt="Logo" className="img-fluid w-50 h-50"/>
                         </div>
 
                         {/* <!-- Login Form Container --> */}
