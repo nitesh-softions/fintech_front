@@ -4,6 +4,8 @@ import Select from "react-select";
 import BeneficiaryModal from "../../components/Dashboard/modals/BeneficiaryModal";
 import AddBeneficiaryModal from "../../components/Dashboard/modals/AddBeneficiaryModal";
 import CountrySelect from "../../components/Common/CountrySelect";
+import QuickTransferCard from "../../components/Dashboard/QuickTransferCard";
+import RecentTransactionCard from "../../components/Dashboard/RecentTransactionCard";
 
 const users = [
   { id: 1, name: "John Doe" },
@@ -46,69 +48,37 @@ const TransferToMobileMoney = (props) => {
   return (
     <React.Fragment>
       <Container fluid className="page-content">
-        <Row className="h-100">
-          <Col className="d-flex flex-column">
-            <div className="card rounded-4 h-100 border-1">
-              <div className="card-body">
-                <div className="mb-4">
-                  {/* Country select with flags */}
-                  <div className="d-xl-flex justify-content-end mb-3">
-                    <button className="btn btn-primary w-md text-center h-25" onClick={() => setAddBeneficiaryModal(true)}> Add Beneficiary Details </button>
-                  </div>
-                  <CountrySelect selectedCountry={selectedCountry}/>
-                  <div className="position-relative search-2 col-md-6 ms-md-auto">
-                    <input type="text" className="form-control" placeholder="Search users..." value={searchTerm} onChange={handleSearchChange} />
-                    <span className="bx bx-search-alt position-absolute font-size-20 opacity-50" />
-                  </div>
-                  <ul className="list-group mt-3">
-                    {filteredUsers.map(user => (
-                      <li key={user.id} className="list-group-item d-flex justify-content-between align-items-center" onClick={() => handleUserClick(user)} style={{ cursor: "pointer" }}>
-                        {user.name}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+        <Row>
+          <Col xxl={9} className="pe-lg-4 d-flex flex-column justify-content-between">
+            <div className="mb-4">
+              {/* Country select with flags */}
+              <div className="d-xl-flex justify-content-between align-items-center mb-4">
+                <h2 className="font-size-22">Transfer To Mobile Money</h2>
+                <button className="btn btn-primary w-md text-center h-25" onClick={() => setAddBeneficiaryModal(true)}> Add Beneficiary Details </button>
               </div>
+              <CountrySelect selectedCountry={selectedCountry}/>
+              <div className="position-relative search-2 col-md-6 ms-md-auto">
+                <input type="text" className="form-control" placeholder="Search users..." value={searchTerm} onChange={handleSearchChange} />
+                <span className="bx bx-search-alt position-absolute font-size-20 opacity-50" />
+              </div>
+              <ul className="list-group mt-3">
+                {filteredUsers.map(user => (
+                  <li key={user.id} className="list-group-item d-flex justify-content-between align-items-center" onClick={() => handleUserClick(user)} style={{ cursor: "pointer" }}>
+                    {user.name}
+                  </li>
+                ))}
+              </ul>
             </div>
           </Col>
-          <Col className="d-flex flex-column">
-            <div className="card rounded-4 h-100 border-1">
-              <div className="card-body">
-                <h4 className="font-size-18">Recent Transactions</h4>
-                <div className="table-responsive">
-                  <table className="table table-borderless mb-0">
-                    <thead>
-                      <tr>
-                        <th className="border-bottom text-muted opacity-75">Servicer Name</th>
-                        <th className="border-bottom text-muted opacity-75">Mobile No</th>
-                        <th className="border-bottom text-muted opacity-75">Amount</th>
-                        <th className="border-bottom text-muted opacity-75">Transaction Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-bottom">
-                        <td>Google Play</td>
-                        <td>9874563210</td>
-                        <td>50,000</td>
-                        <td className="fw-bold text-success">Done</td>
-                      </tr>
-                      <tr className="border-bottom">
-                        <td>Google Play</td>
-                        <td>9874563210</td>
-                        <td>50,000</td>
-                        <td className="fw-bold text-warning">Pending</td>
-                      </tr>
-                      <tr className="border-bottom">
-                        <td>Google Play</td>
-                        <td>9874563210</td>
-                        <td>50,000</td>
-                        <td className="fw-bold text-success">Done</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+          <Col xxl={3} className="pt-4 pt-xxl-0 border-start border-dark border-opacity-25 ps-lg-4 quick-transfer-column">
+            <Container fluid className="p-0">
+              <div className="d-none d-xxl-block">
+                <h4 className="font-size-18">Quick Transfer</h4>
+                <QuickTransferCard />
               </div>
-            </div>
+              <h4 className="font-size-18">Recent Transaction</h4>
+              <RecentTransactionCard />
+            </Container>
           </Col>
         </Row>
       </Container>

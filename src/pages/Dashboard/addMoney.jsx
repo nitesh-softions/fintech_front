@@ -45,7 +45,7 @@ const AddMoney = props => {
       <Container fluid className="page-content">
         <Row className="h-100">
           <Col className="d-flex flex-column">
-            <h2 className="mb-3 font-size-22">Add Money</h2>
+            <h2 className="mb-4 font-size-22">Add Money</h2>
             <div className="mb-3">
               <Nav pills className="nav-justified d-grid d-md-flex gap-2 bg-secondary-subtle p-1 rounded">
                 <NavItem>

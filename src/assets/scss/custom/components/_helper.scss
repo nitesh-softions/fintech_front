@@ -116,6 +116,15 @@
   }
 }
 
+.transition-transform {
+  transition: transform 0.3s ease; /* Smooth transition for rotation */
+}
+
+.rotate-90 {
+  transform: rotate(90deg); /* Rotate to the right */
+}
+
+
 .quick-transfer-card {
   .swiper {
     .swiper-button-prev {
@@ -259,6 +268,7 @@
     .css-hlgwow{
         display: flex;
         gap: 0.5rem;
+        flex-wrap: nowrap;
     }
 }
 
