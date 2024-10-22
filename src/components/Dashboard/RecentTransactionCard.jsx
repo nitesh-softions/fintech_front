@@ -1,6 +1,5 @@
 import React from 'react';
-import { PiPaypalLogoDuotone } from 'react-icons/pi';
-import { HiOutlineCurrencyDollar } from "react-icons/hi2";
+import SVGIcons from '../Common/SVGIcons';
 import { Table } from 'reactstrap';
 
 const RecentTransactionCard = () => {
@@ -12,7 +11,7 @@ const RecentTransactionCard = () => {
             <tr>
               <td style={{width: '55px'}}>
                 <div className={`avatar-title bg-warning-subtle rounded-circle text-warning font-size-24`} style={{height: '40px', width: '40px'}}>
-                  <PiPaypalLogoDuotone />
+                  <SVGIcons.PiPaypalLogoDuotone />
                 </div>
               </td>
 
@@ -32,7 +31,7 @@ const RecentTransactionCard = () => {
             <tr>
               <td style={{width: '55px'}}>
                 <div className={`avatar-title bg-primary-subtle rounded-circle text-primary font-size-24`} style={{height: '40px', width: '40px'}}>
-                  <HiOutlineCurrencyDollar />
+                  <SVGIcons.HiOutlineCurrencyDollar />
                 </div>
               </td>
 
@@ -132,7 +131,7 @@ const RecentTransactionCard = () => {
             <tr>
               <td style={{width: '55px'}}>
                 <div className={`avatar-title bg-warning-subtle rounded-circle text-warning font-size-24`} style={{height: '40px', width: '40px'}}>
-                  <PiPaypalLogoDuotone />
+                  <SVGIcons.PiPaypalLogoDuotone />
                 </div>
               </td>
 
@@ -152,7 +151,7 @@ const RecentTransactionCard = () => {
             <tr>
               <td style={{width: '55px'}}>
                 <div className={`avatar-title bg-primary-subtle rounded-circle text-primary font-size-24`} style={{height: '40px', width: '40px'}}>
-                  <HiOutlineCurrencyDollar />
+                  <SVGIcons.HiOutlineCurrencyDollar />
                 </div>
               </td>
 

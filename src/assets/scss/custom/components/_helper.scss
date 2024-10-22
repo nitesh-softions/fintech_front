@@ -288,11 +288,12 @@
     border: none !important;
   }
 
-  .css-1nmdiq5-menu {
-    background-color: #fff !important;
-    box-shadow: 0 0 0 1px var(--#{$prefix}border-color),
-      0 4px 11px var(--#{$prefix}border-color) !important;
-  }
+}
+
+.css-1nmdiq5-menu {
+  background-color: #fff !important;
+  box-shadow: 0 0 0 1px var(--#{$prefix}border-color),
+    0 4px 11px var(--#{$prefix}border-color) !important;
 }
 
 .modal-content {

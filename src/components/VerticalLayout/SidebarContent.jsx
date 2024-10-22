@@ -10,12 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 import withRouter from "../Common/withRouter";
 
 // Icons
-import { RxDashboard } from "react-icons/rx";
-import { CgFileDocument } from "react-icons/cg";
-import { PiBell } from "react-icons/pi";
-import { BsBarChart } from "react-icons/bs";
-import { IoSettingsOutline } from "react-icons/io5";
-import { BiLogOut } from "react-icons/bi";
+import SVGIcons from "../Common/SVGIcons";
 
 //i18n
 import { withTranslation } from "react-i18next";
@@ -189,32 +184,32 @@ const SidebarContent = (props) => {
 
             <li>
               <Link to="/dashboard" onClick={tToggle} className="">
-                <RxDashboard />
+                <SVGIcons.RxDashboard />
                 <span>{props.t("Dashboards")}</span>
               </Link>
             </li>
 
             <li>
               <Link to="/transaction" onClick={tToggle} className="">
-                <CgFileDocument />
+                <SVGIcons.CgFileDocument />
                 <span>{props.t("Transaction")}</span>
               </Link>
             </li>
             <li>
               <Link to="/notification" onClick={tToggle}>
-                <PiBell />
+                <SVGIcons.PiBell />
                 <span>{props.t("Notification")}</span>
               </Link>
             </li>
             <li>
               <Link to="/statistics" onClick={tToggle}>
-                <BsBarChart />
+                <SVGIcons.BsBarChart />
                 <span>{props.t("Statistics")}</span>
               </Link>
             </li>
             <li>
               <Link to="/settings" onClick={tToggle}>
-                <IoSettingsOutline/>
+                <SVGIcons.IoSettingsOutline/>
                 <span>{props.t("Settings")}</span>
               </Link>
             </li>
@@ -240,7 +235,7 @@ const SidebarContent = (props) => {
 
             <li>
               <Link to="/logout">
-                <BiLogOut />
+                <SVGIcons.BiLogOut />
                 <span>{props.t("Logout")}</span>
               </Link>
             </li>

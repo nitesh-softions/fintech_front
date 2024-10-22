@@ -25,7 +25,7 @@ const QuickPayModal = ({ onDelete }) => {
           <QuickPaySlider />
         </ModalBody>
       </Modal>
-    </div>
+    </div>  
   );
 };
 
