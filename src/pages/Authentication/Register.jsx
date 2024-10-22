@@ -19,52 +19,14 @@ import classnames from "classnames";
 
 // Import custom SCSS
 import '../../assets/scss/custom/components/authentication.scss';
+import CompanyFormStep1 from "./StepperForms/CompanyFormStep1";
+import CompanyFormStep2 from "./StepperForms/CompanyFormStep2";
+import CompanyFormStep3 from "./StepperForms/CompanyFormStep3";
 
 
 const Register = props => {
   
-  // const [selectedGroup, setSelectedGroup] = useState(null);
-  // const handleSelectGroup = (selectedGroup) => {
-  //   setSelectedGroup(selectedGroup);
-  // }
-
-  document.title = "Register | Skote - Vite React Admin & Dashboard Template";
-
   const dispatch = useDispatch();
-
-  const validation = useFormik({
-    enableReinitialize: true,
-    initialValues: {
-      email: '',
-      username: '',
-      password: '',
-      confirmPassword: '',
-      firstName: '', // Added this
-      lastName: '',  // Added this
-      companyFirstName: '', // Added for company section
-      companyLastName: '',
-      companyPassword: '',
-      companyConfirmPassword: '',
-      companyAddress: '',
-      tin: '',
-      vat: '',
-      bankName: '',
-      bankCode: '',
-      accountNumber: ''
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().required("Please Enter Your Email"),
-      username: Yup.string().required("Please Enter Your Username"),
-      password: Yup.string().required("Please Enter Your Password"),
-      confirmPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
-        .required('Please Confirm Your Password')
-    }),
-
-    onSubmit: (values) => {
-      dispatch(registerUser(values));
-    }
-  });
 
   const selectAccountState = (state) => state.Account;
   const AccountProperties = createSelector(
@@ -75,14 +37,14 @@ const Register = props => {
     })
   );
 
-  const { user, registrationError } = useSelector(AccountProperties);
+  // const { user, registrationError } = useSelector(AccountProperties);
 
   useEffect(() => {
     dispatch(apiError(""));
   }, []);
 
-
-  const [activeTab1, setActiveTab1] = useState("5");
+  // Individual/Company Tab State
+  const [activeTab1, setActiveTab1] = useState("1");
   const toggle1 = (tab) => {
     if (activeTab1 !== tab) {
       setActiveTab1(tab);
@@ -100,20 +62,22 @@ const Register = props => {
 
   // Function to handle form submission and mark the step as completed
   const handleFormSubmit = (step) => {
-    if (formValues[`step${step}`] !== '') {
+    // event.preventDefault();
+    // if (formValues[`step${step}`] !== '') {
       setStepsCompleted({ ...stepsCompleted, [step]: true });
       setActiveStep(step + 1);  // Move to the next step
-      // console.log("hey jack:");
-    } else {
-      alert('Please fill out the form to proceed.');
-    }
+      // console.log("hey jack:", formValues[`step${step}`]);
+    // } else {
+    //   alert('Please fill out the form to proceed.');
+    // }
   };
 
   // Handle form input changes
-  // const handleChange = (e) => {
-  //   console.log("jack: ",e);
-  //   setFormValues({ ...formValues, [e.target.name]: e.target.value });
-  // };
+  const handleChange = (e) => {
+    validation.handleChange(e); 
+    console.log("form filling: ",e.target.name);
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
 
 
   return (
@@ -138,12 +102,12 @@ const Register = props => {
                 <CardBody>
                   <Nav pills className="nav-justified px-3 gap-3 mb-3">
                     <NavItem className="border border-1 rounded">
-                      <NavLink className={classnames({ active: activeTab1 === "5" })} onClick={() => { toggle1("5"); }}>
+                      <NavLink className={classnames({ active: activeTab1 === "1" })} onClick={() => { toggle1("1"); }}>
                         <span className="d-sm-block">Individual</span>
                       </NavLink>
                     </NavItem>
                     <NavItem className="border border-1 rounded">
-                      <NavLink className={classnames({ active: activeTab1 === "6" })} onClick={() => { toggle1("6"); }}>
+                      <NavLink className={classnames({ active: activeTab1 === "2" })} onClick={() => { toggle1("2"); }}>
                         <span className="d-sm-block">Company</span>
                       </NavLink>
                     </NavItem>
@@ -151,37 +115,37 @@ const Register = props => {
 
                   <TabContent activeTab={activeTab1} className="text-black">
                     {/* Individual Section */}
-                    <TabPane tabId="5">
-                      <form onSubmit={validation.handleSubmit}>
+                    <TabPane tabId="1">
+                      <form>
                         <Row className="">
                           {/* First Name */}
                           <Col md={6}>
                             <label>First Name</label>
-                            <input name="firstName" type="text" className="form-control bg-light border-light mb-3" onChange={validation.handleChange} value={validation.values.firstName}/>
+                            <input name="firstName" type="text" className="form-control bg-light border-light mb-3" />
                           </Col>
                           {/* Last Name */}
                           <Col md={6}>
                             <label>Last Name</label>
-                            <input name="lastName" type="text" className="form-control bg-light border-light mb-3" onChange={validation.handleChange} value={validation.values.lastName}/>
+                            <input name="lastName" type="text" className="form-control bg-light border-light mb-3" />
                           </Col>
                         </Row>
 
                         {/* Email */}
                         <div className="mb-3">
                           <label>Email</label>
-                          <input name="email" type="email" className="form-control bg-light border-light" onChange={validation.handleChange} value={validation.values.email}/>
+                          <input name="email" type="email" className="form-control bg-light border-light" />
                         </div>
 
                         <Row className="mb-3">
                           {/* Password */}
                           <Col md={6}>
                             <label>Password</label>
-                            <input name="password" type="password" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.password}/>
+                            <input name="password" type="password" className="form-control bg-light border-light mb-2" />
                           </Col>
                           {/* Confirm Password */}
                           <Col md={6}>
                             <label>Confirm Password</label>
-                            <input name="confirmPassword" type="password" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.confirmPassword}/>
+                            <input name="confirmPassword" type="password" className="form-control bg-light border-light mb-2" />
                           </Col>
                         </Row>
 
@@ -201,7 +165,7 @@ const Register = props => {
                     </TabPane>
                     
                     {/* Company Section*/}
-                    <TabPane tabId="6">
+                    <TabPane tabId="2">
                       {/* <form> */}
                         {/* Stepper */}
                         <div className="stepper-wrapper">
@@ -227,117 +191,21 @@ const Register = props => {
                         {
                           activeStep === 1 && (
                             <div className="form-step">
-                              <form>
-                                <Row className="mb-3">
-                                  <Col md={6}>
-                                    <label>First Name</label>
-                                    <input name="companyFirstName" type="text" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.companyFirstName}/>
-                                  </Col>
-                                  <Col md={6}>
-                                    <label>Last Name</label>
-                                    <input name="companyLastName" type="text" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.companyLastName}/>
-                                  </Col>
-                                </Row>
-                                <Row className="mb-3">
-                                  <Col md={6}>
-                                    <label>Mobile Number</label>
-                                    <div className="col d-flex">
-                                      <div className="col-4">
-                                        <select className="form-control bg-light mb-3 border-light px-1">
-                                          <option>+123</option>
-                                        </select>
-                                      </div>
-                                      <div className="col-8 d-flex">
-                                        <input type="text" className="form-control bg-light mb-3 border-light ms-2" />
-                                      </div>
-                                    </div>
-                                  </Col>
-                                  <Col md={6}>
-                                    <label>Telephone (Optional)</label>
-                                    <div className="col d-flex">
-                                      <div className="col-4">
-                                        <select className="form-control bg-light mb-3 border-light px-1">
-                                          <option>+123</option>
-                                        </select>
-                                      </div>
-                                      <div className="col-8 d-flex">
-                                        <input type="text" className="form-control bg-light mb-3 border-light ms-2" />
-                                      </div>
-                                    </div>
-                                  </Col>
-                                </Row>
-                                <Row className="mb-3">
-                                  <Col md={6}>
-                                    <label>Password</label>
-                                    <input name="companyPassword" type="password" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.companyPassword}/>
-                                  </Col>
-                                  <Col md={6}>
-                                    <label>Confirm Password</label>
-                                    <input name="companyConfirmPassword" type="password" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.companyConfirmPassword}/>
-                                  </Col>
-                                </Row>
-                                <div className="text-center">
-                                  <button className="btn btn-primary w-100 btn-signup" type="submit" onClick={() => handleFormSubmit(1)}>Next</button>
-                                </div>
-                              </form>
+                              <CompanyFormStep1 handleChange={handleChange} handleSubmit={handleFormSubmit}/>
                             </div>
                           )}
                         {/* Form 2 */}
                         {
                           activeStep === 2 && (
                             <div className="form-step">
-                              <form>
-                                <Row className="mb-3">
-                                  <Col md={6}>
-                                    <label>Corporate/Company Name</label>
-                                    <input name="companyName" type="text" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.companyName}/>
-                                  </Col>
-                                  <Col md={6}>
-                                    <label>Corporate/Company Address</label>
-                                    <input name="companyAddress" type="text" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.companyAddress}/>
-                                  </Col>
-                                </Row>
-                                <Row className="mb-3">
-                                  <Col md={6}>
-                                    <label>TIN</label>
-                                    <input name="tin" type="text" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.tin}/>
-                                  </Col>
-                                  <Col md={6}>
-                                    <label>VAT</label>
-                                    <input name="vat" type="text" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.vat}/>
-                                  </Col>
-                                </Row>
-                                <div className="text-center">
-                                  <button className="btn btn-primary w-100 btn-signup" type="submit" onClick={() => handleFormSubmit(2)}>Next</button>
-                                </div>
-                              </form>
+                              <CompanyFormStep2 handleChange={handleChange} handleSubmit={handleFormSubmit}/>
                             </div>
                           )}
                         {/* Form 3 */}
                         {
                           activeStep === 3 && (
                             <div className="form-step">
-                              <form>
-                                <Row className="mb-3">
-                                  <Col md={6}>
-                                    <label>Bank Name</label>
-                                    <input name="bankName" type="text" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.bankName}/>
-                                  </Col>
-                                  <Col md={6}>
-                                    <label>Bank Code</label>
-                                    <input name="bankCode" type="text" className="form-control bg-light border-light mb-2" onChange={validation.handleChange} value={validation.values.bankCode}/>
-                                  </Col>
-                                </Row>
-                                <Row>
-                                  <Col md={12}>
-                                    <label>Account No</label>
-                                    <input name="accountNumber" type="text" className="form-control bg-light border-light mb-5" onChange={validation.handleChange} value={validation.values.accountNumber}/>
-                                  </Col>
-                                </Row>
-                              </form>
-                              <div className="text-center">
-                                  <button className="btn btn-primary w-100 btn-signup" type="submit" onClick={() => handleFormSubmit(3)}>Next</button>
-                              </div>
+                              <CompanyFormStep3 handleChange={handleChange} handleSubmit={handleFormSubmit}/>
                             </div>
                           )}
                       {/* </form> */}

@@ -28,166 +28,82 @@ import { userForgetPassword } from "../../store/actions";
 
 // import images
 import logo from "../../assets/images/logo.png";
+import AuthLeftBanner from "../../components/Common/AuthLeftBanner.jsx";
+import bgAuthOverlay from '../../assets/images/bgAuthOverlay.svg';
+
 
 const ForgetPasswordPage = (props) => {
   //meta title
-  document.title =
-    "Forget Password | Skote - Vite React Admin & Dashboard Template";
-  const dispatch = useDispatch();
+  // document.title =
+  //   "Forget Password | Skote - Vite React Admin & Dashboard Template";
+  // const dispatch = useDispatch();
 
-  const validation = useFormik({
-    // enableReinitialize : use this flag when initial values needs to be changed
-    enableReinitialize: true,
+  // const validation = useFormik({
+  //   // enableReinitialize : use this flag when initial values needs to be changed
+  //   enableReinitialize: true,
 
-    initialValues: {
-      email: "",
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().required("Please Enter Your Email"),
-    }),
-    onSubmit: (values) => {
-      dispatch(userForgetPassword(values, props.history));
-    },
-  });
+  //   initialValues: {
+  //     email: "",
+  //   },
+  //   validationSchema: Yup.object({
+  //     email: Yup.string().required("Please Enter Your Email"),
+  //   }),
+  //   onSubmit: (values) => {
+  //     dispatch(userForgetPassword(values, props.history));
+  //   },
+  // });
 
-  const selectForgotPasswordState = (state) => state.ForgetPassword;
-  const ForgotPasswordProperties = createSelector(
-    selectForgotPasswordState,
-    (forgetPassword) => ({
-      forgetError: forgetPassword.forgetError,
-      forgetSuccessMsg: forgetPassword.forgetSuccessMsg,
-    })
-  );
+  // const selectForgotPasswordState = (state) => state.ForgetPassword;
+  // const ForgotPasswordProperties = createSelector(
+  //   selectForgotPasswordState,
+  //   (forgetPassword) => ({
+  //     forgetError: forgetPassword.forgetError,
+  //     forgetSuccessMsg: forgetPassword.forgetSuccessMsg,
+  //   })
+  // );
 
-  const {
-    forgetError,
-    forgetSuccessMsg
-  } = useSelector(ForgotPasswordProperties);
+  // const {
+  //   forgetError,
+  //   forgetSuccessMsg
+  // } = useSelector(ForgotPasswordProperties);
 
   return (
     <React.Fragment>
-      <div className="home-btn d-none d-sm-block">
-        <Link to="/" className="text-dark">
-          <i className="bx bx-home h2" />
-        </Link>
-      </div>
-      <div className="account-pages my-5 pt-sm-5">
-        <Container>
-          <Row className="justify-content-center">
-            <Col md={8} lg={6} xl={5}>
-              <Card className="overflow-hidden">
-                <div className="bg-primary-subtlebg-soft-primary">
-                  <Row>
-                    <Col xs={7}>
-                      <div className="text-primary p-4">
-                        <h5 className="text-primary">Welcome Back !</h5>
-                        <p>Sign in to continue to Geopay.</p>
-                      </div>
-                    </Col>
-                    <Col className="col-5 align-self-end">
-                      {/* <img src={profile} alt="" className="img-fluid" /> */}
-                    </Col>
-                  </Row>
-                </div>
-                <CardBody className="pt-0">
-                  <div className="auth-logo">
-                    <Link to="/" className="auth-logo-light">
-                      <div className="avatar-md profile-user-wid mb-4">
-                        <span className="avatar-title rounded-circle bg-light">
-                          <img
-                            src={logo}
-                            alt=""
-                            className="rounded-circle"
-                            height="34"
-                          />
-                        </span>
-                      </div>
-                    </Link>
-                    <Link to="/" className="auth-logo-dark">
-                      <div className="avatar-md profile-user-wid mb-4">
-                        <span className="avatar-title rounded-circle bg-light">
-                          <img
-                            src={logo}
-                            alt=""
-                            className="rounded-circle"
-                            height="34"
-                          />
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="p-2">
-                    {forgetError && forgetError ? (
-                      <Alert color="danger" style={{ marginTop: "13px" }}>
-                        {forgetError}
-                      </Alert>
-                    ) : null}
-                    {forgetSuccessMsg ? (
-                      <Alert color="success" style={{ marginTop: "13px" }}>
-                        {forgetSuccessMsg}
-                      </Alert>
-                    ) : null}
+        <div className="container-fluid vh-100 overflow-hidden">
+            <div className="row h-100">
+                {/* Left Section */}
+                <AuthLeftBanner/>
 
-                    <Form
-                      className="form-horizontal"
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        validation.handleSubmit();
-                        return false;
-                      }}
-                    >
-                      <div className="mb-3">
-                        <Label className="form-label">Email</Label>
-                        <Input
-                          name="email"
-                          className="form-control"
-                          placeholder="Enter email"
-                          type="email"
-                          onChange={validation.handleChange}
-                          onBlur={validation.handleBlur}
-                          value={validation.values.email || ""}
-                          invalid={
-                            validation.touched.email && validation.errors.email
-                              ? true
-                              : false
-                          }
-                        />
-                        {validation.touched.email && validation.errors.email ? (
-                          <FormFeedback type="invalid">
-                            {validation.errors.email}
-                          </FormFeedback>
-                        ) : null}
-                      </div>
-                      <Row className="mb-3">
-                        <Col className="text-end">
-                          <button
-                            className="btn btn-primary w-md "
-                            type="submit"
-                          >
-                            Reset
-                          </button>
-                        </Col>
-                      </Row>
-                    </Form>
-                  </div>
-                </CardBody>
-              </Card>
-              <div className="mt-5 text-center">
-                <p>
-                  Go back to{" "}
-                  <Link to="login" className="font-weight-medium text-primary">
-                    Login
-                  </Link>{" "}
-                </p>
-                <p>
-                  © {new Date().getFullYear()} Geopay. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger" /> by Themesbrand
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+                {/* <!-- Right Section --> */}
+                <form className="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative bg-white">
+                    
+                        {/* <!-- Top right corner watermark --> */}
+                        <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
+                            <img src={bgAuthOverlay} alt="Logo" className="img-fluid w-50 h-50"/>
+                        </div>
+
+                        {/* <!-- Forgot Password Form Container --> */}
+                        <div className="w-100 px-5 auth-container">
+                            <h3 className="text-center text-black mb-3">Forgot Password</h3>
+                            <p className="text-center text-secondary mb-4 mx-4 px-3">It is a long established fact that a reader will be distracted by the readable content.</p>
+                            {/* <!-- Email Input --> */}
+                            <div className="mb-4">
+                                <div className="mb-3">
+                                    <label>Email</label>
+                                    <div className="input-group">
+                                        <input type="email" className="form-control border-0 bg-light" placeholder="Enter your email" />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* <!-- Login and Signup Buttons --> */}
+                            <div className="text-center">
+                                <button className="btn btn-primary w-100 btn-login" type="button">Send</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+
     </React.Fragment>
   );
 };

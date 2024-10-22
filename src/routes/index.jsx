@@ -9,6 +9,7 @@ import Login from "../pages/Authentication/Login";
 import Logout from "../pages/Authentication/Logout";
 import Register from "../pages/Authentication/Register";
 import ForgetPwd from "../pages/Authentication/ForgetPassword";
+import Verification from "../pages/Authentication/Verification";
 
 // // Dashboard
 import DashboardPage from "../pages/Dashboard/index";
@@ -65,6 +66,7 @@ const publicRoutes = [
   { path: "/login", component: <Login /> },
   { path: "/forgot-password", component: <ForgetPwd /> },
   { path: "/register", component: <Register /> },
+  { path: "/verification", component: <Verification /> },
 ];
 
 export { authProtectedRoutes, publicRoutes };
