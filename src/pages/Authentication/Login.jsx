@@ -73,7 +73,7 @@ const Login = (props) => {
    // const userAvatars = [avatar1, avatar2, avatar3, avatar4];
 
   return (
-    <React.Fragment className="bg-white">
+    <React.Fragment>
         <div className="container-fluid vh-100 overflow-hidden">
             <div className="row h-100">
                 {/* Left Section */}
@@ -134,14 +134,16 @@ const Login = (props) => {
 
                             {/* <!-- Login and Signup Buttons --> */}
                             <div className="text-center">
-                                <button className="btn btn-primary w-100 btn-login" type="button">Login</button>
+                                {/* <button className="btn btn-primary w-100 btn-login" type="button">Login</button> */}
+                                <Link to={"/dashboard"} className="btn btn-primary w-100 btn-login" type="button">Login</Link>
                                 {/* Divider with text */}
                                 <div className="d-flex align-items-center justify-content-center my-3">
                                     <hr className="flex-grow-1 hr-line"/>
                                     <span className="mx-2 text-muted">Or with sign up</span>
                                     <hr className="flex-grow-1 hr-line"/>
                                 </div>
-                                <button className="btn btn-secondary w-100 btn-signup" type="button">Sign up</button>
+                                {/* <button className="btn btn-secondary w-100 btn-signup" type="button">Sign up</button> */}
+                                <Link to={"/register"} className="btn btn-secondary w-100 btn-signup" type="button">Sign up</Link>
                             </div>
                         </div>
                     

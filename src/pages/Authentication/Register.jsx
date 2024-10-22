@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Card, CardBody, Nav, TabContent, NavItem, NavLink, TabPane } from "reactstrap";
+import { Link, useNavigate } from "react-router-dom";
 
 // Formik Validation
 import * as Yup from "yup";
@@ -27,6 +28,7 @@ import CompanyFormStep3 from "./StepperForms/CompanyFormStep3";
 const Register = props => {
   
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const selectAccountState = (state) => state.Account;
   const AccountProperties = createSelector(
@@ -62,6 +64,10 @@ const Register = props => {
 
   // Function to handle form submission and mark the step as completed
   const handleFormSubmit = (step) => {
+    if(step >=3) {
+      navigate('/login');
+      return
+    };
     // event.preventDefault();
     // if (formValues[`step${step}`] !== '') {
       setStepsCompleted({ ...stepsCompleted, [step]: true });
@@ -75,7 +81,6 @@ const Register = props => {
   // Handle form input changes
   const handleChange = (e) => {
     validation.handleChange(e); 
-    console.log("form filling: ",e.target.name);
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
@@ -153,13 +158,14 @@ const Register = props => {
                         <div className="mb-2">
                           <input type="checkbox" id="terms" className="me-2"/>
                           <label htmlFor="terms">
-                            I agree to the Terms and Conditions
+                            I have read the User agreement And I accept it
                           </label>
                         </div>
 
                         {/* Register Button */}
                         <div className="text-center">
-                          <button className="btn btn-primary w-100 btn-signup" type="submit">Register</button>
+                          {/* <button className="btn btn-primary w-100 btn-signup" type="submit">Register</button> */}
+                          <Link to={"/login"} className="btn btn-primary w-100 btn-signup" type="submit">Register</Link>
                         </div>
                       </form>
                     </TabPane>

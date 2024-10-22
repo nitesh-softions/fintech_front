@@ -24,9 +24,9 @@ const Verification = (props) => {
                             </div>
 
                             {/* <!-- Forgot Password Form Container --> */}
-                            <div className="w-100 px-5 auth-container">
+                            <div className="w-100 px-5 auth-container w-50">
                                 <h3 className="text-center text-black mb-3">Verification</h3>
-                                <p className="text-center text-secondary mb-4 px-5 mx-4">We have send the OTP on 8882356364 will apply auto to the fields</p>
+                                <p className="text-center text-secondary mb-4 ">We have send the OTP on 8882356364 will apply auto to the fields</p>
                                 {/* <!-- Email Input --> */}
                                 <div className="mb-4">
                                     <div className="mb-3">

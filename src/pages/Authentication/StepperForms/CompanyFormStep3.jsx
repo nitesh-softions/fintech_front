@@ -1,68 +1,54 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 
-const CompanyFormStep3 = ({ handleSubmit }) => {
-  const formik = useFormik({
-    initialValues: {
-      bankName: '',
-      bankCode: '',
-      accountNumber: '',
-    },
-    validationSchema: Yup.object({
-      bankName: Yup.string().required('Bank name is required'),
-      bankCode: Yup.string().required('Bank code is required'),
-      accountNumber: Yup.string().required('Account number is required'),
-    }),
-    onSubmit: (values) => {
-      handleSubmit(values); // Pass values to parent
-    },
-  });
-
+const CompanyFormStep3 = ({ handleChange, handleSubmit }) => {
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={(event) => { event.preventDefault(); handleSubmit(3); }}>
       <Row className="mb-3">
         <Col md={6}>
-          <label>3 Name</label>
+          <label>Bank Name</label>
           <input
-            name="bankName"
-            type="text"
-            className="form-control bg-light border-light mb-2"
-            onChange={formik.handleChange}
-            value={formik.values.bankName}
+            name="bankName" 
+            type="text" 
+            className="form-control bg-light border-light mb-2" 
+            // onChange={formik.handleChange}
+            // value={formik.values.companyFirstName}
           />
-          {formik.errors.bankName && <div className="text-danger">{formik.errors.bankName}</div>}
+          {/* {formik.errors.companyFirstName && (
+            <div className="text-danger">{formik.errors.companyFirstName}</div>
+          )} */}
         </Col>
         <Col md={6}>
           <label>Bank Code</label>
-          <input
-            name="bankCode"
-            type="text"
-            className="form-control bg-light border-light mb-2"
-            onChange={formik.handleChange}
-            value={formik.values.bankCode}
+          <input 
+            name="bankCode" 
+            type="text" 
+            className="form-control bg-light border-light mb-2" 
+            // onChange={formik.handleChange} 
+            // value={formik.values.companyLastName}
           />
-          {formik.errors.bankCode && <div className="text-danger">{formik.errors.bankCode}</div>}
+          {/* {formik.errors.companyLastName && (
+            <div className="text-danger">{formik.errors.companyLastName}</div>
+          )} */}
         </Col>
       </Row>
       <Row className="mb-3">
-        <Col md={6}>
-          <label>Account Number</label>
-          <input
-            name="accountNumber"
-            type="text"
-            className="form-control bg-light border-light mb-2"
-            onChange={formik.handleChange}
-            value={formik.values.accountNumber}
+        <Col md={12}>
+          <label>Account No</label>
+          <input 
+            name="accountNo" 
+            type="text" 
+            className="form-control bg-light border-light mb-2" 
+            // onChange={formik.handleChange} 
+            // value={formik.values.companyPassword}
           />
-          {formik.errors.accountNumber && <div className="text-danger">{formik.errors.accountNumber}</div>}
+          {/* {formik.errors.companyPassword && (
+            <div className="text-danger">{formik.errors.companyPassword}</div>
+          )} */}
         </Col>
       </Row>
       <div className="text-center">
-        <button className="btn btn-primary w-100 btn-signup" type="submit">
-          Submit
-        </button>
+        <button className="btn btn-primary w-100 btn-signup" type="submit">Register</button>
       </div>
     </form>
   );

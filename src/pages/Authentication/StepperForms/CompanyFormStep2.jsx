@@ -6,9 +6,9 @@ const CompanyFormStep2 = ({ handleChange, handleSubmit }) => {
     <form onSubmit={(event) => { event.preventDefault(); handleSubmit(2); }}>
       <Row className="mb-3">
         <Col md={6}>
-          <label>2 Name</label>
+          <label>Corporate/Company Name</label>
           <input
-            name="companyFirstName" 
+            name="companyName" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
             // onChange={formik.handleChange}
@@ -19,9 +19,9 @@ const CompanyFormStep2 = ({ handleChange, handleSubmit }) => {
           )} */}
         </Col>
         <Col md={6}>
-          <label>Last Name</label>
+          <label>Corporate/Company Address</label>
           <input 
-            name="companyLastName" 
+            name="companyAddress" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
             // onChange={formik.handleChange} 
@@ -34,10 +34,10 @@ const CompanyFormStep2 = ({ handleChange, handleSubmit }) => {
       </Row>
       <Row className="mb-3">
         <Col md={6}>
-          <label>Password</label>
+          <label>TIN</label>
           <input 
-            name="companyPassword" 
-            type="password" 
+            name="tin" 
+            type="text" 
             className="form-control bg-light border-light mb-2" 
             // onChange={formik.handleChange} 
             // value={formik.values.companyPassword}
@@ -47,10 +47,10 @@ const CompanyFormStep2 = ({ handleChange, handleSubmit }) => {
           )} */}
         </Col>
         <Col md={6}>
-          <label>Confirm Password</label>
+          <label>VAT</label>
           <input 
-            name="companyConfirmPassword" 
-            type="password" 
+            name="vat" 
+            type="text" 
             className="form-control bg-light border-light mb-2" 
             // onChange={formik.handleChange} 
             // value={formik.values.companyConfirmPassword}
