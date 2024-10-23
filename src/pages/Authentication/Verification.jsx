@@ -6,8 +6,26 @@ import AuthLeftBanner from "../../components/Common/AuthLeftBanner";
 // import images
 import bgAuthOverlay from '../../assets/images/bg_overlay/bg-auth-overlay.svg';
 
+// Formik Validation
+import * as Yup from "yup";
+import { useFormik } from "formik";
+
 
 const Verification = (props) => {
+
+    const formik = useFormik
+    ({
+        initialValues: {
+            email: '',
+        },
+        validationSchema: Yup.object({
+            email: Yup.string().email("Invalid email address").required("Please enter OTP"),
+        }),
+        onSubmit: (values) => {
+            console.log(values); // Log or dispatch your action here
+        },
+    });
+
     return(
         <React.Fragment>
             <div className="container-fluid vh-100 overflow-hidden">
@@ -16,7 +34,7 @@ const Verification = (props) => {
                     <AuthLeftBanner/>
 
                     {/* <!-- Right Section --> */}
-                    <form className="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative bg-white">
+                    <form className="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative bg-white" onSubmit={formik.handleSubmit}>
                         
                             {/* <!-- Top right corner watermark --> */}
                             <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
@@ -31,15 +49,20 @@ const Verification = (props) => {
                                     <div className="mb-3">
                                         <label>OTP</label>
                                         <div className="input-group">
-                                            <input type="email" className="form-control border-0 bg-light" placeholder="Enter your OTP" />
+                                            <input type="email" name="email" className="form-control border-0 bg-light" placeholder="Enter your OTP" />
                                         </div>
+                                        {
+                                            formik.errors.email && formik.touched.email ? (
+                                            <div className="text-danger">{formik.errors.email}</div>
+                                            ) : null
+                                        }
                                     </div>
                                 </div>
                                 <div className="d-flex justify-content-center">
                                     <p>if you didn't receive A code <label className="text-secondary">resend</label></p>
                                 </div>
                                 <div className="text-center">
-                                    <button className="btn btn-primary w-100 btn-login" type="button">Verify</button>
+                                    <button className="btn btn-primary w-100 btn-login" type="submit">Verify</button>
                                 </div>
                             </div>
                     </form>

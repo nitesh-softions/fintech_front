@@ -1,22 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
-import {
-  Row,
-  Col,
-  Alert,
-  Card,
-  CardBody,
-  Container,
-  FormFeedback,
-  Input,
-  Label,
-  Form,
-} from "reactstrap";
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from "reselect";
-import { Link } from "react-router-dom";
 import withRouter from "../../components/Common/withRouter";
 
 // Formik Validation
@@ -24,10 +9,10 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 
 // action
-import { userForgetPassword } from "../../store/actions";
+// import { userForgetPassword } from "../../store/actions";
 
 // import images
-import logo from "../../assets/images/logo.png";
+// import logo from "../../assets/images/logo.png";
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner.jsx";
 import bgAuthOverlay from '../../assets/images/bg_overlay/bg-auth-overlay.svg';
 
@@ -67,6 +52,18 @@ const ForgetPasswordPage = (props) => {
   //   forgetSuccessMsg
   // } = useSelector(ForgotPasswordProperties);
 
+  const formik = useFormik({
+    initialValues: {
+        email: '',
+    },
+    validationSchema: Yup.object({
+        email: Yup.string().email("Invalid email address").required("Email is required"),
+    }),
+    onSubmit: (values) => {
+        console.log(values); // Log or dispatch your action here
+    },
+    });
+
   return (
     <React.Fragment>
         <div className="container-fluid vh-100 overflow-hidden">
@@ -75,31 +72,34 @@ const ForgetPasswordPage = (props) => {
                 <AuthLeftBanner/>
 
                 {/* <!-- Right Section --> */}
-                <form className="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative bg-white">
-                    
-                        {/* <!-- Top right corner watermark --> */}
-                        <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
-                            <img src={bgAuthOverlay} alt="Logo" className="img-fluid w-50 h-50"/>
-                        </div>
-
-                        {/* <!-- Forgot Password Form Container --> */}
-                        <div className="w-100 px-5 auth-container">
-                            <h3 className="text-center text-black mb-3">Forgot Password</h3>
-                            <p className="text-center text-secondary mb-4 mx-4 px-3">It is a long established fact that a reader will be distracted by the readable content.</p>
-                            {/* <!-- Email Input --> */}
-                            <div className="mb-4">
-                                <div className="mb-3">
-                                    <label>Email</label>
-                                    <div className="input-group">
-                                        <input type="email" className="form-control border-0 bg-light" placeholder="Enter your email" />
-                                    </div>
+                <form className="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative bg-white" onSubmit={formik.handleSubmit}>
+                    {/* <!-- Top right corner watermark --> */}
+                    <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
+                        <img src={bgAuthOverlay} alt="Logo" className="img-fluid w-50 h-50"/>
+                    </div>
+                    {/* <!-- Forgot Password Form Container --> */}
+                    <div className="w-100 px-5 auth-container">
+                        <h3 className="text-center text-black mb-3">Forgot Password</h3>
+                        <p className="text-center text-secondary mb-4 mx-4 px-3">It is a long established fact that a reader will be distracted by the readable content.</p>
+                        {/* <!-- Email Input --> */}
+                        <div className="mb-4">
+                            <div className="mb-3">
+                                <label>Email</label>
+                                <div className="input-group">
+                                    <input name="email" type="email" className="form-control border-0 bg-light" placeholder="Enter your email"  value={formik.values.email} onChange={formik.handleChange} />
                                 </div>
-                            </div>
-                            {/* <!-- Login and Signup Buttons --> */}
-                            <div className="text-center">
-                                <button className="btn btn-primary w-100 btn-login" type="button">Send</button>
+                                {
+                                    formik.errors.email && formik.touched.email ? (
+                                    <div className="text-danger">{formik.errors.email}</div>
+                                    ) : null
+                                }
                             </div>
                         </div>
+                        {/* <!-- Login and Signup Buttons --> */}
+                        <div className="text-center">
+                            <button className="btn btn-primary w-100 btn-login" type="submit">Send</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
