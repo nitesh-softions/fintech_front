@@ -1,14 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { Col, 
-  Container, 
-  Row, 
-  Nav,
-  TabContent,
-  NavItem,
-  NavLink,
-  TabPane,
- } from "reactstrap";
+import { Col, Container, Row, Nav, TabContent, NavItem, NavLink, TabPane, } from "reactstrap";
 
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb";
@@ -35,10 +27,6 @@ const AddMoney = props => {
       setActiveTab1(tab);
     }
   };
-
-  
-
-
 
   return (
     <React.Fragment>

@@ -369,3 +369,13 @@
     }
   }
 }
+
+.mobile-number-element::-webkit-outer-spin-button,
+.mobile-number-element::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mobile-number-element {
+  -moz-appearance: textfield; /* Firefox */
+}

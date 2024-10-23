@@ -219,18 +219,6 @@ const SidebarContent = (props) => {
                 <TbPlayerPlayFilled/>
                 <span>{props.t("Watch Video")}</span>
               </Link>
-            </li>
-            <li className="d-md-none">
-              <Link to="/aboutus">
-                <BiSolidInfoCircle/>
-                <span>{props.t("About Us")}</span>
-              </Link>
-            </li>
-            <li className="d-md-none">
-              <Link to="/contactus">
-                <BiSolidPhoneCall/>
-                <span>{props.t("Contact Us")}</span>
-              </Link>
             </li> */}
 
             <li>
