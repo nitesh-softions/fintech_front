@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Input, Button } from 'reactstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -26,7 +26,7 @@ const CompanyFormStep3 = ({ handleChange, handleSubmit }) => {
       <Row className="mb-3">
         <Col md={6}>
           <label>Bank Name</label>
-          <input
+          <Input
             name="bankName" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
@@ -39,7 +39,7 @@ const CompanyFormStep3 = ({ handleChange, handleSubmit }) => {
         </Col>
         <Col md={6}>
           <label>Bank Code</label>
-          <input 
+          <Input 
             name="bankCode" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
@@ -54,7 +54,7 @@ const CompanyFormStep3 = ({ handleChange, handleSubmit }) => {
       <Row className="mb-3">
         <Col md={12}>
           <label>Account No</label>
-          <input 
+          <Input 
             name="accountNo" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
@@ -67,7 +67,7 @@ const CompanyFormStep3 = ({ handleChange, handleSubmit }) => {
         </Col>
       </Row>
       <div className="text-center">
-        <button className="btn btn-primary w-100 btn-signup" type="submit">Register</button>
+        <Button className="w-100" type="submit">Register</Button>
       </div>
     </form>
   );

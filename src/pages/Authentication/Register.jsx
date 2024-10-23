@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Card, CardBody, Nav, TabContent, NavItem, NavLink, TabPane } from "reactstrap";
+import { Col, Container, Row, Card, CardBody, Nav, TabContent, NavItem, NavLink, TabPane, Form, Input, Button } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 // Formik Validation
@@ -72,7 +72,6 @@ const Register = props => {
         setActiveStep(step + 1); // Move to next step
       } else {
         // Final step - submit the full form data
-        // console.log('All steps completed:', formValues);
         navigate('/login');  // Redirect to login after successful completion
       }
     } else {
@@ -96,7 +95,7 @@ const Register = props => {
       confirmPassword: Yup.string()
         .oneOf([Yup.ref('password'), null], "Passwords must match")
         .required("Confirm password is required"),
-      terms: Yup.boolean().oneOf([true], "You must accept the terms and conditions")
+      terms: Yup.boolean().oneOf([true], "*")
     });
   
     // Formik setup for Individual form
@@ -133,7 +132,7 @@ const Register = props => {
             </div>
 
             {/* <!-- Register Form Container --> */}
-            <div className="w-100 px-2 auth-container">
+            <div className="w-100 px-2 auth-container h-100 align-content-md-around">
               <h3 className="text-center text-black mb-3 mt-3">Register</h3>
 
               <Card className="bg-transparent">
@@ -154,87 +153,87 @@ const Register = props => {
                   <TabContent activeTab={activeTab1} className="text-black">
                     {/* Individual Section */}
                     <TabPane tabId="1">
-                      <form onSubmit={formik.handleSubmit}>
+                      <Form onSubmit={formik.handleSubmit}>
                         <Row>
                           {/* First Name */}
-                          <Col md={6}>
+                          <Col md={6} className="mb-3">
                             <label>First Name</label>
-                            <input 
+                            <Input 
                               name="firstName" 
                               type="text" 
-                              className={`form-control bg-light border-light mb-3 ${formik.errors.firstName && formik.touched.firstName ? 'is-invalid' : ''}`} 
+                              className="form-control bg-light border-light" 
                               onChange={formik.handleChange} 
                               value={formik.values.firstName}
                             />
-                            {formik.errors.firstName && formik.touched.firstName ? (
-                              <div className="invalid-feedback">{formik.errors.firstName}</div>
-                            ) : null}
+                            {formik.errors.firstName && (
+                              <div className="text-danger">{formik.errors.firstName}</div>
+                            )}
                           </Col>
                           {/* Last Name */}
-                          <Col md={6}>
+                          <Col md={6} className="mb-3">
                             <label>Last Name</label>
-                            <input 
+                            <Input 
                               name="lastName" 
                               type="text" 
-                              className={`form-control bg-light border-light mb-3 ${formik.errors.lastName && formik.touched.lastName ? 'is-invalid' : ''}`} 
+                              className="form-control bg-light border-light"
                               onChange={formik.handleChange} 
                               value={formik.values.lastName}
                             />
-                            {formik.errors.lastName && formik.touched.lastName ? (
-                              <div className="invalid-feedback">{formik.errors.lastName}</div>
-                            ) : null}
+                            {formik.errors.lastName && (
+                              <div className="text-danger">{formik.errors.lastName}</div>
+                            )}
                           </Col>
                         </Row>
 
                         {/* Email */}
                         <div className="mb-3">
                           <label>Email</label>
-                          <input 
+                          <Input 
                             name="email" 
                             type="email" 
-                            className={`form-control bg-light border-light ${formik.errors.email && formik.touched.email ? 'is-invalid' : ''}`} 
+                            className="form-control bg-light border-light" 
                             onChange={formik.handleChange} 
                             value={formik.values.email}
                           />
-                          {formik.errors.email && formik.touched.email ? (
-                            <div className="invalid-feedback">{formik.errors.email}</div>
-                          ) : null}
+                          {formik.errors.email && (
+                              <div className="text-danger">{formik.errors.email}</div>
+                          )}
                         </div>
 
-                        <Row className="mb-3">
+                        <Row>
                           {/* Password */}
-                          <Col md={6}>
+                          <Col md={6} className="mb-3">
                             <label>Password</label>
-                            <input 
+                            <Input 
                               name="password" 
                               type="password" 
-                              className={`form-control bg-light border-light mb-2 ${formik.errors.password && formik.touched.password ? 'is-invalid' : ''}`} 
+                              className="form-control bg-light border-light" 
                               onChange={formik.handleChange} 
                               value={formik.values.password}
                             />
-                            {formik.errors.password && formik.touched.password ? (
-                              <div className="invalid-feedback">{formik.errors.password}</div>
-                            ) : null}
+                            {formik.errors.password && (
+                              <div className="text-danger">{formik.errors.password}</div>
+                            )}
                           </Col>
                           {/* Confirm Password */}
-                          <Col md={6}>
+                          <Col md={6} className="mb-3">
                             <label>Confirm Password</label>
-                            <input 
+                            <Input 
                               name="confirmPassword" 
                               type="password" 
-                              className={`form-control bg-light border-light mb-2 ${formik.errors.confirmPassword && formik.touched.confirmPassword ? 'is-invalid' : ''}`} 
+                              className="form-control bg-light border-light"
                               onChange={formik.handleChange} 
                               value={formik.values.confirmPassword}
                             />
-                            {formik.errors.confirmPassword && formik.touched.confirmPassword ? (
-                              <div className="invalid-feedback">{formik.errors.confirmPassword}</div>
-                            ) : null}
+                            {formik.errors.confirmPassword && (
+                              <div className="text-danger">{formik.errors.confirmPassword}</div>
+                            )}
                           </Col>
                         </Row>
 
                         {/* Terms and Conditions */}
-                        <div className="mb-2">
-                          <input 
+                        <div className="mb-2 d-flex">
+                          <Input 
                             type="checkbox" 
                             id="terms" 
                             className="me-2" 
@@ -242,64 +241,64 @@ const Register = props => {
                             onChange={formik.handleChange} 
                             value={formik.values.terms}
                           />
-                          <label htmlFor="terms">I have read the User agreement and I accept it</label>
-                          {formik.errors.terms && formik.touched.terms ? (
-                            <div className="text-danger">{formik.errors.terms}</div>
-                          ) : null}
+                          <label htmlFor="terms" className="d-flex">
+                            I have read the User agreement and I accept it
+                            {formik.errors.terms && (
+                              <div className="text-danger">{formik.errors.terms}</div>
+                            )}
+                          </label>
                         </div>
 
                         {/* Register Button */}
                         <div className="text-center">
-                          <button className="btn btn-primary w-100 btn-signup" type="submit">Register</button>
+                          <Button className="w-100" type="submit">Register</Button>
                         </div>
-                      </form>
+                      </Form>
                     </TabPane>
                     
                     {/* Company Section*/}
                     <TabPane tabId="2">
-                      {/* <form> */}
-                        {/* Stepper */}
-                        <div className="stepper-wrapper">
-                          <div className={`stepper-item ${activeStep === 1 ? 'active' : ''} ${stepsCompleted[1] ? 'completed' : ''}`}>
-                            <div className="circle">
-                              <div className={`dot ${stepsCompleted[1] ? 'filled' : ''}`}></div>
-                            </div>
-                          </div>
-                          <div className={`stepper-item ${activeStep === 2 ? 'active' : ''} ${stepsCompleted[2] ? 'completed' : ''}`}>
-                            <div className="circle">
-                              <div className={`dot ${stepsCompleted[2] ? 'filled' : ''}`}></div>
-                            </div>
-                          </div>
-                          <div className={`stepper-item ${activeStep === 3 ? 'active' : ''} ${stepsCompleted[3] ? 'completed' : ''}`}>
-                            <div className="circle">
-                              <div className={`dot ${stepsCompleted[3] ? 'filled' : ''}`}></div>
-                            </div>
+                      {/* Stepper */}
+                      <div className="stepper-wrapper">
+                        <div className={`stepper-item ${activeStep === 1 ? 'active' : ''} ${stepsCompleted[1] ? 'completed' : ''}`}>
+                          <div className="circle">
+                            <div className={`dot ${stepsCompleted[1] ? 'filled' : ''}`}></div>
                           </div>
                         </div>
+                        <div className={`stepper-item ${activeStep === 2 ? 'active' : ''} ${stepsCompleted[2] ? 'completed' : ''}`}>
+                          <div className="circle">
+                            <div className={`dot ${stepsCompleted[2] ? 'filled' : ''}`}></div>
+                          </div>
+                        </div>
+                        <div className={`stepper-item ${activeStep === 3 ? 'active' : ''} ${stepsCompleted[3] ? 'completed' : ''}`}>
+                          <div className="circle">
+                            <div className={`dot ${stepsCompleted[3] ? 'filled' : ''}`}></div>
+                          </div>
+                        </div>
+                      </div>
 
-                        {/* Conditional rendering of forms based on the active step */}
-                        {/* Form 1 */}
-                        {
-                          activeStep === 1 && (
-                            <div className="form-step">
-                                <CompanyFormStep1 handleSubmit={(values) => handleFormSubmit(1, values)} />
-                            </div>
-                          )}
-                        {/* Form 2 */}
-                        {
-                          activeStep === 2 && (
-                            <div className="form-step">
-                                 <CompanyFormStep2 handleSubmit={(values) => handleFormSubmit(2, values)} />
-                            </div>
-                          )}
-                        {/* Form 3 */}
-                        {
-                          activeStep === 3 && (
-                            <div className="form-step">
-                               <CompanyFormStep3 handleSubmit={(values) => handleFormSubmit(3, values)} />
-                            </div>
-                          )}
-                      {/* </form> */}
+                      {/* Conditional rendering of forms based on the active step */}
+                      {/* Form 1 */}
+                      {
+                        activeStep === 1 && (
+                          <div className="form-step">
+                              <CompanyFormStep1 handleSubmit={(values) => handleFormSubmit(1, values)} />
+                          </div>
+                        )}
+                      {/* Form 2 */}
+                      {
+                        activeStep === 2 && (
+                          <div className="form-step">
+                                <CompanyFormStep2 handleSubmit={(values) => handleFormSubmit(2, values)} />
+                          </div>
+                        )}
+                      {/* Form 3 */}
+                      {
+                        activeStep === 3 && (
+                          <div className="form-step">
+                              <CompanyFormStep3 handleSubmit={(values) => handleFormSubmit(3, values)} />
+                          </div>
+                      )}
                     </TabPane>
                   </TabContent>
                 </CardBody>

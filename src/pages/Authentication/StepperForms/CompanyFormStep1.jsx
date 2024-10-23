@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Input } from 'reactstrap';
+import { Row, Col, Input, Button } from 'reactstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -29,13 +29,13 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <Row className="mb-3">
+      <Row className="mb-2">
         <Col md={6}>
           <label>First Name</label>
-          <input
+          <Input
             name="firstName" 
             type="text" 
-            className="form-control bg-light border-light mb-2" 
+            className="form-control bg-light border-light" 
             onChange={formik.handleChange}
             value={formik.values.firstName}
           />
@@ -45,10 +45,10 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
         </Col>
         <Col md={6}>
           <label>Last Name</label>
-          <input 
+          <Input 
             name="lastName" 
             type="text" 
-            className="form-control bg-light border-light mb-2" 
+            className="form-control bg-light border-light" 
             onChange={formik.handleChange} 
             value={formik.values.lastName}
           />
@@ -57,17 +57,17 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
           )}
         </Col>
       </Row>
-      <Row className="mb-3">
+      <Row>
         <Col md={6}>
           <label>Mobile Number</label>
           <div className='d-flex'>
             <div className='col-4'>
-            <select className="form-control bg-light mb-3 border-light px-1">
+            <select className="form-control bg-light border-light px-1">
                 <option>+123</option>
             </select>
             </div>
             <div className='col-8 d-flex'>
-                <Input type="text" name='mobile' className="form-control bg-light mb-3 border-light ms-2" 
+                <Input type="text" name='mobile' className="form-control bg-light border-light ms-2" 
                 onChange={formik.handleChange} 
                 value={formik.values.mobile}/>
             </div>
@@ -80,9 +80,9 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
           <label>Telephone (Optional)</label>
           <div className='d-flex'>
             <div className='col-4'>
-            <select className="form-control bg-light mb-3 border-light px-1">
-                <option>+123</option>
-            </select>
+              <select className="form-control bg-light mb-3 border-light px-1">
+                  <option>+123</option>
+              </select>
             </div>
             <div className='col-8 d-flex'>
                 <Input type="text" name='telephone' className="form-control bg-light mb-3 border-light ms-2" 
@@ -95,13 +95,13 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
           </div>
         </Col>
       </Row>
-      <Row className="mb-3">
+      <Row className="mb-4">
         <Col md={6}>
           <label>Password</label>
-          <input 
+          <Input 
             name="password" 
             type="password" 
-            className="form-control bg-light border-light mb-2" 
+            className="form-control bg-light border-light" 
             onChange={formik.handleChange} 
             value={formik.values.password}
           />
@@ -111,10 +111,10 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
         </Col>
         <Col md={6}>
           <label>Confirm Password</label>
-          <input 
+          <Input 
             name="confirmPassword" 
             type="password" 
-            className="form-control bg-light border-light mb-2" 
+            className="form-control bg-light border-light" 
             onChange={formik.handleChange} 
             value={formik.values.confirmPassword}
           />
@@ -124,7 +124,7 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
         </Col>
       </Row>
       <div className="text-center">
-        <button className="btn btn-primary w-100 btn-signup" type="submit">Next</button>
+        <Button className="w-100" type="submit">Next</Button>
       </div>
     </form>
   );
