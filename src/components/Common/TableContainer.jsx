@@ -39,7 +39,7 @@ const Filter = ({
 const DebouncedInput = ({
   value: initialValue,
   onChange,
-  debounce = 500,
+  debounce = 300,
   ...props
 }) => {
   const [value, setValue] = useState(initialValue);
@@ -178,7 +178,7 @@ const TableContainer = ({
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => {
                   return (
-                    <th key={header.id} colSpan={header.colSpan} className={`${header.column.columnDef.enableSorting ? "sorting sorting_desc" : ""}`}>
+                    <th key={header.id} colSpan={header.colSpan} className={`fw-semibold ${header.column.columnDef.enableSorting ? "sorting sorting_desc" : ""}`}>
                       {header.isPlaceholder ? null : (
                         <React.Fragment>
                           <div
@@ -220,7 +220,7 @@ const TableContainer = ({
                 <tr key={row.id}>
                   {row.getVisibleCells().map(cell => {
                     return (
-                      <td key={cell.id}>
+                      <td key={cell.id} className="text-nowrap">
                         {flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext()
@@ -238,7 +238,7 @@ const TableContainer = ({
 
       {
         isPagination && (
-          <Row>
+          <Row className="mt-2">
             <Col sm={12} md={5}>
               <div className="dataTables_info">Showing {getState().pagination.pageSize} of {data.length} Results</div>
             </Col>

@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Form, Input, Row } from "reactstrap";
 import QuickTransferCard from "../../components/Dashboard/QuickTransferCard";
 import RecentTransactionCard from "../../components/Dashboard/RecentTransactionCard";
-import CountryCodeSelect from "../../components/Common/CountryCodeSelect";
 import SVGIcons from "../../components/Common/SVGIcons";
 import ReactSelect from "../../components/Common/ReactSelect";
 import RechargePlans from "../../components/Common/RechargePlans";
+import CountrySelect from "../../components/Common/CountrySelect";
 
 const operators = [
   { value: 'airtel', label: 'Airtel' },
@@ -22,10 +22,18 @@ const InternationalAirtime = (props) => {
     document.title = "GeoPay | International Airtime";
   }, []);
 
-  const selectedCountry = (selectedGroup) => {
-    console.log(selectedGroup);
-  };
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedPlan, setSelectedPlan] = useState(null);
 
+  const selectedCountry = (selectedGroup) => {
+    console.log('selectedGroup', selectedGroup);
+    setSelectedState(selectedGroup.code)
+  }
+
+
+  const handlePlanSelection = (plan) => {
+    setSelectedPlan(plan); // Update the selected plan state
+  };
   
 
   return (
@@ -35,15 +43,28 @@ const InternationalAirtime = (props) => {
           <Col xxl={9} className="pe-lg-4">
             <h2 className="mb-4 font-size-22">International Airtime</h2>
             <Form className="mb-3">
-              <Input name="" id="" placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
-              <div className="d-flex align-items-center gap-2">
-                <CountryCodeSelect selectedCountry={selectedCountry}/>
-                <Input id="" placeholder="Mobile Number" type="number" className="form-control number-input bg-light mb-3 border-light" onInput={(e) => { if (e.target.value.length > 10) { e.target.value = e.target.value.slice(0, 10); } }} />
+              <CountrySelect selectedCountry={selectedCountry}/>
+              <div className="d-flex">
+                  <Input placeholder="Code" type="text" value={selectedState} className="form-control bg-light mb-3 border-light" style={{width: "75px"}} disabled/>
+                  <Input placeholder="Enter Mobile Number" type="text" className="form-control bg-light mb-3 border-light ms-2" />
               </div>
               <div className="mb-3">
                 <ReactSelect options={operators} isMulti={false} placeholder="Select Operator"/>
               </div>
-              <RechargePlans />
+              <RechargePlans onPlanSelect={handlePlanSelection} />
+              {selectedPlan && (
+                <div size="lg" className={`w-100 text-start mb-3 p-2 rounded-2 border g-2`} >
+                  <div className="d-flex justify-content-between align-items-center">
+                    <Row className="w-100">
+                      <Col xs={6}><span className="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Fee(USD) <div className="text-muted fw-normal">0</div></span></Col>
+                      <Col xs={6} className="text-end"><span className="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Net Amount In USD <div className="text-muted fw-normal">100</div></span></Col>
+                      {/* <Col xs={6} md={4}><span className="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Debit In (XOF) <div className="text-muted fw-normal">65,500</div></span></Col> */}
+                    </Row>
+                  </div>
+                </div>
+              )}
+              <Input name="" id="" placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
+              <textarea placeholder="Account Description" className="form-control bg-light mb-3 border-light" />
               <div className="d-xl-flex align-content-center justify-content-end gap-1">
                 <Button type="submit" color="primary" className="w-md text-center h-25" > Proceed </Button>
               </div>

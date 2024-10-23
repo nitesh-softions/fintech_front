@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-const ReactSelect = ({ options, isMulti = false, placeholder = "Select an option" }) => {
+const ReactSelect = ({ options, isMulti = false, placeholder = "Select an option", selectedUser }) => {
   // State to track selected option(s)
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -9,6 +9,7 @@ const ReactSelect = ({ options, isMulti = false, placeholder = "Select an option
   const handleChange = (option) => {
     setSelectedOption(option); // Update the state with the selected option(s)
     console.log('Selected option:', option); // You can use the selected value here
+    selectedUser(selectedOption)
   };
 
   return (

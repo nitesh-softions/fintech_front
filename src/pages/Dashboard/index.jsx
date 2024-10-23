@@ -43,7 +43,7 @@ const Dashboard = props => {
   };
 
   const handleTransferMoneyToBank = () => {
-    navigate("/dashboard/transfer-to-mobile-money");
+    navigate("/dashboard/transfer-money-to-bank");
   };
 
   return (

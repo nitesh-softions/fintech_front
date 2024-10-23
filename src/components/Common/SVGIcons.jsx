@@ -1,5 +1,5 @@
 // Import your SVG icons
-import { LiaWalletSolid } from 'react-icons/lia';
+import { LiaSortSolid, LiaWalletSolid } from 'react-icons/lia';
 import { LuPlusCircle } from 'react-icons/lu';
 import { PiBankLight, PiBell, PiPaypalLogoDuotone } from 'react-icons/pi';
 import { TfiWorld } from 'react-icons/tfi';
@@ -35,6 +35,7 @@ const SVGIcons = {
   GoBell: GoBell,
   FaAngleRight: FaAngleRight,
   IoMdRefresh: IoMdRefresh,
+  LiaSortSolid: LiaSortSolid,
 };
 
 export default SVGIcons;
