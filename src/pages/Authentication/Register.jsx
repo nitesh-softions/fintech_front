@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Card, CardBody, Nav, TabContent, NavItem, NavLink, TabPane, Form, Input, Button } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
+import ReactSelect from "../../components/Common/ReactSelect";
 
 // Formik Validation
 import * as Yup from "yup";
@@ -23,6 +24,7 @@ import '../../assets/scss/custom/components/authentication.scss';
 import CompanyFormStep1 from "./StepperForms/CompanyFormStep1";
 import CompanyFormStep2 from "./StepperForms/CompanyFormStep2";
 import CompanyFormStep3 from "./StepperForms/CompanyFormStep3";
+
 
 
 const Register = props => {
@@ -108,6 +110,8 @@ const Register = props => {
     firstName: Yup.string().required("First Name is required"),
     lastName: Yup.string().required("Last Name is required"),
     email: Yup.string().email("Invalid email address").required("Email is required"),
+    pincode: Yup.string().required("Pin Code is required"),
+    mobile: Yup.string().required("Mobile Number is required"),
     password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], "Passwords must match")
@@ -121,6 +125,8 @@ const Register = props => {
       firstName: '',
       lastName: '',
       email: '',
+      pincode: '',
+      mobile: '',
       password: '',
       confirmPassword: '',
       terms: false
@@ -203,20 +209,57 @@ const Register = props => {
                         </Row>
 
                         {/* Email */}
-                        <div className="mb-3">
-                          <label>Email</label>
-                          <Input 
-                            name="email" 
-                            type="email" 
-                            className="form-control bg-light border-light" 
-                            onChange={formik.handleChange} 
-                            value={formik.values.email}
-                          />
-                          {formik.errors.email && (
-                              <div className="text-danger">{formik.errors.email}</div>
-                          )}
-                        </div>
+                        <Row>
+                          <Col md={6} className="mb-3">
+                            <label>Email</label>
+                            <Input 
+                              name="email" 
+                              type="email" 
+                              className="form-control bg-light border-light" 
+                              onChange={formik.handleChange} 
+                              value={formik.values.email}
+                            />
+                            {formik.errors.email && (
+                                <div className="text-danger">{formik.errors.email}</div>
+                            )}
+                          </Col>
+                          <Col md={6} className="mb-3">
+                            <label>Select Country</label>
+                            <ReactSelect isMulti={false} />
+                          </Col>
+                        </Row>
 
+                        <Row>
+                          {/* Password */}
+                          <Col md={6} className="mb-3">
+                            <label>Pin Code</label>
+                            <Input 
+                              name="pincode" 
+                              type="text" 
+                              className="form-control bg-light border-light" 
+                              onChange={formik.handleChange} 
+                              value={formik.values.pincode}
+                            />
+                            {formik.errors.pincode && (
+                              <div className="text-danger">{formik.errors.pincode}</div>
+                            )}
+                          </Col>
+                          {/* Confirm Password */}
+                          <Col md={6} className="mb-3">
+                            <label>Mobile Number</label>
+                            <Input 
+                              name="mobile" 
+                              type="text" 
+                              className="form-control bg-light border-light"
+                              onChange={formik.handleChange} 
+                              value={formik.values.mobile}
+                            />
+                            {formik.errors.mobile && (
+                              <div className="text-danger">{formik.errors.mobile}</div>
+                            )}
+                          </Col>
+                        </Row>
+                        
                         <Row>
                           {/* Password */}
                           <Col md={6} className="mb-3">
