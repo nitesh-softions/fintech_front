@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Col, Container, Form, Input, Row } from "reactstrap";
 import QuickTransferCard from "../../components/Dashboard/QuickTransferCard";
 import RecentTransactionCard from "../../components/Dashboard/RecentTransactionCard";
 import CountryCodeSelect from "../../components/Common/CountryCodeSelect";
 import SVGIcons from "../../components/Common/SVGIcons";
 import ReactSelect from "../../components/Common/ReactSelect";
+import RechargePlans from "../../components/Common/RechargePlans";
 
 const operators = [
   { value: 'airtel', label: 'Airtel' },
@@ -25,6 +26,8 @@ const InternationalAirtime = (props) => {
     console.log(selectedGroup);
   };
 
+  
+
   return (
     <React.Fragment>
       <Container fluid className="page-content">
@@ -40,26 +43,23 @@ const InternationalAirtime = (props) => {
               <div className="mb-3">
                 <ReactSelect options={operators} isMulti={false} placeholder="Select Operator"/>
               </div>
+              <RechargePlans />
               <div className="d-xl-flex align-content-center justify-content-end gap-1">
                 <Button type="submit" color="primary" className="w-md text-center h-25" > Proceed </Button>
               </div>
             </Form>
 
             <h2 className="mb-4 font-size-14">My Recharge & Bills</h2>
-            <div>
-              <div>
-                <div size="lg" className="w-100 text-start mb-1 p-2 rounded-2 border g-2" >
-                  <label className="font-size-13 text-dark fw-semibold text-nowrap border-bottom w-100 pb-1">Jio</label>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <Row className="w-100">
-                      <Col xs={6} md={3}><span class="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Name: <span className="text-muted fw-normal">Tejash Sharma</span></span></Col>
-                      <Col xs={6} md={3}><span class="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Date: <span className="text-muted fw-normal">25/10/2024</span></span></Col>
-                      <Col xs={6} md={3}><span class="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Mobile: <span className="text-muted fw-normal">+919874563210</span></span></Col>
-                      <Col xs={6} md={3}><span class="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Amount: <span className="text-muted fw-normal">16.31 USD</span></span></Col>
-                    </Row>
-                    <SVGIcons.IoMdRefresh className="bg-secondary p-1 rounded-circle font-size-18 text-white" style={{minWidth: '20px', height: '20px'}}/>
-                  </div>
-                </div>
+            <div size="lg" className="w-100 text-start mb-1 p-2 rounded-2 border g-2" >
+              <label className="font-size-13 text-dark fw-semibold text-nowrap border-bottom w-100 pb-1">Jio</label>
+              <div className="d-flex justify-content-between align-items-center">
+                <Row className="w-100">
+                  <Col xs={6} md={3}><span className="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Name: <span className="text-muted fw-normal">Tejash Sharma</span></span></Col>
+                  <Col xs={6} md={3}><span className="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Date: <span className="text-muted fw-normal">25/10/2024</span></span></Col>
+                  <Col xs={6} md={3}><span className="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Mobile: <span className="text-muted fw-normal">+919874563210</span></span></Col>
+                  <Col xs={6} md={3}><span className="font-size-12 mb-0 text-dark fw-semibold text-nowrap">Amount: <span className="text-muted fw-normal">16.31 USD</span></span></Col>
+                </Row>
+                <SVGIcons.IoMdRefresh className="bg-secondary p-1 rounded-circle font-size-18 text-white" style={{minWidth: '20px', height: '20px'}}/>
               </div>
             </div>
           </Col>
