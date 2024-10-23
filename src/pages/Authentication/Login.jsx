@@ -17,12 +17,9 @@ import { Row, Col, CardBody, Card, Alert, Container, Form, Input, FormFeedback, 
 import { loginUser, socialLogin } from "../../store/actions";
 
 // import images
-import { FaFacebookF } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
-import { FaLinkedinIn } from "react-icons/fa";
-import { FaEnvelope, FaLock } from 'react-icons/fa';
+import SVGIcons from "../../components/Common/SVGIcons";
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner.jsx";
-import bgAuthOverlay from '../../assets/images/bgAuthOverlay.svg';
+import bgAuthOverlay from '../../assets/images/bg_overlay/bg-auth-overlay.svg';
 
 
 const Login = (props) => {
@@ -94,13 +91,13 @@ const Login = (props) => {
                             {/* <!-- Social Media Icons --> */}
                             <div className="d-flex justify-content-center mb-3 gap-3">
                                 <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
-                                    <FaFacebookF />
+                                    <SVGIcons.Facebook/>
                                 </div>
                                 <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
-                                    <FaGoogle />
+                                    <SVGIcons.Google/>
                                 </div>
                                 <div className="d-flex text-black justify-content-center align-items-center border border-1 border-secondary rounded-circle social-media-icons">
-                                    <FaLinkedinIn />
+                                    <SVGIcons.LinkedinIn/>
                                 </div>
                             </div>
                             <p className="text-center mb-4">Or use your email account</p>
@@ -109,7 +106,7 @@ const Login = (props) => {
                                 <div className="mb-3">
                                     <div className="input-group">
                                         <span className="input-group-text bg-light border-0">
-                                            <FaEnvelope />
+                                        <SVGIcons.Envelope/>
                                         </span>
                                         <input type="email" className="form-control border-0 bg-light" placeholder="Email" />
                                     </div>
@@ -120,7 +117,7 @@ const Login = (props) => {
                             <div className="mb-3">
                                 <div className="input-group">
                                     <span className="input-group-text bg-light border-0">
-                                    <FaLock />
+                                    <SVGIcons.Lock/>
                                     </span>
                                     <input type="password" className="form-control border-0 bg-light" placeholder="Password" />
                                 </div>

@@ -29,7 +29,7 @@ import { userForgetPassword } from "../../store/actions";
 // import images
 import logo from "../../assets/images/logo.png";
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner.jsx";
-import bgAuthOverlay from '../../assets/images/bgAuthOverlay.svg';
+import bgAuthOverlay from '../../assets/images/bg_overlay/bg-auth-overlay.svg';
 
 
 const ForgetPasswordPage = (props) => {
