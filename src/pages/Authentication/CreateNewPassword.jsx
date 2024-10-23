@@ -4,7 +4,7 @@ import withRouter from "../../components/Common/withRouter";
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner";
 
 // import images
-import bgAuthOverlay from '../../assets/images/bgAuthOverlay.svg';
+import bgAuthOverlay from '../../assets/images/bg_overlay/bg-auth-overlay.svg';
 
 
 const CreateNewPassword = (props) => {

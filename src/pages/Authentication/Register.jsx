@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
 
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner";
-import bgAuthOverlay from '../../assets/images/bgAuthOverlay.svg';
+import bgAuthOverlay from '../../assets/images/bg_overlay/bg-auth-overlay.svg';
 
 import classnames from "classnames";
 
