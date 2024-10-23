@@ -3,16 +3,16 @@ import { Row, Col, Input, Button } from 'reactstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const CompanyFormStep1 = ({ handleSubmit }) => {
+const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
 
     const formik = useFormik({
         initialValues: {
-            firstName: '',
-            lastName: '',
-            mobile: '',
-            telephone: '',
-            password: '',
-            confirmPassword: ''
+            firstName: formValues.firstName || '',
+            lastName: formValues.lastName || '',
+            mobile: formValues.mobile || '',
+            telephone: formValues.telephone || '',
+            password: formValues.password || '',
+            confirmPassword: formValues.confirmPassword || ''
         },
         validationSchema: Yup.object({
             firstName: Yup.string().required('First name is required'),
@@ -26,6 +26,17 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
         },
     });
 
+    // Update formik values on change
+   React.useEffect(() => {
+    formik.setValues({
+      firstName: formValues.firstName || '',
+      lastName: formValues.lastName || '',
+      mobile: formValues.mobile || '',
+      telephone: formValues.telephone || '', 
+      password: formValues.password || '',
+      confirmPassword: formValues.confirmPassword || ''
+    });
+  }, [formValues]); // Run whenever formValues change
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -36,12 +47,17 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
             name="firstName" 
             type="text" 
             className="form-control bg-light border-light" 
-            onChange={formik.handleChange}
+            onChange={(e) => {
+              formik.handleChange(e);
+              handleChange(e); // Update parent state
+            }}
             value={formik.values.firstName}
           />
-          {formik.errors.firstName && (
-            <div className="text-danger">{formik.errors.firstName}</div>
-          )}
+          {
+            formik.errors.firstName && formik.touched.firstName ? (
+              <div className="text-danger">{formik.errors.firstName}</div>
+            ) : null
+          }
         </Col>
         <Col md={6}>
           <label>Last Name</label>
@@ -49,12 +65,17 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
             name="lastName" 
             type="text" 
             className="form-control bg-light border-light" 
-            onChange={formik.handleChange} 
+            onChange={(e) => {
+              formik.handleChange(e);
+              handleChange(e); // Update parent state
+            }}
             value={formik.values.lastName}
           />
-          {formik.errors.lastName && (
-            <div className="text-danger">{formik.errors.lastName}</div>
-          )}
+          {
+            formik.errors.lastName && formik.touched.lastName ? (
+              <div className="text-danger">{formik.errors.lastName}</div>
+            ) : null
+          }
         </Col>
       </Row>
       <Row>
@@ -68,13 +89,18 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
             </div>
             <div className='col-8 d-flex'>
                 <Input type="text" name='mobile' className="form-control bg-light border-light ms-2" 
-                onChange={formik.handleChange} 
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  handleChange(e); // Update parent state
+                }}
                 value={formik.values.mobile}/>
             </div>
           </div>
-          {formik.errors.mobile && (
+          {
+            formik.errors.mobile && formik.touched.mobile ? (
               <div className="text-danger">{formik.errors.mobile}</div>
-            )}
+            ) : null
+          }
         </Col>
         <Col md={6}>
           <label>Telephone (Optional)</label>
@@ -86,11 +112,16 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
             </div>
             <div className='col-8 d-flex'>
                 <Input type="text" name='telephone' className="form-control bg-light mb-3 border-light ms-2" 
-                onChange={formik.handleChange} 
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  handleChange(e); // Update parent state
+                }}
                 value={formik.values.telephone}/>
-                {formik.errors.telephone && (
-                  <div className="text-danger">{formik.errors.telephone}</div>
-                )}
+                {
+                  formik.errors.telephone && formik.touched.telephone ? (
+                    <div className="text-danger">{formik.errors.telephone}</div>
+                  ) : null
+                }
             </div>
           </div>
         </Col>
@@ -102,12 +133,17 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
             name="password" 
             type="password" 
             className="form-control bg-light border-light" 
-            onChange={formik.handleChange} 
+            onChange={(e) => {
+              formik.handleChange(e);
+              handleChange(e); // Update parent state
+            }}
             value={formik.values.password}
           />
-          {formik.errors.password && (
-            <div className="text-danger">{formik.errors.password}</div>
-          )}
+          {
+            formik.errors.password && formik.touched.password ? (
+              <div className="text-danger">{formik.errors.password}</div>
+            ) : null
+          }
         </Col>
         <Col md={6}>
           <label>Confirm Password</label>
@@ -115,12 +151,17 @@ const CompanyFormStep1 = ({ handleSubmit }) => {
             name="confirmPassword" 
             type="password" 
             className="form-control bg-light border-light" 
-            onChange={formik.handleChange} 
+            onChange={(e) => {
+              formik.handleChange(e);
+              handleChange(e); // Update parent state
+            }} 
             value={formik.values.confirmPassword}
           />
-          {formik.errors.confirmPassword && (
-            <div className="text-danger">{formik.errors.confirmPassword}</div>
-          )}
+          {
+            formik.errors.confirmPassword && formik.touched.confirmPassword ? (
+              <div className="text-danger">{formik.errors.confirmPassword}</div>
+            ) : null
+          }
         </Col>
       </Row>
       <div className="text-center">

@@ -3,13 +3,13 @@ import { Row, Col, Input, Button } from 'reactstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const CompanyFormStep3 = ({ handleChange, handleSubmit }) => {
+const CompanyFormStep3 = ({ handleSubmit, handlePrev, formValues, handleChange }) => {
 
   const formik = useFormik({
     initialValues: {
-      bankName: '',
-      bankCode: '',
-      accountNo: ''
+      bankName: formValues.bankName || '',
+      bankCode: formValues.bankCode || '',
+      accountNo: formValues.accountNo || ''
     },
     validationSchema: Yup.object({
       bankName: Yup.string().required('Bank Name is required'),
@@ -21,6 +21,16 @@ const CompanyFormStep3 = ({ handleChange, handleSubmit }) => {
     },
   });
 
+  // Update formik values on change
+  React.useEffect(() => {
+    formik.setValues({
+      bankName: formValues.bankName || '',
+      bankCode: formValues.bankCode || '',
+      accountNo: formValues.accountNo || ''
+    });
+  }, [formValues]); // Run whenever formValues change
+
+
   return (
     <form onSubmit={formik.handleSubmit}>
       <Row className="mb-3">
@@ -30,12 +40,17 @@ const CompanyFormStep3 = ({ handleChange, handleSubmit }) => {
             name="bankName" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
-            onChange={formik.handleChange}
+            onChange={(e) => {
+              formik.handleChange(e);
+              handleChange(e); // Update parent state
+            }}
             value={formik.values.bankName}
           />
-          {formik.errors.bankName && (
-            <div className="text-danger">{formik.errors.bankName}</div>
-          )}
+          {
+            formik.errors.bankName && formik.touched.bankName ? (
+              <div className="text-danger">{formik.errors.bankName}</div>
+            ) : null
+          }
         </Col>
         <Col md={6}>
           <label>Bank Code</label>
@@ -43,12 +58,17 @@ const CompanyFormStep3 = ({ handleChange, handleSubmit }) => {
             name="bankCode" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
-            onChange={formik.handleChange} 
+            onChange={(e) => {
+              formik.handleChange(e);
+              handleChange(e); // Update parent state
+            }} 
             value={formik.values.bankCode}
           />
-          {formik.errors.bankCode && (
-            <div className="text-danger">{formik.errors.bankCode}</div>
-          )}
+          {
+            formik.errors.bankCode && formik.touched.bankCode ? (
+              <div className="text-danger">{formik.errors.bankCode}</div>
+            ) : null
+          }
         </Col>
       </Row>
       <Row className="mb-3">
@@ -58,16 +78,22 @@ const CompanyFormStep3 = ({ handleChange, handleSubmit }) => {
             name="accountNo" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
-            onChange={formik.handleChange} 
+            onChange={(e) => {
+              formik.handleChange(e);
+              handleChange(e); // Update parent state
+            }}
             value={formik.values.accountNo}
           />
-          {formik.errors.accountNo && (
-            <div className="text-danger">{formik.errors.accountNo}</div>
-          )}
+          {
+            formik.errors.accountNo && formik.touched.accountNo ? (
+              <div className="text-danger">{formik.errors.accountNo}</div>
+            ) : null
+          }
         </Col>
       </Row>
-      <div className="text-center">
-        <Button className="w-100" type="submit">Register</Button>
+      <div className="d-flex justify-content-between">
+        <Button className="w-25" type="submit"  onClick={handlePrev}>Prev</Button>
+        <Button className="w-25 bg-primary" type="submit">Register</Button>
       </div>
     </form>
   );
