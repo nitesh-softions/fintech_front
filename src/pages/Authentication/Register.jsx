@@ -56,15 +56,15 @@ const Register = props => {
   const [activeStep, setActiveStep] = useState(1);
   const [stepsCompleted, setStepsCompleted] = useState({ 1: false, 2: false, 3: false });
   const [formValues, setFormValues] = useState({
-    step1: '',
-    step2: '',
-    step3: ''
+    step1: {},
+    step2: {},
+    step3: {}
   });
 
   // Function to handle form submission and mark the step as completed
   const handleFormSubmit = (step, values) => {
     setFormValues({ ...formValues, [`step${step}`]: values });
-
+    
     // Check if all required fields in the current step are valid
     if (values) {
       setStepsCompleted({ ...stepsCompleted, [step]: true });
@@ -79,40 +79,57 @@ const Register = props => {
     }
   };
 
-  // Handle form input changes
-  const handleChange = (e) => {
-    formik.handleChange(e); 
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  // Function to go back to the previous step
+  const handlePrev = (step) => {
+    if (step > 1) {
+      setActiveStep(step - 1);
+      // Mark the current step as incomplete when going back
+      // setStepsCompleted((prev) => ({ ...prev, [step]: false }));
+      setStepsCompleted({ ...stepsCompleted, [step-1]: false });
+    }
   };
 
 
-    // Formik validation schema for Individual form
-    const individualValidationSchema = Yup.object().shape({
-      firstName: Yup.string().required("First Name is required"),
-      lastName: Yup.string().required("Last Name is required"),
-      email: Yup.string().email("Invalid email address").required("Email is required"),
-      password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
-      confirmPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], "Passwords must match")
-        .required("Confirm password is required"),
-      terms: Yup.boolean().oneOf([true], "*")
-    });
-  
-    // Formik setup for Individual form
-    const formik = useFormik({
-      initialValues: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        terms: false
+  // Handle form input changes
+  const handleChange = (step, e) => {
+    const { name, value } = e.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [`step${step}`]: {
+        ...prevValues[`step${step}`],
+        [name]: value,
       },
-      validationSchema: individualValidationSchema,
-      onSubmit: values => {
-        navigate("/login"); // Redirect after form submission
-      }
-    });
+    }));
+  };
+
+
+  // Formik validation schema for Individual form
+  const individualValidationSchema = Yup.object().shape({
+    firstName: Yup.string().required("First Name is required"),
+    lastName: Yup.string().required("Last Name is required"),
+    email: Yup.string().email("Invalid email address").required("Email is required"),
+    password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], "Passwords must match")
+      .required("Confirm password is required"),
+    terms: Yup.boolean().oneOf([true], "*")
+  });
+
+  // Formik setup for Individual form
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      terms: false
+    },
+    validationSchema: individualValidationSchema,
+    onSubmit: values => {
+      navigate("/login"); // Redirect after form submission
+    }
+  });
 
 
 
@@ -282,21 +299,27 @@ const Register = props => {
                       {
                         activeStep === 1 && (
                           <div className="form-step">
-                              <CompanyFormStep1 handleSubmit={(values) => handleFormSubmit(1, values)} />
+                              <CompanyFormStep1 handleSubmit={(values) => handleFormSubmit(1, values)} 
+                              formValues={formValues.step1}  // Pass form values
+                              handleChange={(e) => handleChange(1, e)}/>
                           </div>
                         )}
                       {/* Form 2 */}
                       {
                         activeStep === 2 && (
                           <div className="form-step">
-                                <CompanyFormStep2 handleSubmit={(values) => handleFormSubmit(2, values)} />
+                                <CompanyFormStep2 handleSubmit={(values) => handleFormSubmit(2, values)} handlePrev={() => handlePrev(2)} 
+                                  formValues={formValues.step2}  // Pass form values
+                                  handleChange={(e) => handleChange(2, e)}/>
                           </div>
                         )}
                       {/* Form 3 */}
                       {
                         activeStep === 3 && (
                           <div className="form-step">
-                              <CompanyFormStep3 handleSubmit={(values) => handleFormSubmit(3, values)} />
+                              <CompanyFormStep3 handleSubmit={(values) => handleFormSubmit(3, values)} handlePrev={() => handlePrev(3)} 
+                               formValues={formValues.step3} // Pass form values
+                               handleChange={(e) => handleChange(3, e)}/>
                           </div>
                       )}
                     </TabPane>
