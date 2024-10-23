@@ -66,7 +66,7 @@ const CountrySelect = ({selectedCountry}) => {
         options={countryCode}
         className="bg-light mb-3 rounded-3 country-select-with-image"
         components={{ Option: CustomOption, SingleValue: CustomSingleValue }}
-        placeholder="Select Country"
+        placeholder="Select Country*"
       />
     </>
   );

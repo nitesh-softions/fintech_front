@@ -34,7 +34,7 @@ const WalletToWallet = props => {
               <Form>
                 <CountrySelect selectedCountry={selectedCountry}/>
                 <div className="d-flex">
-                    <Input placeholder="Country Code" type="text" value={selectedState} className="form-control bg-light mb-3 border-light w-fit" disabled/>
+                    <Input placeholder="Country Code" type="text" value={selectedState} className="form-control bg-light mb-3 border-light" style={{width: "75px"}} disabled/>
                     <Input placeholder="Enter Mobile Number" type="text" className="form-control bg-light mb-3 border-light ms-2" />
                 </div>
                 <Input placeholder="Enter Amount in USD" type="text" value={amount} onChange={(e) => setAmount(e.target.value)} className={`form-control bg-light border-light ${amount <= 0 ? "mb-3" : "mb-1"}`} />
@@ -49,11 +49,8 @@ const WalletToWallet = props => {
                 </div>
                 <Input placeholder="Beneficiary Name" type="text" className="form-control bg-light mb-3 border-light" />
                 <textarea placeholder="Account Description" className="form-control bg-light mb-3 border-light" />
-                <div className="d-flex align-content-center justify-content-between gap-1">
-                  <p className="font-size-11 pe-xl-5">
-                    Once a new amount is entered or payment method is changed, the exchange rate and fees will be recalculated.
-                  </p>
-                  <Button type="submit" className='text-nowrap' color="primary"> Add Money </Button>
+                <div className="d-flex align-content-center justify-content-end gap-1">
+                  <Button type="submit" className='text-nowrap' color="primary"> Pay Money </Button>
                 </div>
             </Form>
             </Col>

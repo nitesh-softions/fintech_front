@@ -15,7 +15,7 @@ const AddMobileMoney = () => {
         <Form>
             <CountrySelect selectedCountry={selectedCountry}/>
             <div className="d-flex">
-                <Input placeholder="Country Code" type="text" value={selectedState} className="form-control bg-light mb-3 border-light w-fit" disabled/>
+                <Input placeholder="Code" type="text" value={selectedState} className="form-control bg-light mb-3 border-light" style={{width: "75px"}} disabled/>
                 <Input placeholder="Enter Mobile Number" type="text" className="form-control bg-light mb-3 border-light ms-2" />
             </div>
             <div className='mb-3'>

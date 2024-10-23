@@ -26,3 +26,13 @@
 .table>:not(:first-child) {
     border-top: 0;
 }
+
+
+table.dataTable thead .sorting_desc:before{
+  display: block;
+  font-size: .8em;
+  line-height: 9px;
+  opacity: .125;
+  position: absolute;
+  right: 10px;
+}
