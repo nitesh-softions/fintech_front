@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Input, Button } from 'reactstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -14,9 +14,9 @@ const CompanyFormStep2 = ({ handleSubmit }) => {
     },
     validationSchema: Yup.object({
       companyName: Yup.string().required('Comany Name is required'),
-        companyAddress: Yup.string().required('Company Address is required'),
-        tin: Yup.string().required('TIN is required'),
-        vat: Yup.string().required('VAT is required')
+      companyAddress: Yup.string().required('Company Address is required'),
+      tin: Yup.string().required('TIN is required'),
+      vat: Yup.string().required('VAT is required')
     }),
     onSubmit: (values) => {
       handleSubmit(values); // Pass values to parent
@@ -28,7 +28,7 @@ const CompanyFormStep2 = ({ handleSubmit }) => {
       <Row className="mb-3">
         <Col md={6}>
           <label>Corporate/Company Name</label>
-          <input
+          <Input
             name="companyName" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
@@ -41,7 +41,7 @@ const CompanyFormStep2 = ({ handleSubmit }) => {
         </Col>
         <Col md={6}>
           <label>Corporate/Company Address</label>
-          <input 
+          <Input 
             name="companyAddress" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
@@ -56,7 +56,7 @@ const CompanyFormStep2 = ({ handleSubmit }) => {
       <Row className="mb-3">
         <Col md={6}>
           <label>TIN</label>
-          <input 
+          <Input 
             name="tin" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
@@ -69,7 +69,7 @@ const CompanyFormStep2 = ({ handleSubmit }) => {
         </Col>
         <Col md={6}>
           <label>VAT</label>
-          <input 
+          <Input 
             name="vat" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
@@ -82,7 +82,7 @@ const CompanyFormStep2 = ({ handleSubmit }) => {
         </Col>
       </Row>
       <div className="text-center">
-        <button className="btn btn-primary w-100 btn-signup" type="submit">Next</button>
+        <Button className="w-100" type="submit">Next</Button>
       </div>
     </form>
   );
