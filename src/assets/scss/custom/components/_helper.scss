@@ -124,6 +124,10 @@
   transform: rotate(90deg); /* Rotate to the right */
 }
 
+.thin-scrollbar {
+  scrollbar-width: thin;
+}
+
 
 .quick-transfer-card {
   .swiper {
@@ -346,4 +350,22 @@
     .modal-content {
       border: none !important;
     }
+}
+
+.recharge-tabs {
+  border-bottom: none !important;
+  .nav-item {
+    .nav-link {
+      font-size: 16px;
+      color: #A4AEBD !important;
+
+      &.active {
+        color: $primary !important;
+        font-weight: 600;
+      }
+      &::after {
+        display: none !important;
+      }
+    }
+  }
 }

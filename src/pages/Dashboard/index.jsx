@@ -73,7 +73,7 @@ const Dashboard = props => {
                   {/* <Col md={4}><CustomButton onClick={handleDirectPayCompanies} btn_heading="Direct Pay Company" btn_icon={TbBriefcaseFilled}/></Col> */}
                   <Col md={4}><CustomButton onClick={handleTransferToMobileMoney} btn_heading="Transfer to Mobile Money" btn_icon={SVGIcons.HandHoldingDollar} /></Col>
                   <Col md={4}><CustomButton onClick={handleInternationalAirtime} btn_heading="International Airtime " btn_icon={SVGIcons.TfiWorld} /></Col>
-                  <Col xs={4}><CustomButton onClick={handleTransferMoneyToBank} btn_heading="Transfer to Bank" btn_icon={SVGIcons.PiBankLight  } /></Col>
+                  <Col md={4}><CustomButton onClick={handleTransferMoneyToBank} btn_heading="Transfer to Bank" btn_icon={SVGIcons.PiBankLight  } /></Col>
                 </Row>
               </Container>
             </Col>
@@ -100,12 +100,6 @@ const Dashboard = props => {
       </Row>
     </Container>
   );
-};
-
-Dashboard.propTypes = {
-  t: PropTypes.any,
-  chartsData: PropTypes.any,
-  onGetChartsData: PropTypes.func,
 };
 
 export default withTranslation()(Dashboard);
