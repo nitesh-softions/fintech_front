@@ -3,10 +3,12 @@ import { CardText, Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPa
 import QuickTransferCard from '../../components/Dashboard/QuickTransferCard';
 import RecentTransactionCard from '../../components/Dashboard/RecentTransactionCard';
 import classnames from 'classnames'; // Import classnames
-import UserProfile from './user-profile';
+import UserProfile from './UserProfile';
 import ChangePassword from './ChangePassword';
 import AboutUs from './aboutUs';
-import ContactUs from './contactUs';
+import ContactUs from './ContactUs';
+import SVGIcons from '../../components/Common/SVGIcons';
+import FAQ from './FAQ';
 
 const SettingsPage = () => {
   const [customActiveTab, setCustomActiveTab] = useState("1");
@@ -27,7 +29,7 @@ const SettingsPage = () => {
                 <NavItem>
                   <NavLink style={{ cursor: "pointer" }} className={classnames({ active: customActiveTab === "1" })} onClick={() => { toggleCustom("1"); }}>
                     <span className="d-block d-sm-none">
-                      <i className="far fa-user"></i>
+                      <SVGIcons.FaUserEdit className='font-size-20'/>
                     </span>
                     <span className="d-none d-sm-block">Edit Profile</span>
                   </NavLink>
@@ -35,23 +37,23 @@ const SettingsPage = () => {
                 <NavItem>
                   <NavLink style={{ cursor: "pointer" }} className={classnames({ active: customActiveTab === "2" })} onClick={() => { toggleCustom("2"); }}>
                     <span className="d-block d-sm-none">
-                      <i className="fas fa-home"></i>
+                      <SVGIcons.LockEdit className='font-size-16'/>
                     </span>
                     <span className="d-none d-sm-block">Change Password</span>
                   </NavLink>
                 </NavItem>
-                <NavItem>
-                  <NavLink style={{ cursor: "pointer" }} className={classnames({ active: customActiveTab === "3" })} onClick={() => { toggleCustom("3"); }}>
-                    <span className="d-block d-sm-none">
-                      <i className="far fa-envelope"></i>
-                    </span>
-                    <span className="d-none d-sm-block">Referral Code</span>
-                  </NavLink>
-                </NavItem>
+                  {/* <NavItem>
+                    <NavLink style={{ cursor: "pointer" }} className={classnames({ active: customActiveTab === "3" })} onClick={() => { toggleCustom("3"); }}>
+                      <span className="d-block d-sm-none">
+                        <SVGIcons.TbAffiliateFilled className='font-size-20'/>
+                      </span>
+                      <span className="d-none d-sm-block">Referral Code</span>
+                    </NavLink>
+                  </NavItem> */}
                 <NavItem>
                   <NavLink style={{ cursor: "pointer" }} className={classnames({ active: customActiveTab === "4" })} onClick={() => { toggleCustom("4"); }}>
                     <span className="d-block d-sm-none">
-                      <i className="fas fa-cog"></i>
+                      <SVGIcons.FaQuestionCircle className='font-size-20'/>
                     </span>
                     <span className="d-none d-sm-block">FAQ</span>
                   </NavLink>
@@ -59,7 +61,7 @@ const SettingsPage = () => {
                 <NavItem>
                   <NavLink style={{ cursor: "pointer" }} className={classnames({ active: customActiveTab === "5" })} onClick={() => { toggleCustom("5"); }}>
                     <span className="d-block d-sm-none">
-                      <i className="fas fa-info-circle"></i>
+                      <SVGIcons.FaUsers className='font-size-20'/>
                     </span>
                     <span className="d-none d-sm-block">About Us</span>
                   </NavLink>
@@ -67,7 +69,7 @@ const SettingsPage = () => {
                 <NavItem>
                   <NavLink style={{ cursor: "pointer" }} className={classnames({ active: customActiveTab === "6" })} onClick={() => { toggleCustom("6"); }}>
                     <span className="d-block d-sm-none">
-                      <i className="fas fa-phone"></i>
+                      <SVGIcons.ContactUsIcon className='font-size-20'/>
                     </span>
                     <span className="d-none d-sm-block">Contact Us</span>
                   </NavLink>
@@ -79,9 +81,7 @@ const SettingsPage = () => {
                 <TabPane tabId="1">
                   <Row>
                     <Col sm="12">
-                      <CardText className="mb-0">
-                        <UserProfile />
-                      </CardText>
+                      <UserProfile />
                     </Col>
                   </Row>
                 </TabPane>
@@ -90,33 +90,27 @@ const SettingsPage = () => {
                 <TabPane tabId="2">
                   <Row>
                     <Col sm="12">
-                      <CardText className="mb-0">
-                        <ChangePassword/>
-                      </CardText>
+                      <ChangePassword/>
                     </Col>
                   </Row>
                 </TabPane>
 
                 {/* Referral Code Tab */}
-                <TabPane tabId="3">
+                {/* <TabPane tabId="3">
                   <Row>
                     <Col sm="12">
                       <CardText className="mb-0">
-                        {/* Referral Code content */}
-                        Share your unique referral code with friends to earn rewards. Every successful referral helps you earn credits.
+                        Coming Soon...
                       </CardText>
                     </Col>
                   </Row>
-                </TabPane>
+                </TabPane> */}
 
                 {/* FAQ Tab */}
                 <TabPane tabId="4">
                   <Row>
                     <Col sm="12">
-                      <CardText className="mb-0">
-                        {/* FAQ content */}
-                        Find answers to frequently asked questions about our platform, account management, and more.
-                      </CardText>
+                      <FAQ />
                     </Col>
                   </Row>
                 </TabPane>
@@ -125,9 +119,7 @@ const SettingsPage = () => {
                 <TabPane tabId="5">
                   <Row>
                     <Col sm="12">
-                      <CardText className="mb-0">
-                        <AboutUs />
-                      </CardText>
+                      <AboutUs />
                     </Col>
                   </Row>
                 </TabPane>
@@ -136,9 +128,7 @@ const SettingsPage = () => {
                 <TabPane tabId="6">
                   <Row>
                     <Col sm="12">
-                      <CardText className="mb-0">
-                        <ContactUs/>
-                      </CardText>
+                      <ContactUs/>
                     </Col>
                   </Row>
                 </TabPane>

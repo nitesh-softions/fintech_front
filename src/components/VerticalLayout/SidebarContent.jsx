@@ -201,12 +201,12 @@ const SidebarContent = (props) => {
                 <span>{props.t("Notification")}</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/statistics" onClick={tToggle}>
                 <SVGIcons.BsBarChart />
                 <span>{props.t("Statistics")}</span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/settings" onClick={tToggle}>
                 <SVGIcons.IoSettingsOutline/>

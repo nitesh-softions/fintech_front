@@ -9,9 +9,12 @@ const ChangePassword = (props) => {
 
   return (
     <div className="my-2">
+      <span className="d-block d-sm-none">
+        <h2 className="mb-3 font-size-18 text-secondary text-center">Change Password</h2>
+      </span>
       {/* {error && error ? <Alert color="danger">{error}</Alert> : null} */}
       {/* {success ? <Alert color="success">{success}</Alert> : null} */}
-      <div className="mt-4">
+      <div className="mt-3">
         <Row>
           <Col xs={12} lg={8}>
             <Row>

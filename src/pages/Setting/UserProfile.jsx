@@ -1,20 +1,44 @@
-import React from "react";
-import { Container, Row, Col, Card, CardBody, Input, Button } from "reactstrap";
+import React, { useState } from "react";
+import { Row, Col, Input, Button } from "reactstrap";
 
 import withRouter from "../../components/Common/withRouter";
 
-import avatar from "../../assets/images/users/avatar-1.jpg";
+import avatar1 from "../../assets/images/users/avatar-1.jpg";
+import SVGIcons from "../../components/Common/SVGIcons";
 
 const UserProfile = (props) => {
+  const [avatar, setAvatar] = useState(avatar1);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setAvatar(e.target.result); // Update avatar with new image
+      };
+      reader.readAsDataURL(file); // Convert file to Base64
+    }
+  };
+
+  const handleEditClick = () => {
+    document.getElementById('imageUpload').click(); // Trigger file input click
+  };
 
   return (
     <div className="my-2">
+      <span className="d-block d-sm-none">
+        <h2 className="mb-3 font-size-18 text-secondary text-center">User Profile</h2>
+      </span>
       {/* {error && error ? <Alert color="danger">{error}</Alert> : null} */}
       {/* {success ? <Alert color="success">{success}</Alert> : null} */}
       <div className="position-relative w-fit user-profile">
-        <img src={avatar} alt="" className="avatar-2xl rounded-4 shadow-lg" />
-        <label className="position-absolute top-0 end-0 m-2">edit</label>
+        <img src={avatar} alt="User Avatar" className="avatar-2xl rounded-4 shadow-lg" />
+        <input type="file" id="imageUpload" accept="image/*" style={{ display: 'none' }} onChange={handleImageChange} />
+        <Button className="btn btn-light position-absolute top-0 end-0 m-2 p-1 d-flex align-items-center justify-content-center" style={{ width: '20px', height: '20px' }} onClick={handleEditClick} >
+          <SVGIcons.RiEdit2Fill className="font-size-11" />
+        </Button>
       </div>
+
       <div className="mt-4">
         <Row>
           <Col xs={12} lg={8}>

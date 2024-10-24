@@ -58,9 +58,13 @@ const DebouncedInput = ({
 
   return (
     <React.Fragment>
-      <Col sm={4}>
-        <input {...props} value={value} onChange={e => setValue(e.target.value)} />
+      <Col sm={4}></Col>
+      <Col sm={4}></Col>
+      <Col sm={4} className="position-relative">
+        <input {...props} value={value} onChange={e => setValue(e.target.value)} className="form-control" />
+        <span className="bx bx-search-alt font-size-16 position-absolute top-50 end-0 translate-middle-y me-4"></span>
       </Col>
+
     </React.Fragment>
   );
 };
@@ -138,13 +142,7 @@ const TableContainer = ({
       <Row className="mb-2">
         {isCustomPageSize && (
           <Col sm={2}>
-            <select
-              className="form-select pageSize mb-2"
-              value={table.getState().pagination.pageSize}
-              onChange={e => {
-                table.setPageSize(Number(e.target.value))
-              }}
-            >
+            <select className="form-select pageSize mb-2" value={table.getState().pagination.pageSize} onChange={e => { table.setPageSize(Number(e.target.value)) }} >
               {[10, 20, 30, 40, 50].map(pageSize => (
                 <option key={pageSize} value={pageSize}>
                   Show {pageSize}
@@ -154,13 +152,6 @@ const TableContainer = ({
           </Col>
         )}
 
-        {isGlobalFilter && <DebouncedInput
-          value={globalFilter ?? ''}
-          onChange={value => setGlobalFilter(String(value))}
-          className="form-control search-box me-2 mb-2 d-inline-block"
-          placeholder={SearchPlaceholder}
-        />}
-
         {isJobListGlobalFilter && <JobListGlobalFilter setGlobalFilter={setGlobalFilter} />}
 
         {isAddButton && <Col sm={6}>
@@ -169,6 +160,14 @@ const TableContainer = ({
               <i className="mdi mdi-plus me-1"></i> {buttonName}</Button>
           </div>
         </Col>}
+
+        {isGlobalFilter && 
+          <DebouncedInput
+            value={globalFilter ?? ''}
+            onChange={value => setGlobalFilter(String(value))}
+            className="form-control search-box me-2 mb-2 d-inline-block"
+            placeholder={SearchPlaceholder}
+          />}
       </Row>
 
       <div className={divClassName ? divClassName : "table-responsive"}>
@@ -240,7 +239,7 @@ const TableContainer = ({
         isPagination && (
           <Row className="mt-2">
             <Col sm={12} md={5}>
-              <div className="dataTables_info">Showing {getState().pagination.pageSize} of {data.length} Results</div>
+              <div className="dataTables_info text-secondary">Showing {getState().pagination.pageSize} of {data.length} Results</div>
             </Col>
             <Col sm={12} md={7}>
               <div className={paginationWrapper}>
