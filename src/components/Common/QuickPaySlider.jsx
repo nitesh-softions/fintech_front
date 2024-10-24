@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation'; // Import the navigation styles
 import { Navigation } from 'swiper/modules';
 import { BiLogoTelegram } from 'react-icons/bi';
+import avatar1 from '../../assets/images/users/avatar-1.jpg';
 
 
 const QuickPaySlider = () => {
@@ -39,25 +40,25 @@ const QuickPaySlider = () => {
         >
           <SwiperSlide>
             <div className="text-center py-lg-4">
-              <img src="/src/assets/images/users/avatar-1.jpg" alt="" className="avatar-md rounded-circle d-block mx-auto p-1" />
+              <img src={avatar1} alt="" className="avatar-md rounded-circle d-block mx-auto p-1" />
               <h5 className='mt-2 font-size-13 fw-normal'>Livia Bator</h5>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="text-center py-lg-4">
-              <img src="/src/assets/images/users/avatar-1.jpg" alt="" className="avatar-md rounded-circle d-block mx-auto p-1" />
+              <img src={avatar1} alt="" className="avatar-md rounded-circle d-block mx-auto p-1" />
               <h5 className='mt-2 font-size-13 fw-normal'>Livia Bator</h5>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="text-center py-lg-4">
-              <img src="/src/assets/images/users/avatar-1.jpg" alt="" className="avatar-md rounded-circle d-block mx-auto p-1" />
+              <img src={avatar1} alt="" className="avatar-md rounded-circle d-block mx-auto p-1" />
               <h5 className='mt-2 font-size-13 fw-normal'>Livia Bator</h5>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="text-center py-lg-4">
-              <img src="/src/assets/images/users/avatar-1.jpg" alt="" className="avatar-md rounded-circle d-block mx-auto p-1" />
+              <img src={avatar1} alt="" className="avatar-md rounded-circle d-block mx-auto p-1" />
               <h5 className='mt-2 font-size-13 fw-normal'>Livia Bator</h5>
             </div>
           </SwiperSlide>
