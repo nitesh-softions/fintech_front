@@ -11,7 +11,7 @@ import CreateNewPassword from "../pages/Authentication/CreateNewPassword";
 
 // // Dashboard
 import DashboardPage from "../pages/Dashboard/index";
-import WalletToWallet from "../pages/Dashboard/WalletToWallet";
+import WalletToWallet from "../pages/Dashboard/walletToWallet";
 import AddMoney from "../pages/Dashboard/addMoney";
 import ViewPayment from "../pages/Dashboard/viewPayment";
 import ShowCode from "../pages/Dashboard/showCode";
