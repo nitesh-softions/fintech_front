@@ -69,6 +69,7 @@
 .main-content {
   overflow: auto;
   height: calc(100vh - 99px);
+  scrollbar-width: thin;
   
   .content {
     padding: 0 15px 10px 15px;
