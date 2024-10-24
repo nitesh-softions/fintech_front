@@ -201,12 +201,12 @@ const SidebarContent = (props) => {
                 <span>{props.t("Notification")}</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/statistics" onClick={tToggle}>
                 <SVGIcons.BsBarChart />
                 <span>{props.t("Statistics")}</span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/settings" onClick={tToggle}>
                 <SVGIcons.IoSettingsOutline/>
@@ -218,18 +218,6 @@ const SidebarContent = (props) => {
               <Link to="/watchvideo">
                 <TbPlayerPlayFilled/>
                 <span>{props.t("Watch Video")}</span>
-              </Link>
-            </li>
-            <li className="d-md-none">
-              <Link to="/aboutus">
-                <BiSolidInfoCircle/>
-                <span>{props.t("About Us")}</span>
-              </Link>
-            </li>
-            <li className="d-md-none">
-              <Link to="/contactus">
-                <BiSolidPhoneCall/>
-                <span>{props.t("Contact Us")}</span>
               </Link>
             </li> */}
 

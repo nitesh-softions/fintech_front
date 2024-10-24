@@ -123,7 +123,7 @@ const Transaction = props => {
   return (
     <React.Fragment>
       <Container fluid className="page-content">
-        <h2 className="mb-3">User Statement </h2>
+        <h2 className="font-size-22 mb-4">User Statement </h2>
         <div className="mb-3">
           <Row className="align-items-center">
             <Col xs={12} md={4} className="mb-3">

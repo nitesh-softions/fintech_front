@@ -36,14 +36,15 @@
 .avatar-2xl {
   height: 9.5rem;
   width: 9.5rem;
-  margin-top: -4.7rem;
 }
 
 @media only screen and (max-width: 600px) {
-  .avatar-2xl {
-    height: 6rem;
-    width: 6rem;
-    margin-top: -3rem;
+  .user-profile {
+    margin: auto;
+    .avatar-2xl {
+      height: 7rem;
+      width: 7rem;
+    }
   }
 }
 

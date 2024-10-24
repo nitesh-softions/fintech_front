@@ -1,9 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-// // Profile
-import UserProfile from "../pages/Authentication/user-profile";
-
 // // Authentication related pages
 import Login from "../pages/Authentication/Login";
 import Logout from "../pages/Authentication/Logout";
@@ -19,15 +16,13 @@ import AddMoney from "../pages/Dashboard/addMoney";
 import ViewPayment from "../pages/Dashboard/viewPayment";
 import ShowCode from "../pages/Dashboard/showCode";
 import TransactionPage from "../pages/transactionPage";
+import SettingsPage from "../pages/Setting/index";
 import NotificationPage from "../pages/notificationPage";
 import StatisticsPage from "../pages/statisticsPage";
-import SettingsPage from "../pages/settingsPage";
 import DirectPayCompanies from "../pages/Dashboard/directPayCompanies";
 import TransferToMobileMoney from "../pages/Dashboard/transferToMobileMoney";
 import InternationalAirtime from "../pages/Dashboard/internationalAirtime";
 import TransferMoneyToBank from "../pages/Dashboard/transferMoneyToBank";
-import AboutUs from "../pages/aboutUs";
-import ContactUs from "../pages/contactUs";
 
 const authProtectedRoutes = [
   // Dashboard
@@ -47,15 +42,6 @@ const authProtectedRoutes = [
   { path: "/notification", component: <NotificationPage /> },
   { path: "/statistics", component: <StatisticsPage /> },
   { path: "/settings", component: <SettingsPage /> },
-  
-  // About Us
-  { path: "/aboutus", component: <AboutUs /> },
-
-  // Contact Us
-  { path: "/contactus", component: <ContactUs /> },
-  
-  //profile
-  { path: "/profile", component: <UserProfile /> },
 
   // eslint-disable-next-line react/display-name
   { path: "/", exact: true, component: <Navigate to="/dashboard" /> },
