@@ -18,6 +18,7 @@ const SettingsPage = () => {
       setCustomActiveTab(tab);
     }
   };
+  
 
   return (
     <React.Fragment>
