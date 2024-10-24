@@ -5,7 +5,7 @@ import RecentTransactionCard from '../../components/Dashboard/RecentTransactionC
 import classnames from 'classnames'; // Import classnames
 import UserProfile from './UserProfile';
 import ChangePassword from './ChangePassword';
-import AboutUs from './aboutUs';
+import AboutUs from './AboutUs';
 import ContactUs from './ContactUs';
 import SVGIcons from '../../components/Common/SVGIcons';
 import FAQ from './FAQ';
