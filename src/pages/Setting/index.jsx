@@ -6,7 +6,7 @@ import classnames from 'classnames'; // Import classnames
 import UserProfile from './UserProfile';
 import ChangePassword from './ChangePassword';
 import AboutUs from './AboutUs';
-import ContactUs from './ContactUs';
+import ContactUs from './contactUs';
 import SVGIcons from '../../components/Common/SVGIcons';
 import FAQ from './FAQ';
 
@@ -18,7 +18,6 @@ const SettingsPage = () => {
       setCustomActiveTab(tab);
     }
   };
-  
 
   return (
     <React.Fragment>
