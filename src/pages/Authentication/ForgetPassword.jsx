@@ -72,7 +72,7 @@ const ForgetPasswordPage = (props) => {
                 <AuthLeftBanner/>
 
                 {/* <!-- Right Section --> */}
-                <form className="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative bg-white" onSubmit={formik.handleSubmit}>
+                <form className="col-lg-5 d-flex flex-column justify-content-center align-items-center position-relative bg-white" onSubmit={formik.handleSubmit}>
                     {/* <!-- Top right corner watermark --> */}
                     <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
                         <img src={bgAuthOverlay} alt="Logo" className="img-fluid w-50 h-50"/>

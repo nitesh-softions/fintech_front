@@ -10,7 +10,7 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
             firstName: formValues.firstName || '',
             lastName: formValues.lastName || '',
             mobile: formValues.mobile || '',
-            telephone: formValues.telephone || '',
+            email: formValues.email || '',
             password: formValues.password || '',
             confirmPassword: formValues.confirmPassword || ''
         },
@@ -18,6 +18,7 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
             firstName: Yup.string().required('First name is required'),
             lastName: Yup.string().required('Last name is required'),
             mobile: Yup.string().required('Mobile number is required'),
+            email: Yup.string().email("Invalid email address").required("Email is required"),
             password: Yup.string().required('Passowrd is required'),
             confirmPassword: Yup.string().required('Confirm password is required'),
         }),
@@ -32,7 +33,7 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
       firstName: formValues.firstName || '',
       lastName: formValues.lastName || '',
       mobile: formValues.mobile || '',
-      telephone: formValues.telephone || '', 
+      email: formValues.email || '', 
       password: formValues.password || '',
       confirmPassword: formValues.confirmPassword || ''
     });
@@ -103,27 +104,22 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
           }
         </Col>
         <Col md={6}>
-          <label>Telephone (Optional)</label>
-          <div className='d-flex'>
-            <div className='col-4'>
-              <select className="form-control bg-light mb-3 border-light px-1">
-                  <option>+123</option>
-              </select>
-            </div>
-            <div className='col-8 d-flex'>
-                <Input type="text" name='telephone' className="form-control bg-light mb-3 border-light ms-2" 
-                onChange={(e) => {
-                  formik.handleChange(e);
-                  handleChange(e); // Update parent state
-                }}
-                value={formik.values.telephone}/>
-                {
-                  formik.errors.telephone && formik.touched.telephone ? (
-                    <div className="text-danger">{formik.errors.telephone}</div>
-                  ) : null
-                }
-            </div>
-          </div>
+          <label>Email</label>
+          <Input 
+            name="email" 
+            type="email" 
+            className="form-control bg-light border-light" 
+            onChange={(e) => {
+              formik.handleChange(e);
+              handleChange(e); // Update parent state
+            }}
+            value={formik.values.email}
+          />
+          {
+            formik.errors.email && formik.touched.email ? (
+              <div className="text-danger">{formik.errors.email}</div>
+            ) : null
+          }
         </Col>
       </Row>
       <Row className="mb-4">
