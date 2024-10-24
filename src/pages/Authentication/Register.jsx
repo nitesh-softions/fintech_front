@@ -14,6 +14,7 @@ import { registerUser, apiError } from "../../store/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
 
+// Import Images
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner";
 import bgAuthOverlay from '../../assets/images/bg_overlay/bg-auth-overlay.svg';
 
@@ -26,6 +27,13 @@ import CompanyFormStep2 from "./StepperForms/CompanyFormStep2";
 import CompanyFormStep3 from "./StepperForms/CompanyFormStep3";
 
 
+const selectOptions = [
+  { value: 'india', label: 'India' },
+  { value: 'usa', label: 'USA' },
+  { value: 'canada', label: 'Canada' },
+  { value: 'brazil', label: 'Brazil' },
+  { value: 'UK', label: 'UK' }
+];
 
 const Register = props => {
   
@@ -138,6 +146,10 @@ const Register = props => {
   });
 
 
+  // Logs the selected country to the console
+  const selectedCountry = (selectedOption) => {
+    console.log(selectedOption);
+  }
 
 
   return (
@@ -148,7 +160,7 @@ const Register = props => {
           <AuthLeftBanner/>
 
           {/* Right Register Section */}
-          <div className="col-lg-6 d-flex flex-column align-items-center bg-white">
+          <div className="col-lg-5 d-flex flex-column align-items-center bg-white">
             {/* <!-- Top right corner watermark --> */}
             <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
               <img src={bgAuthOverlay} alt="Logo" className="img-fluid w-50 h-50"/>
@@ -225,7 +237,7 @@ const Register = props => {
                           </Col>
                           <Col md={6} className="mb-3">
                             <label>Select Country</label>
-                            <ReactSelect isMulti={false} />
+                            <ReactSelect isMulti={false} selectedUser={selectedCountry} options={selectOptions} />
                           </Col>
                         </Row>
 

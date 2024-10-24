@@ -20,7 +20,7 @@ const AuthLeftBanner = (props) => {
 
     return (
         <React.Fragment>
-            <div className="col-lg-6 d-none d-lg-flex align-items-center justify-content-center text-white auth-left-image-banner">
+            <div className="col-lg-7 d-none d-lg-flex align-items-center justify-content-center text-white auth-left-image-banner">
                 <div className="position-absolute bottom-0 start-0 p-5">
                     <div className="relative h-full w-full text-white flex flex-col justify-end p-6">
                     <RiSparkling2Fill style={{ fontSize: '60px' }}/>
