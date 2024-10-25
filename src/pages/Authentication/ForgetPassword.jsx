@@ -15,6 +15,7 @@ import { useFormik } from "formik";
 // import logo from "../../assets/images/logo.png";
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner.jsx";
 import bgAuthOverlay from '../../assets/images/bg_overlay/bg-auth-overlay.svg';
+import { Button, Col, Container, Form, Input, Label, Row } from "reactstrap";
 
 
 const ForgetPasswordPage = (props) => {
@@ -60,19 +61,19 @@ const ForgetPasswordPage = (props) => {
         email: Yup.string().email("Invalid email address").required("Email is required"),
     }),
     onSubmit: (values) => {
-        console.log(values); // Log or dispatch your action here
+        // console.log(values); // Log or dispatch your action here
     },
     });
 
   return (
     <React.Fragment>
-        <div className="container-fluid vh-100 overflow-hidden">
-            <div className="row h-100">
+        <Container fluid className="vh-100 overflow-hidden">
+            <Row className="h-100">
                 {/* Left Section */}
                 <AuthLeftBanner/>
 
                 {/* <!-- Right Section --> */}
-                <form className="col-lg-5 d-flex flex-column justify-content-center align-items-center position-relative bg-white" onSubmit={formik.handleSubmit}>
+                <Col lg={5} className="d-flex flex-column align-items-center justify-content-center bg-white">
                     {/* <!-- Top right corner watermark --> */}
                     <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
                         <img src={bgAuthOverlay} alt="Logo" className="img-fluid w-50 h-50"/>
@@ -81,12 +82,12 @@ const ForgetPasswordPage = (props) => {
                     <div className="w-100 px-5 auth-container">
                         <h3 className="text-center text-black mb-3">Forgot Password</h3>
                         <p className="text-center text-secondary mb-4 mx-4 px-3">It is a long established fact that a reader will be distracted by the readable content.</p>
-                        {/* <!-- Email Input --> */}
-                        <div className="mb-4">
-                            <div className="mb-3">
-                                <label>Email</label>
+                        <Form onSubmit={formik.handleSubmit}>
+                            {/* <!-- Email Input --> */}
+                            <div className="mb-4">
+                                <Label>Email</Label>
                                 <div className="input-group">
-                                    <input name="email" type="email" className="form-control border-0 bg-light" placeholder="Enter your email"  value={formik.values.email} onChange={formik.handleChange} />
+                                    <Input name="email" type="email" className="form-control border-0 bg-light" placeholder="Enter your email"  value={formik.values.email} onChange={formik.handleChange} />
                                 </div>
                                 {
                                     formik.errors.email && formik.touched.email ? (
@@ -94,16 +95,12 @@ const ForgetPasswordPage = (props) => {
                                     ) : null
                                 }
                             </div>
-                        </div>
-                        {/* <!-- Login and Signup Buttons --> */}
-                        <div className="text-center">
-                            <button className="btn btn-primary w-100 btn-login" type="submit">Send</button>
-                        </div>
+                            <Button className="w-100 bg-primary" type="submit">Send</Button>
+                        </Form>
                     </div>
-                </form>
-            </div>
-        </div>
-
+                </Col>
+            </Row>
+        </Container>
     </React.Fragment>
   );
 };
