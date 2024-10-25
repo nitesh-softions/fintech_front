@@ -23,6 +23,7 @@ import DirectPayCompanies from "../pages/Dashboard/directPayCompanies";
 import TransferToMobileMoney from "../pages/Dashboard/transferToMobileMoney";
 import InternationalAirtime from "../pages/Dashboard/internationalAirtime";
 import TransferMoneyToBank from "../pages/Dashboard/transferMoneyToBank";
+import TransactionPageTwo from "../pages/Transaction/transactionPageTwo";
 
 const authProtectedRoutes = [
   // Dashboard
@@ -38,7 +39,8 @@ const authProtectedRoutes = [
 
 
 
-  { path: "/transaction", component: <TransactionPage /> },
+  { path: "/transaction2", component: <TransactionPage   /> },
+  { path: "/transaction", component: <TransactionPageTwo /> },
   { path: "/notification", component: <NotificationPage /> },
   { path: "/statistics", component: <StatisticsPage /> },
   { path: "/settings", component: <SettingsPage /> },

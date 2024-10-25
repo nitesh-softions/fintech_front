@@ -1,0 +1,223 @@
+
+.css-1miy0lu-MuiTypography-root{
+    font-size: 22px !important;
+    text-transform: uppercase !important;
+    color: $dark !important;
+    font-family: $font-family-sans-serif !important;
+    
+    @media (max-width: 1600px) { font-size: 20px !important; }
+    @media (max-width: 1350px) { font-size: 19px !important; }
+}
+
+// SCSS for MUI DataTable Cell and Head Cell styles
+.tss-1x5mjc5-MUIDataTable-root{
+    padding: 1.5rem !important;
+    box-shadow: none !important;
+
+    .css-1ygil4i-MuiToolbar-root{
+        align-items: start !important;
+    }
+
+    // thead cell css
+    .css-1orzuox-MuiTableCell-root {
+        padding: 0 !important;
+        
+        .MuiButton-root{
+            padding: 0 10px 0 0 !important;
+            
+            .tss-1akey0g-MUIDataTableHeadCell-data{
+                text-transform: capitalize !important;
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                text-wrap-mode: nowrap !important;
+                font-family: $font-family-sans-serif !important;
+            }
+        }
+    }
+    
+    // tbody cell css
+    .tss-1qtl85h-MUIDataTableBodyCell-root {
+        font-family: $font-family-sans-serif !important;
+        padding: 0 10px 0 0 !important;
+        border: none;
+        color: #495057;
+        text-wrap-mode: nowrap !important;
+        font-size: 13px;
+
+    }
+    
+    // tbody checkbox cell css
+    .MuiTableCell-body.MuiTableCell-paddingCheckbox{
+        border-bottom: 0px;
+    }
+
+    // table checkbox size
+    .MuiTableCell-root{
+        background-color: #fff !important;
+
+        .css-1umw9bq-MuiSvgIcon-root{
+           height: 1.1rem !important;
+           width: 1.1rem !important;
+        }
+    }
+
+    .MuiToolbar-root{
+        margin-bottom: 1rem;
+        padding: 0 !important;
+
+        .tss-qbo1l6-MUIDataTableToolbar-actions{
+            .css-1umw9bq-MuiSvgIcon-root{
+                color: $primary !important;
+             }
+    
+             button[data-testid="DownloadCSV-iconButton"]{
+                display: none !important;
+             }
+        }
+    }
+
+    .MuiTableCell-footer{
+        p{margin-bottom: 0px !important;}
+        border: none !important;
+
+        .MuiTablePagination-actions{
+            .css-cdtzx3-MuiButtonBase-root-MuiIconButton-root{
+                background-color: $primary !important;
+                color: $white !important;
+                margin: 0 5px !important;
+            }
+            .css-cdtzx3-MuiButtonBase-root-MuiIconButton-root.Mui-disabled {
+                background-color: $gray-200 !important;
+                color: rgba(0, 0, 0, 0.26);
+                pointer-events: auto !important;
+                cursor: not-allowed !important;
+            }
+
+            
+        }
+    }
+
+
+}
+
+//Filter Modal Css
+.css-1dfcyzw-MuiPaper-root-MuiPopover-paper{
+    right: 3rem;
+    padding: 24px 24px 36px 24px;
+    margin-top: 2rem !important;
+
+    .css-mpaqru-MuiTypography-root{
+        margin-right: 10px !important;
+        font-family: $font-family-sans-serif !important;
+        font-size: 14px !important;
+        text-transform: capitalize !important;
+    }
+
+    .css-1umw9bq-MuiSvgIcon-root{
+        height: 1.1rem !important;
+        width: 1.1rem !important;
+    }
+
+    .css-rizt0-MuiTypography-root{
+        color: $primary !important;
+        font-size: 14px !important;
+        font-family: $font-family-sans-serif !important;
+    }
+}
+
+.tss-ynxllk-MUIDataTableFilter-root{
+    padding: 0px !important;
+
+    .tss-14ngk2z-MUIDataTableFilter-reset{
+        display: flex !important;
+        align-items: center !important;
+
+        .tss-1sbl55k-MUIDataTableFilter-title{
+            margin-right: 10px !important;
+            font-family: $font-family-sans-serif !important;
+            font-size: 14px !important;
+        }
+
+        button[aria-label="RESET"]{
+            background-color: $danger !important;
+            color: $white !important;
+            font-size: 13px !important;
+            font-family: $font-family-sans-serif !important;
+        }
+    }
+
+    .css-zcmli0-MuiGrid-root{
+        // Active input heading
+        .css-1ew92b2-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+            color: $secondary !important;
+            font-family: $font-family-sans-serif !important;
+        }
+
+        //Input field
+        .css-2hy7sk-MuiFormLabel-root-MuiInputLabel-root {
+            color: $gray-600 !important;
+            font-size: 14px !important;
+            font-family: $font-family-sans-serif !important;
+        }
+        
+        .css-5lvf42-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-5lvf42-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-5lvf42-MuiSelect-select-MuiInputBase-input-MuiInput-input{
+            color: $secondary !important;
+            font-size: 14px !important;
+            font-family: $font-family-sans-serif !important;
+        }
+    }
+
+    .css-zcmli0-MuiGrid-root>.MuiGrid-item {
+        padding-top: 20px !important;
+    }
+}
+
+// Active input border
+.css-6h9cc6-MuiInputBase-root-MuiInput-root::after {
+    border-bottom: 2px solid $secondary !important;
+}
+
+.MuiMenu-list{
+    .css-1rju2q6-MuiButtonBase-root-MuiMenuItem-root{
+        padding: 0px 10px !important;
+
+        .css-1umw9bq-MuiSvgIcon-root{
+            height: 1.1rem !important;
+            width: 1.1rem !important;
+        }
+
+        .css-rizt0-MuiTypography-root{
+            color: $primary !important;
+            font-size: 14px !important;
+            font-family: $font-family-sans-serif !important;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .css-1dfcyzw-MuiPaper-root-MuiPopover-paper{
+        left: 2rem !important;
+        right: 2rem !important;
+        max-height: 70vh !important;
+        
+        
+        .css-1osj8n2-MuiGrid-root{
+            flex-basis: 100% !important;
+            max-width: 100% !important;
+        }
+    }
+
+    .tss-1fz5efq-MUIDataTableToolbar-left{
+        margin-right: auto !important;
+    }
+
+    .css-1ygil4i-MuiToolbar-root{
+        flex-direction: column !important;
+    }
+}
+  
+.css-1yrc8ca-MuiInputBase-input-MuiInput-input{
+    color: $dark !important;
+    font-size: 14px !important;
+    font-family: $font-family-sans-serif !important;
+}
