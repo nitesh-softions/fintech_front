@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Input, Button } from 'reactstrap';
+import { Row, Col, Input, Button, Label, Form } from 'reactstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -42,17 +42,17 @@ const CompanyFormStep2 = ({ handleSubmit, handlePrev, formValues, handleChange }
 
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit}>
       <Row className="mb-3">
         <Col md={6}>
-          <label>Corporate/Company Name</label>
+          <Label>Corporate/Company Name</Label>
           <Input
             name="companyName" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("companyName", e.target.value); // Update parent state
             }}
             value={formik.values.companyName}
           />
@@ -63,14 +63,14 @@ const CompanyFormStep2 = ({ handleSubmit, handlePrev, formValues, handleChange }
           }
         </Col>
         <Col md={6}>
-          <label>Business License</label>
+          <Label>Business License</Label>
           <Input 
             name="businessLicense" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("businessLicense", e.target.value); // Update parent state
             }}
             value={formik.values.businessLicense}
           />
@@ -83,14 +83,14 @@ const CompanyFormStep2 = ({ handleSubmit, handlePrev, formValues, handleChange }
       </Row>
       <Row className="mb-3">
         <Col md={6}>
-          <label>Corporate/Company Address</label>
+          <Label>Corporate/Company Address</Label>
           <Input 
             name="companyAddress" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("companyAddress", e.target.value); // Update parent state
             }}
             value={formik.values.companyAddress}
           />
@@ -101,14 +101,14 @@ const CompanyFormStep2 = ({ handleSubmit, handlePrev, formValues, handleChange }
           }
         </Col>
         <Col md={6}>
-          <label>Postal Code</label>
+          <Label>Postal Code</Label>
           <Input 
             name="postalCode" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("postalCode", e.target.value); // Update parent state
             }}
             value={formik.values.postalCode}
           />
@@ -121,14 +121,14 @@ const CompanyFormStep2 = ({ handleSubmit, handlePrev, formValues, handleChange }
       </Row>
       <Row className="mb-3">
         <Col md={6}>
-          <label>TIN</label>
+          <Label>TIN</Label>
           <Input 
             name="tin" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("tin", e.target.value); // Update parent state
             }}
             value={formik.values.tin}
           />
@@ -139,14 +139,14 @@ const CompanyFormStep2 = ({ handleSubmit, handlePrev, formValues, handleChange }
           }
         </Col>
         <Col md={6}>
-          <label>VAT</label>
+          <Label>VAT</Label>
           <Input 
             name="vat" 
             type="text" 
             className="form-control bg-light border-light mb-2" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("vat", e.target.value); // Update parent state
             }}
             value={formik.values.vat}
           />
@@ -158,11 +158,11 @@ const CompanyFormStep2 = ({ handleSubmit, handlePrev, formValues, handleChange }
         </Col>
       </Row>
       <div className="d-flex justify-content-between">
-        <Button className="w-25" type="submit"  onClick={handlePrev}>Prev</Button>
+        <Button className="w-25" type="submit"  onClick={handlePrev}>Previous</Button>
         <Button className="w-25 bg-primary" type="submit">Next</Button>
       </div>
-    </form>
+    </Form>
   );
 };
-
+                                                                                                      
 export default CompanyFormStep2;

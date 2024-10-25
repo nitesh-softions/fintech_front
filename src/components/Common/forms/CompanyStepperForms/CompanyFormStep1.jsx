@@ -1,7 +1,18 @@
 import React from 'react';
-import { Row, Col, Input, Button } from 'reactstrap';
+import { Row, Col, Input, Button, Form, Label } from 'reactstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import ReactSelect from '../../ReactSelect';
+
+// Select Options
+const selectOptions = [
+  { value: '91', label: '+91' },
+  { value: '92', label: '+92' },
+  { value: '93', label: '+93' },
+  { value: '94', label: '+94' },
+  { value: '95', label: '+95' }
+];
+
 
 const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
 
@@ -27,7 +38,7 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
         },
     });
 
-    // Update formik values on change
+   // Update formik values on change
    React.useEffect(() => {
     formik.setValues({
       firstName: formValues.firstName || '',
@@ -39,18 +50,23 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
     });
   }, [formValues]); // Run whenever formValues change
 
+  // Logs the selected country code to the console
+  const selectedCountryCode = (selectedOption) => {
+    // console.log(selectedOption);  // Log selected country code
+  }
+
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit}>
       <Row className="mb-2">
         <Col md={6}>
-          <label>First Name</label>
+          <Label>First Name</Label>
           <Input
             name="firstName" 
             type="text" 
             className="form-control bg-light border-light" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("firstName", e.target.value); // Update parent state
             }}
             value={formik.values.firstName}
           />
@@ -61,14 +77,14 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
           }
         </Col>
         <Col md={6}>
-          <label>Last Name</label>
+          <Label>Last Name</Label>
           <Input 
             name="lastName" 
             type="text" 
             className="form-control bg-light border-light" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("lastName", e.target.value); // Update parent state
             }}
             value={formik.values.lastName}
           />
@@ -81,18 +97,19 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
       </Row>
       <Row>
         <Col md={6}>
-          <label>Mobile Number</label>
+          <Label>Mobile Number</Label>
           <div className='d-flex'>
             <div className='col-4'>
-            <select className="form-control bg-light border-light px-1">
+            {/* <select className="form-control bg-light border-light px-1">
                 <option>+123</option>
-            </select>
+            </select> */}
+            <ReactSelect isMulti={false} selectedUser={selectedCountryCode} options={selectOptions} placeholder='+1'/>
             </div>
             <div className='col-8 d-flex'>
                 <Input type="text" name='mobile' className="form-control bg-light border-light ms-2" 
                 onChange={(e) => {
                   formik.handleChange(e);
-                  handleChange(e); // Update parent state
+                  handleChange("mobile", e.target.value); // Update parent state
                 }}
                 value={formik.values.mobile}/>
             </div>
@@ -104,14 +121,14 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
           }
         </Col>
         <Col md={6}>
-          <label>Email</label>
+          <Label>Email</Label>
           <Input 
             name="email" 
             type="email" 
             className="form-control bg-light border-light" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("email", e.target.value); // Update parent state
             }}
             value={formik.values.email}
           />
@@ -124,14 +141,14 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
       </Row>
       <Row className="mb-4">
         <Col md={6}>
-          <label>Password</label>
+          <Label>Password</Label>
           <Input 
             name="password" 
             type="password" 
             className="form-control bg-light border-light" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("password", e.target.value); // Update parent state
             }}
             value={formik.values.password}
           />
@@ -142,14 +159,14 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
           }
         </Col>
         <Col md={6}>
-          <label>Confirm Password</label>
+          <Label>Confirm Password</Label>
           <Input 
             name="confirmPassword" 
             type="password" 
             className="form-control bg-light border-light" 
             onChange={(e) => {
               formik.handleChange(e);
-              handleChange(e); // Update parent state
+              handleChange("confirmPassword", e.target.value); // Update parent state
             }} 
             value={formik.values.confirmPassword}
           />
@@ -163,7 +180,7 @@ const CompanyFormStep1 = ({ handleSubmit, formValues, handleChange }) => {
       <div className="text-center">
         <Button className="w-100" type="submit">Next</Button>
       </div>
-    </form>
+    </Form>
   );
 };
 

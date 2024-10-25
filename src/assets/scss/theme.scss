@@ -759,6 +759,29 @@ input:-webkit-autofill:active {
   background-repeat: no-repeat;
   z-index: -1;
 }
+.bg_overlay_3{
+  background-image: url('../images/bg_overlay/bg-auth-top-overlay.svg');
+  height: 100%;
+  width: 40%;
+  top: 0;
+  right: -10px;
+  background-size: contain;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: top;
+  object-fit: cover;
+}
+.bg_overlay_4{
+  background-image: url('../images/bg_overlay/bg-auth-bottom-overlay.svg');
+  height: 100%;
+  width: 40%;
+  background-size: contain;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  left: 0;
+  object-fit: cover;
+}
 
 // Select2
 
