@@ -43,7 +43,7 @@ const CompanyFormStep2 = ({ handleSubmit, handlePrev, formValues, handleChange }
 
   return (
     <Form onSubmit={formik.handleSubmit}>
-      <Row className="mb-3">
+      <Row className="mb-2">
         <Col md={6}>
           <Label>Corporate/Company Name</Label>
           <Input
@@ -81,7 +81,7 @@ const CompanyFormStep2 = ({ handleSubmit, handlePrev, formValues, handleChange }
           }
         </Col>
       </Row>
-      <Row className="mb-3">
+      <Row className="mb-2">
         <Col md={6}>
           <Label>Corporate/Company Address</Label>
           <Input 

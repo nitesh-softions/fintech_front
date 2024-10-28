@@ -12,9 +12,7 @@ import { useFormik } from "formik";
 // import { userForgetPassword } from "../../store/actions";
 
 // import images
-// import logo from "../../assets/images/logo.png";
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner.jsx";
-import bgAuthOverlay from '../../assets/images/bg_overlay/bg-auth-overlay.svg';
 import { Button, Col, Container, Form, Input, Label, Row } from "reactstrap";
 
 
@@ -74,14 +72,13 @@ const ForgetPasswordPage = (props) => {
 
                 {/* <!-- Right Section --> */}
                 <Col lg={5} className="d-flex flex-column align-items-center justify-content-center bg-white">
-                    {/* <!-- Top right corner watermark --> */}
-                    <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
-                        <img src={bgAuthOverlay} alt="Logo" className="img-fluid w-50 h-50"/>
-                    </div>
+                    {/* <!-- Background Overlay --> */}
+                    <div className="bg_overlay_3"></div>
+                    <div className="bg_overlay_4"></div>
                     {/* <!-- Forgot Password Form Container --> */}
                     <div className="w-100 px-5 auth-container">
                         <h3 className="text-center text-black mb-3">Forgot Password</h3>
-                        <p className="text-center text-secondary mb-4 mx-4 px-3">It is a long established fact that a reader will be distracted by the readable content.</p>
+                        <p className="text-center text-secondary mb-4">It is a long established fact that a reader will be distracted by the readable content.</p>
                         <Form onSubmit={formik.handleSubmit}>
                             {/* <!-- Email Input --> */}
                             <div className="mb-4">

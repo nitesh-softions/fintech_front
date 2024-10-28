@@ -4,9 +4,6 @@ import withRouter from "../../components/Common/withRouter";
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner";
 import { Button, Col, Container, Form, Input, Label, Row } from "reactstrap";
 
-// import images
-import bgAuthOverlay from '../../assets/images/bg_overlay/bg-auth-overlay.svg';
-
 // Formik Validation
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -36,10 +33,9 @@ const Verification = (props) => {
 
                     {/* <!-- Right Section --> */}
                     <Col lg={5} className="d-flex flex-column align-items-center justify-content-center bg-white">
-                        {/* <!-- Top right corner watermark --> */}
-                        <div className="position-absolute top-0 end-0 text-align d-flex justify-content-end w-100">
-                            <img src={bgAuthOverlay} alt="Logo" className="img-fluid w-50 h-50"/>
-                        </div>
+                        {/* <!-- Background Overlay --> */}
+                        <div className="bg_overlay_3"></div>
+                        <div className="bg_overlay_4"></div>
 
                         {/* <!-- Verification Form Container --> */}
                         <div className="w-100 px-5 auth-container w-50">
