@@ -6,16 +6,20 @@ import { apiError, loginSuccess, logoutUserSuccess } from "./actions";
 
 //Include Both Helper File with needed methods
 import { postLogin } from "../../../helpers/backend_helper";
+import { encryptData } from "../../../utils/CommonFunctions";
 
 
 function* loginUser({ payload: { user, history } }) {
   let data = { email: user.email, password: user.password }
-  let base64Str = btoa(JSON.stringify(data));
-  console.log({"data":base64Str});
   
   try {
     const response = yield call(postLogin, data);
-    localStorage.setItem("authUser", JSON.stringify(response));
+
+    // Store the token securely
+    const token = encryptData(JSON.parse(response).token);
+    // Set the token as a cookie
+    document.cookie = `token=${token}; Secure; SameSite=Strict; path=/;`;
+
     yield put(loginSuccess(response));
 
     history('/dashboard');
@@ -26,12 +30,8 @@ function* loginUser({ payload: { user, history } }) {
 
 function* logoutUser({ payload: { history } }) {
   try {
-    localStorage.removeItem("authUser");
+    document.cookie = `token=; Max-Age=0; path=/;`; 
 
-    // if (import.meta.env.VITE_APP_DEFAULTAUTH === "geopay") {
-    //   // const response = yield call(fireBaseBackend.logout);
-    //   yield put(logoutUserSuccess(response));
-    // }
     history('/login');
   } catch (error) {
     yield put(apiError(error));

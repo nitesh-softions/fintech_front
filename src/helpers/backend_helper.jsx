@@ -9,13 +9,15 @@ const getLoggedInUser = () => {
   return null;
 };
 
-//is user is logged in
+// Check if user is logged in
 const isUserAuthenticated = () => {
   return getLoggedInUser() !== null;
 };
 
 // Login Method
-const postLogin = data => post(url.POST_LOGIN, data);
+const postLogin = data => {
+  return post(url.POST_LOGIN, data); // Return the promise from post
+};
 
 // Edit profile
 const postJwtProfile = data => post(url.POST_EDIT_JWT_PROFILE, data);
@@ -25,25 +27,24 @@ const postJwtRegister = (url, data) => {
   return axios
     .post(url, data)
     .then(response => {
-      if (response.status >= 200 || response.status <= 299) return response.data;
+      if (response.status >= 200 && response.status <= 299) return response.data; // Fixed condition
       throw response.data;
     })
     .catch(err => {
-      var message;
+      let message;
       if (err.response && err.response.status) {
         switch (err.response.status) {
           case 404:
-            message = "Sorry! the page you are looking for could not be found";
+            message = "Sorry! The page you are looking for could not be found.";
             break;
           case 500:
-            message =
-              "Sorry! something went wrong, please contact our support team";
+            message = "Sorry! Something went wrong, please contact our support team.";
             break;
           case 401:
-            message = "Invalid credentials";
+            message = "Invalid credentials.";
             break;
           default:
-            message = err[1];
+            message = err.message || "An unknown error occurred."; // Improved default error message
             break;
         }
       }
@@ -51,7 +52,7 @@ const postJwtRegister = (url, data) => {
     });
 };
 
-// postSocialLogin
+// Post Social Login
 export const postSocialLogin = data => post(url.SOCIAL_LOGIN, data);
 
 export {
