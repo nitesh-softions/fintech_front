@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import withRouter from "../../components/Common/withRouter";
-import { Row, Col, Container, Form, Input, Card, Button, } from "reactstrap";
+import { Row, Col, Container, Form, Input, Card, Button, Alert, } from "reactstrap";
 
 // Components
 import AuthLeftBanner from "../../components/Common/AuthLeftBanner.jsx";
@@ -25,17 +25,14 @@ import SVGIcons from "../../components/Common/SVGIcons";
 
 const Login = (props) => {
   //meta title
-  document.title = "Login | Skote - Vite React Admin & Dashboard Template";
+  document.title = "Login | EziPay";
   const dispatch = useDispatch();
 
   const validation = useFormik({
     // enableReinitialize : use this flag when initial values needs to be changed
     enableReinitialize: true,
+    initialValues: { email: "", password: "", },
 
-    initialValues: {
-      email: "",
-      password: "",
-    },
     validationSchema: Yup.object({
       email: Yup.string() .matches( /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Invalid email format" ) .required("Email is required"),
       password: Yup.string().required("Password is required"),
@@ -56,15 +53,6 @@ const Login = (props) => {
 
   const { error } = useSelector(LoginProperties);
 
-  const signIn = type => {
-    dispatch(socialLogin(type, props.router.navigate));
-  };
-
-  //for facebook and google authentication
-  const socialResponse = type => {
-    signIn(type);
-  };
-
   return (
     <React.Fragment>
         <Container fluid className="vh-100 overflow-hidden">
@@ -79,6 +67,7 @@ const Login = (props) => {
                   <div className="bg_overlay_4"></div>
 
                   <Card className="w-100 px-5 auth-container shadow-none bg-transparent">
+                      {error ? <Alert color="danger">{error.message}</Alert> : null}
                       <h3 className="text-center text-black mb-3">Sign in To Fintech</h3>
                       
                       <div className="d-flex justify-content-center mb-3 gap-3">
@@ -94,15 +83,7 @@ const Login = (props) => {
                             <span className="input-group-text bg-light border-0">
                               <SVGIcons.Envelope/>
                             </span>
-                            <Input
-                              type="email"
-                              name="email"
-                              className="form-control border-0 bg-light"
-                              placeholder="Email"
-                              value={validation.values.email}
-                              onChange={validation.handleChange}
-                              onBlur={validation.handleBlur}  // add onBlur to trigger touched
-                            />
+                            <Input type="email" name="email" className="form-control border-0 bg-light" placeholder="Email" value={validation.values.email} onChange={validation.handleChange} onBlur={validation.handleBlur} />
                           </div>
                           {validation.touched.email && validation.errors.email && (
                             <div className="text-danger">{validation.errors.email}</div>
@@ -114,15 +95,7 @@ const Login = (props) => {
                             <span className="input-group-text bg-light border-0">
                               <SVGIcons.Lock/>
                             </span>
-                            <Input
-                              type="password"
-                              name="password"
-                              className="form-control border-0 bg-light"
-                              placeholder="Password"
-                              value={validation.values.password}
-                              onChange={validation.handleChange}
-                              onBlur={validation.handleBlur}  // add onBlur to trigger touched
-                            />
+                            <Input type="password" name="password" className="form-control border-0 bg-light" placeholder="Password" value={validation.values.password} onChange={validation.handleChange} onBlur={validation.handleBlur} />
                           </div>
                           {validation.touched.password && validation.errors.password && (
                             <div className="text-danger">{validation.errors.password}</div>

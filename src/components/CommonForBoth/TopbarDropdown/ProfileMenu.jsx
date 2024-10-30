@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from "reactstrap";
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, } from "reactstrap";
 
 // i18n
 import { withTranslation } from "react-i18next";
@@ -16,39 +11,35 @@ import withRouter from "../../Common/withRouter";
 
 // users
 import user1 from "../../../assets/images/users/avatar-1.jpg";
+import { decryptData, getCookie } from "../../../utils/CommonFunctions";
+
+// const userCookie = getCookie("authUser");
+
+// useEffect(() => {
+//   const user = decryptData(userCookie);
+//   console.log(user);
+// }, [userCookie]);
 
 const ProfileMenu = (props) => {
   // Declare a new state variable, which we'll call "menu"
   const [menu, setMenu] = useState(false);
 
   const [username, setUsername] = useState("Admin");
-  const [uid, setUid] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+
+  const userCookie = getCookie("user");
 
   useEffect(() => {
-    if (localStorage.getItem("authUser")) {
-      if (import.meta.env.VITE_APP_DEFAULTAUTH === "firebase") {
-        const obj = JSON.parse(localStorage.getItem("authUser"));
-        console.log(obj);
-        setUsername(obj.email);
-        setUid(obj.uid);
-      } else if (
-        import.meta.env.VITE_APP_DEFAULTAUTH === "fake" ||
-        import.meta.env.VITE_APP_DEFAULTAUTH === "jwt"
-      ) {
-        const obj = JSON.parse(localStorage.getItem("authUser"));
-        setUsername(obj.username);
-        setUid(obj.uid);
-      }
+    if (userCookie) {
+      const user = JSON.parse(decryptData(userCookie));
+      setUsername(user.first_name + " " + user.last_name);
+      setUserEmail(user.email);
     }
-  }, []);
+  }, [userCookie]); // This effect will run whenever userCookie changes
 
   return (
     <React.Fragment>
-      <Dropdown
-        isOpen={menu}
-        toggle={() => setMenu(!menu)}
-        className="d-inline-block"
-      >
+      <Dropdown isOpen={menu} toggle={() => setMenu(!menu)} className="d-inline-block" >
         <DropdownToggle className="btn header-item d-flex align-items-center" id="page-header-user-dropdown" tag="button" >
           <img
             className="rounded-circle header-profile-user p-0"
@@ -60,7 +51,7 @@ const ProfileMenu = (props) => {
               {username}
               <i className="mdi mdi-chevron-down d-none d-xl-inline-block" />
             </p>
-            <p className="m-0">{uid}</p>
+            <p className="m-0">{userEmail}</p>
           </span>
         </DropdownToggle>
         <DropdownMenu className="dropdown-menu-end">

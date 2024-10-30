@@ -7,6 +7,7 @@ import {
 } from "./actionTypes"
 
 const initialState = {
+  user: null, // Initialize user state
   error: "",
   loading: false,
 }
@@ -23,6 +24,8 @@ const login = (state = initialState, action) => {
       state = {
         ...state,
         loading: false,
+        user: action.payload, // Store user information from payload
+        error: "", // Reset error on successful login
       }
       break
     case LOGOUT_USER:
@@ -38,6 +41,7 @@ const login = (state = initialState, action) => {
       state = { ...state }
       break
   }
+  
   return state
 }
 
