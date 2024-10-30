@@ -1,14 +1,10 @@
 import PropTypes from 'prop-types';
-import React, { useState } from "react";
+import React from "react";
 
 import { connect } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-
 // Import menuDropdown
 import NotificationDropdown from "../CommonForBoth/TopbarDropdown/NotificationDropdown";
 import ProfileMenu from "../CommonForBoth/TopbarDropdown/ProfileMenu";
-
-import logo from "../../assets/images/collapsed-logo.png";
 
 //i18n
 import { withTranslation } from "react-i18next";

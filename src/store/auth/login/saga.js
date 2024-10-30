@@ -17,14 +17,16 @@ function* loginUser({ payload: { user, history } }) {
 
     // Store the token securely
     const token = encryptData(JSON.parse(response).token);
+    const user = encryptData(JSON.parse(response));
     // Set the token as a cookie
     document.cookie = `token=${token}; Secure; SameSite=Strict; path=/;`;
+    document.cookie = `user=${user}; Secure; SameSite=Strict; path=/;`;
 
-    yield put(loginSuccess(response));
+    yield put(loginSuccess(JSON.parse(response)));
 
     history('/dashboard');
   } catch (error) {
-    yield put(apiError(error));
+    yield put(apiError(error.response.data));
   }
 }
 
