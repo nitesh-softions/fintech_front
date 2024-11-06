@@ -33,6 +33,7 @@ function* loginUser({ payload: { user, history } }) {
 function* logoutUser({ payload: { history } }) {
   try {
     document.cookie = `token=; Max-Age=0; path=/;`; 
+    document.cookie = `user=; Max-Age=0; path=/;`; 
 
     history('/login');
   } catch (error) {

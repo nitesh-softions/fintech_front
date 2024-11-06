@@ -65,7 +65,7 @@ const Login = (props) => {
 
                   <Card className="w-100 px-5 auth-container shadow-none bg-transparent">
                       {error ? <Alert color="danger">{error.message}</Alert> : null}
-                      <h3 className="text-center text-black mb-3">Sign in To Fintech</h3>
+                      <h3 className="text-center text-black mb-3">Sign in To GeoPay</h3>
                       
                       <div className="d-flex justify-content-center mb-3 gap-3">
                           <Button color="secondary" className="rounded-circle d-flex align-items-center justify-content-center social-media-icons" outline > <SVGIcons.Facebook className="text-primary"/> </Button>

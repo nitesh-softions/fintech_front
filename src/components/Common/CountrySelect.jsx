@@ -42,7 +42,7 @@ const CountrySelect = ({ selectedCountry }) => {
   // Custom option component for react-select
   const CustomOption = ({ innerRef, innerProps, data, isFocused }) => (
     <div ref={innerRef} {...innerProps} className={`d-flex align-items-center justify-content-between ${ isFocused ? "bg-primary text-white" : "" }`} style={{ padding: "5px 12px", cursor: "pointer" }} >
-      <div>
+      <div className="ellipsis-1">
         <img src={data.flag} alt="" width="25" height="25" className="me-2 rounded-circle" />
         <span>{data.label}</span>
       </div>
