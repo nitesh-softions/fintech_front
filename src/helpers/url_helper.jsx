@@ -2,6 +2,9 @@
 export const POST_LOGIN = "api/login";
 export const POST_LOGOUT = "api/logout";
 
+// COMMON
+export const GET_COUNTRY_LIST = "api/countries";
+
 
 
 export const SOCIAL_LOGIN = "/social-login";

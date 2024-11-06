@@ -5,7 +5,7 @@ import { decryptData, encryptData } from "../utils/CommonFunctions";
 // Decrypt data from GET requests if necessary
 export async function get(url, config = {}) {
   return await axiosApi.get(url, { ...config }).then((response) => {
-    return decryptData(response.data);
+    return decryptData(response.data?.response);
   });
 }
 

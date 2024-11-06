@@ -2,6 +2,11 @@
 // _helper.scss
 //
 
+.required:after {
+  content:" *";
+  color: #ee3737;
+}
+
 .font-size-10 {
   font-size: 10px !important;
 }
@@ -153,6 +158,11 @@
     }
   }
 }
+
+.ellipsis-1{ display: -webkit-box; max-width: 200px; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.ellipsis-2{ display: -webkit-box; max-width: 200px; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.ellipsis-3{ display: -webkit-box; max-width: 200px; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ellipsis-4{ display: -webkit-box; max-width: 200px; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* Chrome, Safari, Edge, Opera */
 .number-input::-webkit-outer-spin-button,

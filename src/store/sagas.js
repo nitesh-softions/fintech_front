@@ -5,6 +5,7 @@ import AccountSaga from "./auth/register/saga";
 import AuthSaga from "./auth/login/saga";
 import ForgetSaga from "./auth/forgetpwd/saga";
 import LayoutSaga from "./layout/saga";
+import countrySaga from "./common/country_list/saga";
 
 export default function* rootSaga() {
   yield all([
@@ -13,5 +14,6 @@ export default function* rootSaga() {
     fork(AuthSaga),
     fork(ForgetSaga),
     fork(LayoutSaga),
+    fork(countrySaga),
   ]);
 }

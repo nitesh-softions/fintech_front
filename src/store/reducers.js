@@ -7,6 +7,7 @@ import Layout from "./layout/reducer";
 import Login from "./auth/login/reducer";
 import Account from "./auth/register/reducer";
 import ForgetPassword from "./auth/forgetpwd/reducer";
+import countryReducer from "./common/country_list/reducer";
 
 const rootReducer = combineReducers({
   // public
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   Login,
   Account,
   ForgetPassword,
+  countryReducer,
 });
 
 export default rootReducer;
