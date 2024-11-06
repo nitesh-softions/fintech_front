@@ -21,11 +21,10 @@ import { loginUser, socialLogin } from "../../store/actions";
 // import images
 import SVGIcons from "../../components/Common/SVGIcons";
 
-
-
 const Login = (props) => {
+  
   //meta title
-  document.title = "Login | EziPay";
+  document.title = "Login | GeoPay";
   const dispatch = useDispatch();
 
   const validation = useFormik({
@@ -43,14 +42,12 @@ const Login = (props) => {
   });
 
   const selectLoginState = (state) => state.Login;
-
   const LoginProperties = createSelector(
     selectLoginState,
     (login) => ({
       error: login.error
     })
   );
-
   const { error } = useSelector(LoginProperties);
 
   return (

@@ -11,10 +11,13 @@ import classnames from "classnames";
 
 // Import custom SCSS
 import '../../assets/scss/custom/components/authentication.scss';
+import { Link } from "react-router-dom";
 
 
 
 const Register = props => {
+  //meta title
+  document.title = "Register | GeoPay";
   
   // Individual/Company Tab State
   const [activeTab1, setActiveTab1] = useState("1");
@@ -38,7 +41,7 @@ const Register = props => {
             <div className="bg_overlay_4"></div>
 
             {/* <!-- Register Form Container --> */}
-            <div className="w-100 px-2 auth-container h-100 align-content-md-around">
+            <div className="w-100 px-2 auth-container h-100 register-form-container">
               <h3 className="text-center text-black mb-3 mt-3">Register</h3>
 
               <Card className="shadow-none bg-transparent">
@@ -66,6 +69,13 @@ const Register = props => {
                       <CompanyTab/>
                     </TabPane>
                   </TabContent>
+
+                  <div className="d-flex align-items-center justify-content-center my-3">
+                      <hr className="flex-grow-1 hr-line"/>
+                      <span className="mx-2 text-muted">Already have an account?</span>
+                      <hr className="flex-grow-1 hr-line"/>
+                  </div>
+                  <Link to={"/login"} className="btn btn-secondary w-100" type="submit">Login</Link>
                 </CardBody>
               </Card>
             </div>

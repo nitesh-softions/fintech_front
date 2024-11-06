@@ -26,7 +26,19 @@
     width: 15px;
 }
 
+.register-form-container{
+  margin-top: 20%;
 
+  @media screen and (max-width: 1500px) {
+    margin-top: 10%;
+  }
+  @media screen and (max-width: 1350px) {
+    margin-top: 0%;
+  }
+  @media screen and (max-width: 767px) {
+    margin-top: 0%;
+  }
+}
 
 .stepper-wrapper {
     display: flex;

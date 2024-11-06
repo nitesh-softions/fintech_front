@@ -1,0 +1,4 @@
+export const COUNTRY_LIST = "COUNTRY_LIST"
+export const COUNTRY_LIST_SUCCESS = "COUNTRY_LIST_SUCCESS"
+
+export const API_ERROR = "API_ERROR"
